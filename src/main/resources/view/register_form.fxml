@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.RegisterForm">
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.RegisterFormControoler">
    <children>
       <ImageView fitHeight="400.0" fitWidth="300.0">
          <image>
@@ -28,6 +27,6 @@
       <TextField fx:id="txtPassword" layoutX="14.0" layoutY="227.0" prefHeight="25.0" prefWidth="264.0" promptText="Input password" />
       <Text layoutX="16.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Re-enter Password" />
       <TextField fx:id="txtRePassword" layoutX="14.0" layoutY="286.0" prefHeight="25.0" prefWidth="264.0" promptText="Re-enter password" />
-      <JFXButton buttonType="RAISED" layoutX="176.0" layoutY="330.0" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #1B1464;" text="Confirm" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="176.0" layoutY="330.0" onAction="#btnConfirmOnAction" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #1B1464;" text="Confirm" textFill="WHITE" />
    </children>
 </AnchorPane>

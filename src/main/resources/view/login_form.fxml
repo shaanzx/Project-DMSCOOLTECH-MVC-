@@ -55,7 +55,7 @@
                   <PasswordField fx:id="txtPassword" layoutX="16.0" layoutY="190.0" prefHeight="25.0" prefWidth="196.0" promptText="Enter Your Password" />
                   <CheckBox layoutX="19.0" layoutY="247.0" mnemonicParsing="false" text="Remember this device" />
                   <Text layoutX="85.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or" textAlignment="CENTER" wrappingWidth="63.578125" />
-                  <JFXButton buttonType="RAISED" layoutX="19.0" layoutY="315.0" onAction="#btnSignInAction" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #1B1464;" text="Sign up" textFill="WHITE">
+                  <JFXButton buttonType="RAISED" layoutX="19.0" layoutY="315.0" onAction="#btnSignUpAction" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #1B1464;" text="Sign up" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
