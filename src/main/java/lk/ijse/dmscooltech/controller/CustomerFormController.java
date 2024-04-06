@@ -1,4 +1,4 @@
 package lk.ijse.dmscooltech.controller;
 
-public class DashBoardFormController {
+public class CustomerFormController {
 }

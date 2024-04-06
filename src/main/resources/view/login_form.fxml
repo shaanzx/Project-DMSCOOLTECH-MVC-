@@ -37,34 +37,47 @@
                      </font>
                   </TextField>
                   <Text layoutX="16.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="63.578125" />
-                  <Hyperlink layoutX="19.0" layoutY="221.0" onAction="#btnForgetOnAction" text="Forget email or password?" underline="true">
+                  <Hyperlink layoutX="17.0" layoutY="218.0" onAction="#btnForgetOnAction" text="Forget email or password?" underline="true">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Hyperlink>
-                  <Text layoutX="37.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remember this device" />
-                  <JFXButton layoutX="18.0" layoutY="235.0" prefHeight="25.0" prefWidth="25.0" ripplerFill="WHITE" text="Button" />
                   <JFXButton buttonType="RAISED" layoutX="19.0" layoutY="274.0" onAction="#btnSignInAction" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #1B1464;" text="Sign in" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <Hyperlink layoutX="22.0" layoutY="305.0" onAction="#btnSignUpOnAction" text="Don't have an employee account?" underline="true">
+                  <Hyperlink layoutX="19.0" layoutY="345.0" onAction="#btnSignUpOnAction" text="Don't have an employee account?" underline="true">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Hyperlink>
                   <PasswordField fx:id="txtPassword" layoutX="16.0" layoutY="190.0" prefHeight="25.0" prefWidth="196.0" promptText="Enter Your Password" />
-                  <CheckBox layoutX="78.0" layoutY="343.0" mnemonicParsing="false" text="CheckBox" />
+                  <CheckBox layoutX="19.0" layoutY="247.0" mnemonicParsing="false" text="Remember this device" />
+                  <Text layoutX="85.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or" textAlignment="CENTER" wrappingWidth="63.578125" />
+                  <JFXButton buttonType="RAISED" layoutX="19.0" layoutY="315.0" onAction="#btnSignInAction" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #1B1464;" text="Sign up" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
                </children>
             </AnchorPane>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff83" height="200.0" layoutX="322.0" layoutY="41.0" stroke="#00000040" strokeType="INSIDE" width="200.0" />
-            <Text fill="WHITE" layoutX="349.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME">
+            <Text fill="WHITE" layoutX="371.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME">
                <font>
                   <Font size="31.0" />
                </font>
             </Text>
-            <Text fill="WHITE" layoutX="359.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TO">
+            <Text fill="WHITE" layoutX="371.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TO" textAlignment="CENTER" wrappingWidth="145.3125">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="357.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DMS COOL TECH" textAlignment="CENTER" wrappingWidth="173.3125">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="371.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SYSTEM" textAlignment="CENTER" wrappingWidth="145.3125">
                <font>
                   <Font size="31.0" />
                </font>
