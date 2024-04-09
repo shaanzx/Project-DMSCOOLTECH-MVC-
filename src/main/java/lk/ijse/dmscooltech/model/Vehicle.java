@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Customer {
-    private String id;
-    private String name;
-    private String address;
-    private String tel;
+public class Vehicle {
+    private String vehicleNo;
+    private String type;
+    private String model;
 }
