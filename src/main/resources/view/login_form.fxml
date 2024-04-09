@@ -13,22 +13,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #70a1ff;" stylesheets="@../assest/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.LoginFormController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #70a1ff;" stylesheets="@../asset/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.LoginFormController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="11.0" prefHeight="380.0" prefWidth="579.0" style="-fx-background-color: #ffffff;">
          <children>
             <ImageView fitHeight="380.0" fitWidth="579.0">
                <image>
-                  <Image url="@../../../../../../../Downloads/Final%20project/Pic/mechanic-with-arms-crossed-holding-spanner.jpg" />
-               </image>
+                  <Image url="@../asset/mechanic-with-arms-crossed-holding-spanner.jpg" /> </image>
             </ImageView>
             <AnchorPane prefHeight="363.0" prefWidth="230.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffffb0" height="380.0" stroke="#ffffff50" strokeLineCap="ROUND" strokeType="INSIDE" width="243.0" />
                   <ImageView fitHeight="108.0" fitWidth="125.0" layoutX="56.0">
                      <image>
-                        <Image url="@../../../../../../../Downloads/Final%20project/Pic/Auto%20tech%20(2)-Photoroom.png-Photoroom.png" />
-                     </image>
+                        <Image url="@../asset/Auto%20tech%20(2)-Photoroom.png-Photoroom.png" /> </image>
                   </ImageView>
                   <Text layoutX="16.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User name" wrappingWidth="63.578125" />
                   <TextField fx:id="txtUserName" layoutX="16.0" layoutY="137.0" prefHeight="25.0" prefWidth="196.0" promptText="enter your user name">

@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 public class Supplier {
     private String id;
     private String name;
+    private String supItem;
+    private String contact;
 }
