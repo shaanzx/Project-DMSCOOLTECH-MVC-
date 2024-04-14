@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.dmscooltech.controller.DashBoardFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #34495e;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.DashBoardFormController">
+   <children>
+      <ImageView fitHeight="390.0" fitWidth="593.0" layoutX="3.0" layoutY="5.0" opacity="0.65" rotate="180.0">
+         <image>
+            <Image url="@../asset/Dashboard%20new%202.jpg" />
+         </image>
+      </ImageView>
+      <VBox layoutX="4.0" layoutY="53.0" prefHeight="342.0" prefWidth="155.0" style="-fx-background-color: white;">
+         <children>
+            <JFXButton alignment="CENTER_RIGHT" buttonType="RAISED" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #00a8ff;" text="CUSTOMER" textAlignment="CENTER" wrapText="true" />
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #0097e6;" text="ITEMS" />
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="60.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #487eb0;" text="EMPLOYEE" />
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="110.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #40739e;" text="ORDER" />
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="160.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #273c75;" text="SUPPLIER" />
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="210.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #192a56;" text="SUPPLIER" />
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="260.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #353b48;" text="SUPPLIER" />
+         </children>
+      </VBox>
+      <AnchorPane layoutX="165.0" layoutY="54.0" opacity="0.55" prefHeight="342.0" prefWidth="431.0" style="-fx-background-color: white;" />
+      <TextField layoutX="6.0" layoutY="14.0" text="HI Shan" />
+      <TextField layoutX="172.0" layoutY="14.0" prefHeight="26.0" prefWidth="418.0" text="WELLCOME TO DMS COOL TECH MANAGEMENT SYSTEM" />
+   </children>
 </AnchorPane>
