@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #34495e;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.DashBoardFormController">
    <children>
@@ -14,19 +17,50 @@
             <Image url="@../asset/Dashboard%20new%202.jpg" />
          </image>
       </ImageView>
-      <VBox layoutX="4.0" layoutY="53.0" prefHeight="342.0" prefWidth="155.0" style="-fx-background-color: white;">
+      <VBox layoutX="7.0" layoutY="53.0" prefHeight="342.0" prefWidth="128.0" style="-fx-background-color: white;">
          <children>
-            <JFXButton alignment="CENTER_RIGHT" buttonType="RAISED" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #00a8ff;" text="CUSTOMER" textAlignment="CENTER" wrapText="true" />
-            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="10.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #0097e6;" text="ITEMS" />
-            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="60.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #487eb0;" text="EMPLOYEE" />
-            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="110.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #40739e;" text="ORDER" />
-            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="160.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #273c75;" text="SUPPLIER" />
-            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="210.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #192a56;" text="SUPPLIER" />
-            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="260.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #353b48;" text="SUPPLIER" />
+            <JFXButton fx:id="txtCustomer" alignment="CENTER_RIGHT" buttonType="RAISED" onAction="#btnCustomerOnAction" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #00a8ff;" text="CUSTOMER" textAlignment="CENTER" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton fx:id="txtItem" buttonType="RAISED" layoutX="10.0" layoutY="10.0" onAction="#btnItemsOnAction" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #0097e6;" text="ITEMS">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="60.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #487eb0;" text="EMPLOYEE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="110.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #40739e;" text="ORDER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="160.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #273c75;" text="SUPPLIER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="210.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #192a56;" text="REPRT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="10.0" layoutY="260.0" prefHeight="50.0" prefWidth="155.0" style="-fx-background-color: #353b48;" text="SUPPLIER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></JFXButton>
          </children>
       </VBox>
-      <AnchorPane layoutX="165.0" layoutY="54.0" opacity="0.55" prefHeight="342.0" prefWidth="431.0" style="-fx-background-color: white;" />
-      <TextField layoutX="6.0" layoutY="14.0" text="HI Shan" />
-      <TextField layoutX="172.0" layoutY="14.0" prefHeight="26.0" prefWidth="418.0" text="WELLCOME TO DMS COOL TECH MANAGEMENT SYSTEM" />
+      <Text fx:id="txtUserName" fill="WHITE" layoutX="41.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HI Shan" underline="true" wrappingWidth="57.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="173.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME TO DMS COOL TECH MANAGMENT SYSTEM" underline="true" wrappingWidth="389.0000305175781">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Text>
+      <Line endX="134.99996948242188" endY="55.0" fill="WHITE" layoutX="2.0" layoutY="-1.0" startX="135.0" startY="395.0" stroke="WHITE" strokeLineCap="BUTT" />
+      <AnchorPane layoutX="140.0" layoutY="53.0" opacity="0.55" prefHeight="341.0" prefWidth="455.0" style="-fx-background-color: white;" />
    </children>
 </AnchorPane>

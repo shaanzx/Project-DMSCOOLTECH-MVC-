@@ -49,7 +49,7 @@ public class LoginFormController {
         try {
             checkUserNamePassword(userId, pw);
         } catch (SQLException e) {
-                new Alert(Alert.AlertType.ERROR,"User Id Or password dosen't match.Try agin!").show();
+                new Alert(Alert.AlertType.ERROR,"User Id Or password doesn't match.Try aging!").show();
         }
     }
 
