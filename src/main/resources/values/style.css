@@ -1,12 +1,20 @@
 .username-text {
     -fx-background-radius: 30;
 }
-.signin-button {
+.signin-button:hover {
+    -fx-background-color: #53ecc8 !important;
+}
+.signup-button:hover {
+    -fx-background-color: #53ecc8 !important;
+}
+.loginrectangle-button {
     -fx-background-radius: 30;
 }
-.signup-button {
-    -fx-background-radius: 30;
-}
-.loginretangle-button {
-    -fx-background-radius: 30;
+.dashboard-button {
+    -fx-background-radius: 35;
+    -fx-background-color: white;
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+    -fx-font-style: cambria;
+    -fx-font-color: #Black;
 }
