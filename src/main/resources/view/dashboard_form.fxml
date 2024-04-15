@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="390.0" fitWidth="593.0" layoutX="3.0" layoutY="5.0" opacity="0.65" rotate="180.0">
          <image>
-            <Image url="@../asset/Dashboard%20new%202.jpg" />
+            <Image url="@../asset/Dashboard.jpg" />
          </image>
       </ImageView>
       <VBox layoutX="7.0" layoutY="53.0" prefHeight="342.0" prefWidth="128.0" style="-fx-background-color: white;">

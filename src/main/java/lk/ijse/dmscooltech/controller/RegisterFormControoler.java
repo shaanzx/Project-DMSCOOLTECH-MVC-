@@ -35,8 +35,14 @@ public class RegisterFormControoler {
         String password = txtPassword.getText();
         String rePw = txtRePassword.getText();
 
-        userSave(uId,uName,password);
+        if(!password.equals(rePw)) {
+            new Alert(Alert.AlertType.ERROR, "Password doesn't match.Try again!").show();
+        } else {
+            userSave(uId, uName, password);
+        }
     }
+
+
 
     private void userSave(String uId, String uName, String password) {
         try {
@@ -51,7 +57,7 @@ public class RegisterFormControoler {
                 new Alert(Alert.AlertType.CONFIRMATION, "User password Saved!").show();
             }
         } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,"Error.Try again!").show();
+            new Alert(Alert.AlertType.WARNING,"Already exists").show();
         }
     }
 }

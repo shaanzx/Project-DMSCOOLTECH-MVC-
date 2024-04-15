@@ -16,17 +16,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #70a1ff;" stylesheets="@../asset/css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.LoginFormController">
+<AnchorPane style="-fx-background-color: #70a1ff;" stylesheets="@../values/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.LoginFormController">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="11.0" prefHeight="380.0" prefWidth="579.0" style="-fx-background-color: #ffffff;">
+      <AnchorPane layoutX="10.0" layoutY="11.0" style="-fx-background-color: #ffffff;">
          <children>
-            <ImageView fitHeight="380.0" fitWidth="579.0" smooth="false">
+            <ImageView fitHeight="768.0" fitWidth="1372.0" layoutX="-16.0" layoutY="-14.0" smooth="false">
                <image>
                   <Image url="@../asset/mechanic-with-arms-crossed-holding-spanner.jpg" /> </image>
             </ImageView>
-            <AnchorPane prefHeight="363.0" prefWidth="230.0">
+            <AnchorPane prefHeight="363.0" prefWidth="230.0" styleClass="loginretangle-button" stylesheets="@../values/style.css">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="380.0" stroke="#ffffff50" strokeLineCap="ROUND" strokeType="INSIDE" width="243.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="766.0" layoutX="10.0" layoutY="-12.0" stroke="#ffffff50" strokeLineCap="ROUND" strokeType="INSIDE" width="600.0">
                      <fill>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0" startY="0.3601895734597157">
                            <stops>
@@ -42,36 +42,61 @@
                               </Stop>
                            </stops>
                         </LinearGradient>
-                     </fill></Rectangle>
-                  <ImageView fitHeight="108.0" fitWidth="125.0" layoutX="52.0">
+                     </fill>
+                  </Rectangle>
+                  <ImageView fitHeight="294.0" fitWidth="319.0" layoutX="148.0" layoutY="-56.0">
                      <image>
-                        <Image url="@../asset/Auto%20tech%20(2)-Photoroom.png-Photoroom.png" /> </image>
+                        <Image url="@../asset/Autotech(2)-Photoroom.png-Photoroom.png" /> </image>
                   </ImageView>
-                  <Text layoutX="16.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID" wrappingWidth="63.578125" />
-                  <TextField fx:id="txtUserId" layoutX="16.0" layoutY="137.0" prefHeight="25.0" prefWidth="196.0" promptText="Enter Your ID" />
-                  <Text layoutX="16.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="63.578125" />
-                  <Hyperlink layoutX="17.0" layoutY="218.0" onAction="#btnForgetOnAction" text="Forget email or password?" textFill="#0a1d7c" underline="true">
+                  <Text fill="#000000cc" layoutX="35.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID" wrappingWidth="131.578125">
                      <font>
-                        <Font size="10.0" />
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font></Text>
+                  <TextField fx:id="txtUserId" layoutX="25.0" layoutY="225.0" prefHeight="45.0" prefWidth="550.0" promptText="Enter Your ID" styleClass="username-text" stylesheets="@../values/style.css">
+                     <font>
+                        <Font size="14.0" />
+                     </font></TextField>
+                  <Text fill="#000000cc" layoutX="35.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="98.0">
+                     <font>
+                        <Font name="Cambria Bold" size="20.0" />
+                     </font></Text>
+                  <Hyperlink alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="380.0" onAction="#btnForgetOnAction" text="Forget email or password?" textFill="#0a1d7c" underline="true">
+                     <font>
+                        <Font name="Cambria" size="20.0" />
                      </font>
                   </Hyperlink>
-                  <JFXButton buttonType="RAISED" layoutX="19.0" layoutY="274.0" onAction="#btnSignInAction" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #1B1464;" text="Sign in" textFill="WHITE">
+                  <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="180.0" layoutY="490.0" onAction="#btnSignInAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #1B1464;" styleClass="signin-button" stylesheets="@../values/style.css" text="Sign in" textAlignment="CENTER" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <font>
+                        <Font name="Cambria" size="20.0" />
+                     </font>
                   </JFXButton>
-                  <Hyperlink layoutX="19.0" layoutY="345.0" text="Don't have an employee account?" textFill="#0a1d7c" underline="true">
+                  <Hyperlink layoutX="160.0" layoutY="640.0" text="Don't  have an employee account?" textFill="#0a1d7c" underline="true">
                      <font>
-                        <Font size="10.0" />
+                        <Font name="Cambria" size="20.0" />
                      </font>
                   </Hyperlink>
-                  <PasswordField fx:id="txtPassword" layoutX="16.0" layoutY="190.0" prefHeight="25.0" prefWidth="196.0" promptText="Enter Your Password" />
-                  <CheckBox fx:id="txtSave" layoutX="19.0" layoutY="247.0" mnemonicParsing="false" onAction="#btnSaveToDeviceOnAction" text="Remember this device" />
-                  <Text layoutX="85.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or" textAlignment="CENTER" wrappingWidth="63.578125" />
-                  <JFXButton buttonType="RAISED" layoutX="19.0" layoutY="321.0" onAction="#btnSignUpOnAction" prefHeight="25.0" prefWidth="196.0" style="-fx-background-color: #1B1464;" text="Sign up" textFill="WHITE">
+                  <PasswordField fx:id="txtPassword" layoutX="25.0" layoutY="325.0" prefHeight="45.0" prefWidth="550.0" promptText="Enter Your Password" styleClass="username-text" stylesheets="@../values/style.css">
+                     <font>
+                        <Font size="14.0" />
+                     </font></PasswordField>
+                  <CheckBox fx:id="txtSave" layoutX="185.0" layoutY="430.0" mnemonicParsing="false" onAction="#btnSaveToDeviceOnAction" text="Remember this device">
+                     <font>
+                        <Font name="Cambria" size="20.0" />
+                     </font></CheckBox>
+                  <Text layoutX="280.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or" textAlignment="CENTER" wrappingWidth="63.578125">
+                     <font>
+                        <Font name="Cambria" size="22.0" />
+                     </font></Text>
+                  <JFXButton buttonType="RAISED" layoutX="180.0" layoutY="590.0" onAction="#btnSignUpOnAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #1B1464;" styleClass="signup-button" stylesheets="@../values/style.css" text="Sign up" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <font>
+                        <Font name="Cambria" size="20.0" />
+                     </font>
                   </JFXButton>
                </children>
             </AnchorPane>

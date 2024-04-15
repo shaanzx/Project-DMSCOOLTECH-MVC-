@@ -1,5 +1,12 @@
-.JFXButton {
-    -fx-background-color: #00a8ff;
-    -fx-text-fill: white;
-    -fx-background-radius: 100;
+.username-text {
+    -fx-background-radius: 30;
+}
+.signin-button {
+    -fx-background-radius: 30;
+}
+.signup-button {
+    -fx-background-radius: 30;
+}
+.loginretangle-button {
+    -fx-background-radius: 30;
 }
