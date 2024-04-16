@@ -12,9 +12,14 @@
 }
 .dashboard-button {
     -fx-background-radius: 35;
-    -fx-background-color: white;
     -fx-font-size: 30;
     -fx-font-weight: bold;
-    -fx-font-style: cambria;
-    -fx-font-color: #Black;
+    -fx-font-family: cambria;
+    -fx-text-fill: black;
+    -fx-alignment: center;
+    -fx-buttton-type: RAISED;
+    -fx-background-color: #1B1464;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER;
+    -fx-background-width: 50;
 }

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-image: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.GlobalFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" stroke="BLACK" strokeType="INSIDE" width="300.0">
+         <fill>
+            <RadialGradient centerX="0.4613259668508287" centerY="0.509478672985782" cycleMethod="REFLECT" focusAngle="-90.0" focusDistance="-0.06896551724137934" radius="0.7988505747126438">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.012500000186264515" green="0.03125" blue="0.05000000074505806" opacity="0.9007633328437805" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.33576998114585876" green="0.594915509223938" blue="0.6973684430122375" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Rectangle>
+      <Pane layoutX="-6.0" prefHeight="766.0" prefWidth="300.0">
+         <children>
+            <JFXButton fx:id="txtEmployee" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="400.0" onAction="#btnEmployeeOnAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Employee " textFill="#860f0f">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="44.0">
+                     <image>
+                        <Image url="@../asset/icon/EmployeeIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="txtStoke" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="175.0" onAction="#btnStokeOnAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Stoke  " textFill="#860f0f">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="38.0">
+                     <image>
+                        <Image url="@../asset/icon/ItemIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="txtDashboard" alignment="CENTER" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="100.0" onAction="#btnDashboardOnAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Dashboard" textFill="#e16060">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="42.0">
+                     <image>
+                        <Image url="@../asset/icon/DashBoard.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="txtCustomer" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="250.0" onAction="#btnCustomerOnAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Customer  " textFill="#860f0f">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <graphic>
+                  <ImageView>
+                     <image>
+                        <Image url="@../asset/icon/CustomerIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="txtOrder" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="325.0" onAction="#btnOrderOnAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Order  " textFill="#860f0f">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="54.0" fitWidth="54.0">
+                     <image>
+                        <Image url="@../asset/icon/OrderIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <Text fx:id="txtShowUserName" fill="WHITE" layoutX="92.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi Shan">
+               <font>
+                  <Font name="Cambria" size="26.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="imgHome" layoutX="140.0" layoutY="703.0" onMouseClicked="#btnGotoHomePageOnAction">
+               <image>
+                  <Image url="@../asset/icon/HomeIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="40.0" layoutY="27.0">
+               <image>
+                  <Image url="@../asset/icon/UserIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgLogOut" fitHeight="42.0" fitWidth="52.0" layoutX="50.0" layoutY="710.0" onMouseClicked="#btnLogoutOnAction">
+               <image>
+                  <Image url="@../asset/icon/LogOutIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -18,7 +18,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Stack;
 
 public class LoginFormController {
 
@@ -74,7 +73,7 @@ public class LoginFormController {
     }
 
     private void gotoDashBoard() throws IOException {
-        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/dashBoard_form.fxml"));
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/global_form.fxml"));
 
         Scene scene = new Scene(rootNode);
         Stage stage = new Stage();
