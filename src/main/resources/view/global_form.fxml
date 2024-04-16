@@ -35,7 +35,7 @@
       </Rectangle>
       <Pane layoutX="-6.0" prefHeight="766.0" prefWidth="300.0">
          <children>
-            <JFXButton fx:id="txtEmployee" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="400.0" onAction="#btnEmployeeOnAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Employee " textFill="#860f0f">
+            <JFXButton fx:id="txtEmployee" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="430.0" onAction="#btnEmployeeOnAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Employee " textFill="#860f0f">
                <font>
                   <Font size="36.0" />
                </font>
@@ -86,7 +86,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="txtOrder" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="325.0" onAction="#btnOrderOnAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Order  " textFill="#860f0f">
+            <JFXButton fx:id="txtOrder" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="335.0" onAction="#btnOrderOnAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Order  " textFill="#860f0f">
                <font>
                   <Font size="36.0" />
                </font>
@@ -120,5 +120,6 @@
             </ImageView>
          </children>
       </Pane>
+      <Pane fx:id="pagingPane" layoutX="300.0" layoutY="-2.0" prefHeight="772.0" prefWidth="1066.0" />
    </children>
 </AnchorPane>

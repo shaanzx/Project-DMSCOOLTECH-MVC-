@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dmscooltech.db.DbConnection;
+import lk.ijse.dmscooltech.util.Navigation;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,6 +21,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginFormController {
+
+    @FXML
+    private AnchorPane ancLogin;
 
     @FXML
     private PasswordField txtPassword;
@@ -41,13 +45,24 @@ public class LoginFormController {
     }
 
     @FXML
-    void btnSignInAction(ActionEvent event) throws IOException {
+    void btnSignInAction(ActionEvent event) {
+
+//        if(UserRepo.verifyCredentials(txtUserId.getText(),txtPassword.getText())){
+//            try {
+//                Navigation.switchNavigation("global_form.fxml", event);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+
         String userId = txtUserId.getText();
         String pw = txtPassword.getText();
 
+
+
         try {
             checkUserNamePassword(userId, pw);
-        } catch (SQLException e) {
+        } catch (SQLException | IOException e) {
                 new Alert(Alert.AlertType.ERROR,"User Id Or password doesn't match.Try aging!").show();
         }
     }
@@ -63,12 +78,13 @@ public class LoginFormController {
         if(resultSet.next()){
             String psw = resultSet.getString(2);
             if(psw.equals(pw)){
+                ancLogin.getScene().getWindow().hide();
                 gotoDashBoard();
             }else {
-                new Alert(Alert.AlertType.ERROR,"Incorrect Password!");
+                new Alert(Alert.AlertType.ERROR,"Incorrect Password!").show();
             }
         }else{
-            new Alert(Alert.AlertType.INFORMATION,"Incorrect user ID.Check and try again.");
+            new Alert(Alert.AlertType.INFORMATION,"Incorrect user ID.Check and try again.").show();
         }
     }
 
@@ -90,7 +106,7 @@ public class LoginFormController {
         Scene scene = new Scene(rootNode);
         Stage stage = new Stage();
         stage.setScene(scene);
-
+        stage.centerOnScreen();
         stage.setTitle("Register Form");
         stage.show();
     }
