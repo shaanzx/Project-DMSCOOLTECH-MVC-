@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="1066.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="772.0" fitWidth="1066.0">
+         <image>
+            <Image url="@../asset/v915-techi-017-d.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="152.0" layoutX="100.0" layoutY="40.0" stroke="#a9b3d6" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="350.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.2078431397676468" green="0.3803921639919281" blue="0.5137255191802979" opacity="0.6299999952316284" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Text layoutX="145.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Customer Count">
+         <font>
+            <Font name="Cambria" size="30.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="152.0" layoutX="625.0" layoutY="40.0" stroke="#a9b3d6" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="350.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.6299999952316284" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2078431397676468" green="0.3803921639919281" blue="0.5137255191802979" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Text fx:id="txtCustomerCount" fill="#0f3f99" layoutX="231.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Count">
+         <font>
+            <Font name="Cambria" size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtRepairCount" fill="#0f3f99" layoutX="766.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Count">
+         <font>
+            <Font name="Cambria" size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="686.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Repair Count">
+         <font>
+            <Font name="Cambria" size="30.0" />
+         </font>
+      </Text>
+      <BarChart layoutX="95.0" layoutY="245.0" prefHeight="490.0" prefWidth="880.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </children>
+</Pane>

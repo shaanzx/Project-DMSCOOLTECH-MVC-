@@ -23,3 +23,7 @@
     -fx-alignment: CENTER;
     -fx-background-width: 50;
 }
+
+.count-rectangle{
+    -fx-background-radius: 35;
+}
