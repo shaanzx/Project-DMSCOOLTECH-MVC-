@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.ItemFormController">
    <children>
@@ -17,34 +19,104 @@
             <Image url="@../asset/v915-techi-017-d.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="378.0" fitWidth="448.0" layoutX="288.0" layoutY="36.0" opacity="0.1">
+      <ImageView fitHeight="500.0" fitWidth="500.0" layoutX="288.0" layoutY="-14.0" opacity="0.1">
          <image>
             <Image url="@../asset/Autotech(2)-Photoroom.png-Photoroom.png" />
          </image>
       </ImageView>
-      <Label layoutX="830.0" layoutY="10.0" text="Date :- ">
+      <Label layoutX="830.0" layoutY="25.0" text="Date :- ">
          <font>
-            <Font name="Cambria" size="30.0" />
+            <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="925.0" layoutY="10.0" text="Label">
+      <Label fx:id="txtDate" layoutX="925.0" layoutY="25.0" text="Label">
          <font>
-            <Font name="Cambria" size="30.0" />
+            <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <TableView layoutX="8.0" layoutY="410.0" prefHeight="355.0" prefWidth="1050.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="Item Code" />
-          <TableColumn prefWidth="425.0" text="Parts Name" />
-            <TableColumn prefWidth="127.0" text="Qty On Hand" />
-            <TableColumn prefWidth="127.0" text="Unit Price" />
-            <TableColumn prefWidth="127.0" text="Remove Item" />
-        </columns>
+      <TableView layoutX="8.0" layoutY="410.0" opacity="0.75" prefHeight="355.0" prefWidth="1050.0">
+         <columns>
+            <TableColumn prefWidth="159.0" text="Item Code" />
+            <TableColumn prefWidth="401.0" text="Parts Name" />
+            <TableColumn minWidth="0.0" prefWidth="147.0" text="Qty On Hand" />
+            <TableColumn prefWidth="129.0" text="Unit Price" />
+            <TableColumn minWidth="0.0" prefWidth="213.0" text="Remove Item" />
+         </columns>
       </TableView>
-      <Text fill="#ffffff07" layoutX="398.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="ITEM MANAGEMENT">
+      <Text fill="#8ffffd00" layoutX="358.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="CUSTOMER MANAGEMENT" underline="true">
          <font>
             <Font name="Cambria" size="30.0" />
          </font>
       </Text>
+      <Label layoutX="30.0" layoutY="80.0" text="Item Code">
+         <font>
+            <Font name="Cambria" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtItemCode" layoutX="150.0" layoutY="80.0" prefHeight="25.0" prefWidth="250.0" />
+      <Label layoutX="30.0" layoutY="125.0" text="Item Name">
+         <font>
+            <Font name="Cambria" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtItemName" layoutX="150.0" layoutY="125.0" prefWidth="250.0" />
+      <Label layoutX="30.0" layoutY="170.0" text="Qty">
+         <font>
+            <Font name="Cambria" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtQytOnHand" layoutX="150.0" layoutY="170.0" prefWidth="250.0" />
+      <Label layoutX="30.0" layoutY="215.0" text="Unit Price">
+         <font>
+            <Font name="Cambria" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUnitPrice" layoutX="150.0" layoutY="215.0" prefWidth="250.0" />
+      <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="656.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="120.0" layoutY="280.0" onAction="#btnItemDeleteOnAction" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../database-programming/_06-supermarket-mvc/src/main/resources/asserts/icon/delete.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="223.0" layoutY="280.0" onAction="#btnItemUpdateOnAction" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: green;" text="Update  " textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" style="-fx-image: white;">
+               <image>
+                  <Image url="@../asset/icon/UpdateIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="340.0" layoutY="280.0" onAction="#btnItemSaveOnAction" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: green;" text="Save" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0">
+               <image>
+                  <Image url="@../asset/icon/SaveIcon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </Pane>
