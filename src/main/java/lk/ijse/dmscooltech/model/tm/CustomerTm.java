@@ -10,5 +10,7 @@ public class CustomerTm {
     private String customerName;
     private String address;
     private String contact;
+    private String email;
+    private String userId;
 }
 

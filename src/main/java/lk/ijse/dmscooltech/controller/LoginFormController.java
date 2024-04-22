@@ -46,19 +46,8 @@ public class LoginFormController {
 
     @FXML
     void btnSignInAction(ActionEvent event) {
-
-//        if(UserRepo.verifyCredentials(txtUserId.getText(),txtPassword.getText())){
-//            try {
-//                Navigation.switchNavigation("global_form.fxml", event);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-
         String userId = txtUserId.getText();
         String pw = txtPassword.getText();
-
-
 
         try {
             checkUserNamePassword(userId, pw);

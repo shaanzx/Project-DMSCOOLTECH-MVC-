@@ -14,7 +14,7 @@
 
 <Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.CustomerFormController">
    <children>
-      <ImageView fitHeight="772.0" fitWidth="1066.0" layoutY="-2.0">
+      <ImageView fitHeight="772.0" fitWidth="1066.0" layoutX="-10.0" layoutY="-2.0">
          <image>
             <Image url="@../asset/v915-techi-017-d.jpg" />
          </image>
@@ -34,12 +34,13 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <TableView layoutX="8.0" layoutY="410.0" opacity="0.75" prefHeight="355.0" prefWidth="1050.0">
+      <TableView fx:id="tblCustomer" layoutX="8.0" layoutY="410.0" opacity="0.75" prefHeight="355.0" prefWidth="1050.0">
          <columns>
-            <TableColumn prefWidth="159.0" text="Customer ID" />
-            <TableColumn prefWidth="401.0" text="Customer Name" />
-            <TableColumn minWidth="0.0" prefWidth="301.0" text="Address" />
-            <TableColumn prefWidth="187.0" text="Telephone" />
+            <TableColumn fx:id="colCustomerId" prefWidth="159.0" text="Customer ID" />
+            <TableColumn fx:id="colCustomerName" prefWidth="256.33331298828125" text="Customer Name" />
+            <TableColumn fx:id="colCustomerAddress" minWidth="0.0" prefWidth="334.66668701171875" text="Address" />
+            <TableColumn fx:id="colCustomerTel" prefWidth="111.0" text="Telephone" />
+            <TableColumn fx:id="colCustomerEmail" prefWidth="187.0" text="E-mail" />
          </columns>
       </TableView>
       <Text fill="#8ffffd00" layoutX="358.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="CUSTOMER MANAGEMENT" underline="true">
@@ -47,32 +48,43 @@
             <Font name="Cambria" size="30.0" />
          </font>
       </Text>
-      <Label layoutX="30.0" layoutY="80.0" text="Customer ID">
+      <Label layoutX="30.0" layoutY="105.0" text="Customer ID">
          <font>
-            <Font name="Cambria" size="14.0" />
+            <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCusId" layoutX="150.0" layoutY="80.0" prefHeight="25.0" prefWidth="250.0" />
-      <Label layoutX="30.0" layoutY="125.0" text="Customer Name">
+      <TextField fx:id="txtCusId" layoutX="150.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0">
          <font>
-            <Font name="Cambria" size="14.0" />
+            <Font size="16.0" />
+         </font></TextField>
+      <Label layoutX="600.0" layoutY="105.0" text="Customer Name">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCusName" layoutX="150.0" layoutY="125.0" prefWidth="250.0" />
-      <Label layoutX="30.0" layoutY="170.0" text="Address">
+      <TextField fx:id="txtCusName" layoutX="750.0" layoutY="100.0" prefWidth="250.0">
          <font>
-            <Font name="Cambria" size="14.0" />
+            <Font size="16.0" />
+         </font></TextField>
+      <Label layoutX="30.0" layoutY="175.0" text="Address">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCusAddress" layoutX="150.0" layoutY="170.0" prefWidth="250.0" />
-      <Label layoutX="30.0" layoutY="215.0" text="Telephone">
+      <TextField fx:id="txtCusAddress" layoutX="150.0" layoutY="170.0" prefWidth="250.0">
          <font>
-            <Font name="Cambria" size="14.0" />
+            <Font size="16.0" />
+         </font></TextField>
+      <Label layoutX="600.0" layoutY="175.0" text="Telephone">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCusTel" layoutX="150.0" layoutY="215.0" prefWidth="250.0" />
-      <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="656.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="120.0" layoutY="280.0" onAction="#txtCusDeleteOnAction" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+      <TextField fx:id="txtCusTel" layoutX="750.0" layoutY="170.0" prefWidth="250.0">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="680.0" layoutY="320.0" onAction="#txtCusDeleteOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -87,7 +99,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="223.0" layoutY="280.0" onAction="#btnCusUpdateOnAction" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: green;" text="Update  " textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="793.0" layoutY="320.0" onAction="#btnCusUpdateOnAction" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: green;" text="Update  " textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -102,7 +114,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="340.0" layoutY="280.0" onAction="#btnCusSaveOnAction" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: green;" text="Save" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="920.0" layoutY="320.0" onAction="#btnCusSaveOnAction" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: blue;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -117,5 +129,14 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <Label layoutX="30.0" layoutY="245.0" text="E-mail">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtCusEmail" layoutX="150.0" layoutY="240.0" prefWidth="250.0">
+         <font>
+            <Font size="16.0" />
+         </font></TextField>
    </children>
 </Pane>

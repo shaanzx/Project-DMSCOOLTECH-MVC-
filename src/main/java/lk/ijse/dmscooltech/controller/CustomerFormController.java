@@ -2,17 +2,44 @@ package lk.ijse.dmscooltech.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import lk.ijse.dmscooltech.model.Customer;
+import lk.ijse.dmscooltech.repository.CustomerRepo;
 
-public class CustomerFormController {
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class CustomerFormController implements Initializable {
+
+    @FXML
+    private TableColumn<String,String> colCustomerAddress;
+
+    @FXML
+    private TableColumn<String,String> colCustomerEmail;
+
+    @FXML
+    private TableColumn<String,String> colCustomerId;
+
+    @FXML
+    private TableColumn<String,String> colCustomerName;
+
+    @FXML
+    private TableColumn<String,String> colCustomerTel;
 
     @FXML
     private Pane pagingPane;
 
     @FXML
+    private TableView<?> tblCustomer;
+
+    @FXML
     private TextField txtCusAddress;
+
+    @FXML
+    private TextField txtCusEmail;
 
     @FXML
     private TextField txtCusId;
@@ -26,9 +53,35 @@ public class CustomerFormController {
     @FXML
     private Label txtDate;
 
+    CustomerRepo customerRepo = new CustomerRepo();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            txtCusId.setText(CustomerRepo.generateNextCustomerId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     @FXML
     void btnCusSaveOnAction(ActionEvent event) {
+        String id = txtCusId.getText();
+        String name = txtCusName.getText();
+        String address = txtCusAddress.getText();
+        String tel = txtCusTel.getText();
+        String email = txtCusEmail.getText();
 
+        Customer customer = new Customer(id, name, address, tel, email);
+        try {
+            boolean isSaved = customerRepo.saveCustomer(customer);
+            if(isSaved) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer is Saved").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
@@ -40,5 +93,4 @@ public class CustomerFormController {
     void txtCusDeleteOnAction(ActionEvent event) {
 
     }
-
 }

@@ -18,12 +18,13 @@ create table customer(
                          name varchar(50)NOT NULL,
                          address varchar(50)NOT NULL,
                          tel varchar(12)NOT NULL,
+                         email varchar(50)NOT NULL,
                          uId varchar(5),
                          foreign key(uId) references user(uId) on update cascade on delete cascade
 );
-INSERT INTO customer(cId,name,address,tel,uId)VALUES
-                                                  ('C001','lakshan','galle','0776986455','u001'),
-                                                  ('C002','sisiwari','mathara','0776986456','u002');
+INSERT INTO customer(cId,name,address,tel,email,uId)VALUES
+                                                  ('C001','lakshan','galle','0776986455','shan@@gmail.com','u001'),
+                                                  ('C002','sisiwari','mathara','0776986456','lasha@@gmail.com','u002');
 
 create table payment(
                         pId varchar(5) primary key,

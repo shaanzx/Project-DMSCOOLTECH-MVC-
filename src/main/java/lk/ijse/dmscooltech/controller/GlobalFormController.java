@@ -44,8 +44,8 @@ public class GlobalFormController implements Initializable {
     private JFXButton txtStoke;
 
     @FXML
-    void btnCustomerOnAction(ActionEvent event) {
-
+    void btnCustomerOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(pagingPane, "customer_form.fxml");
     }
 
     @FXML
@@ -54,23 +54,23 @@ public class GlobalFormController implements Initializable {
     }
 
     @FXML
-    void btnEmployeeOnAction(ActionEvent event) {
-
+    void btnEmployeeOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(pagingPane, "employee_form.fxml");
     }
 
     @FXML
-    void btnGotoHomePageOnAction(MouseEvent event) {
-
+    void btnGotoHomePageOnAction(MouseEvent event) throws IOException {
+        Navigation.switchPaging(pagingPane, "global_form.fxml");
     }
 
     @FXML
-    void btnLogoutOnAction(MouseEvent event) {
-
+    void btnLogoutOnAction(MouseEvent event) throws IOException {
+        Navigation.switchPaging(pagingPane, "login_form.fxml");
     }
 
     @FXML
-    void btnOrderOnAction(ActionEvent event) {
-
+    void btnOrderOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(pagingPane, "placeOrder_form.fxml");
     }
 
     @FXML

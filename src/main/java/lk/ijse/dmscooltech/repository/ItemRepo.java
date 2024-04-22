@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemRepo {
     public static boolean saveItem(Item item) throws SQLException {
@@ -42,5 +44,26 @@ public class ItemRepo {
             return "I00"+id;
         }
         return "I001";
+    }
+
+    public static List<Item> getItem() throws SQLException {
+        String sql = "SELECT * FROM item";
+
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<Item> itemList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            itemList.add(new Item(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getInt(4),
+                    resultSet.getDouble(5),
+                    resultSet.getString(6)
+            ));
+        }
+        return itemList;
     }
 }
