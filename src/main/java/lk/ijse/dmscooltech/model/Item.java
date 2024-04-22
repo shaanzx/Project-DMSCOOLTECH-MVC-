@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class Item {
     private String code;
     private String description;
+    private String model;
     private double unitPrice;
     private int qtyOnHand;
+    private String date;
 }

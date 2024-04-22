@@ -29,7 +29,7 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="txtDate" layoutX="925.0" layoutY="25.0" text="Label">
+      <Label fx:id="txtDate1" layoutX="925.0" layoutY="25.0" text="Label">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
@@ -37,43 +37,56 @@
       <TableView layoutX="8.0" layoutY="410.0" opacity="0.75" prefHeight="355.0" prefWidth="1050.0">
          <columns>
             <TableColumn prefWidth="159.0" text="Item Code" />
-            <TableColumn prefWidth="401.0" text="Parts Name" />
-            <TableColumn minWidth="0.0" prefWidth="147.0" text="Qty On Hand" />
-            <TableColumn prefWidth="129.0" text="Unit Price" />
-            <TableColumn minWidth="0.0" prefWidth="213.0" text="Remove Item" />
+            <TableColumn prefWidth="249.0" text="Parts Name" />
+            <TableColumn minWidth="0.0" prefWidth="161.6666259765625" text="Vehicle Model" />
+            <TableColumn prefWidth="75.0" text="Qty on hand" />
+            <TableColumn minWidth="0.0" prefWidth="155.0" text="Unit Price" />
+            <TableColumn minWidth="0.0" prefWidth="154.0" text="Warrenty Period" />
+            <TableColumn minWidth="0.0" prefWidth="95.0" text="Delete Item" />
          </columns>
       </TableView>
-      <Text fill="#8ffffd00" layoutX="358.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="CUSTOMER MANAGEMENT" underline="true">
+      <Text fill="#8ffffd00" layoutX="388.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="STOKE MANAGEMENT" underline="true">
          <font>
             <Font name="Cambria" size="30.0" />
          </font>
       </Text>
-      <Label layoutX="30.0" layoutY="80.0" text="Item Code">
+      <Label layoutX="30.0" layoutY="100.0" text="Item Code">
          <font>
-            <Font name="Cambria" size="14.0" />
+            <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtItemCode" layoutX="150.0" layoutY="80.0" prefHeight="25.0" prefWidth="250.0" />
-      <Label layoutX="30.0" layoutY="125.0" text="Item Name">
+      <TextField fx:id="txtItemCode" layoutX="150.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0">
          <font>
-            <Font name="Cambria" size="14.0" />
+            <Font size="14.0" />
+         </font></TextField>
+      <Label layoutX="630.0" layoutY="100.0" text="Item Name">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtItemName" layoutX="150.0" layoutY="125.0" prefWidth="250.0" />
-      <Label layoutX="30.0" layoutY="170.0" text="Qty">
+      <TextField fx:id="txtItemName" layoutX="750.0" layoutY="100.0" prefWidth="250.0">
          <font>
-            <Font name="Cambria" size="14.0" />
+            <Font size="14.0" />
+         </font></TextField>
+      <Label layoutX="630.0" layoutY="170.0" text="Qty">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtQytOnHand" layoutX="150.0" layoutY="170.0" prefWidth="250.0" />
-      <Label layoutX="30.0" layoutY="215.0" text="Unit Price">
+      <TextField fx:id="txtQytOnHand" layoutX="750.0" layoutY="170.0" prefWidth="250.0">
          <font>
-            <Font name="Cambria" size="14.0" />
+            <Font size="14.0" />
+         </font></TextField>
+      <Label layoutX="30.0" layoutY="240.0" text="Unit Price">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUnitPrice" layoutX="150.0" layoutY="215.0" prefWidth="250.0" />
-      <ImageView fitHeight="250.0" fitWidth="250.0" layoutX="656.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="120.0" layoutY="280.0" onAction="#btnItemDeleteOnAction" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+      <TextField fx:id="txtUnitPrice" layoutX="150.0" layoutY="240.0" prefWidth="250.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="680.0" layoutY="330.0" onAction="#btnItemDeleteOnAction" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -88,7 +101,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="223.0" layoutY="280.0" onAction="#btnItemUpdateOnAction" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: green;" text="Update  " textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="793.0" layoutY="330.0" onAction="#btnItemUpdateOnAction" prefHeight="31.0" prefWidth="110.0" style="-fx-background-color: green;" text="Update  " textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -103,7 +116,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="340.0" layoutY="280.0" onAction="#btnItemSaveOnAction" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: green;" text="Save" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="920.0" layoutY="330.0" onAction="#btnItemSaveOnAction" prefHeight="31.0" prefWidth="80.0" style="-fx-background-color: blue;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -118,5 +131,25 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <Label layoutX="30.0" layoutY="170.0" text="Vehicle Model">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="630.0" layoutY="240.0" text="Date">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtVehicleModel" layoutX="150.0" layoutY="170.0" prefWidth="250.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtDate" layoutX="750.0" layoutY="240.0" prefWidth="250.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
    </children>
 </Pane>
