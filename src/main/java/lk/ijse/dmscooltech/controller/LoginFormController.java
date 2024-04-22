@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.dmscooltech.db.DbConnection;
+import lk.ijse.dmscooltech.repository.UserRepo;
 import lk.ijse.dmscooltech.util.Navigation;
 
 import java.io.IOException;
@@ -50,13 +51,15 @@ public class LoginFormController {
         String pw = txtPassword.getText();
 
         try {
-            checkUserNamePassword(userId, pw);
-        } catch (SQLException | IOException e) {
+            UserRepo.checkUserNamePassword(userId, pw, ancLogin);
+        } catch (SQLException e) {
                 new Alert(Alert.AlertType.ERROR,"User Id Or password doesn't match.Try aging!").show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
-    private void checkUserNamePassword(String userId, String pw) throws SQLException, IOException {
+   /* private void checkUserNamePassword(String userId, String pw) throws SQLException, IOException {
         String sqlQuery = "SELECT uId, uPassword FROM user WHERE uId = ?";
 
         Connection connection = DbConnection.getInstance().getConnection();
@@ -76,8 +79,8 @@ public class LoginFormController {
             new Alert(Alert.AlertType.INFORMATION,"Incorrect user ID.Check and try again.").show();
         }
     }
-
-    private void gotoDashBoard() throws IOException {
+*/
+    public void gotoDashBoard() throws IOException {
         AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/global_form.fxml"));
 
         Scene scene = new Scene(rootNode);

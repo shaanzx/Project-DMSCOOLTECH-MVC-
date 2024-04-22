@@ -1,9 +1,12 @@
 package lk.ijse.dmscooltech.repository;
 
 import javafx.scene.control.Alert;
+import javafx.scene.layout.AnchorPane;
+import lk.ijse.dmscooltech.controller.LoginFormController;
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.User;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,6 +24,27 @@ public class UserRepo {
             preparedStatement.setString(3, user.getPassword());
 
             return preparedStatement.executeUpdate() > 0;
+    }
+
+    public static void checkUserNamePassword(String userId, String pw, AnchorPane ancLogin) throws SQLException, IOException {
+        String sqlQuery = "SELECT uId, uPassword FROM user WHERE uId = ?";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+        preparedStatement.setObject(1,userId);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()){
+            String psw = resultSet.getString(2);
+            if(psw.equals(pw)){
+                ancLogin.getScene().getWindow().hide();
+                new LoginFormController().gotoDashBoard();
+            }else {
+                new Alert(Alert.AlertType.ERROR,"Incorrect Password!").show();
+            }
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Incorrect user ID.Check and try again.").show();
+        }
     }
 
     public String generateUserId() throws SQLException {
