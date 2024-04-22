@@ -29,20 +29,20 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="txtDate1" layoutX="925.0" layoutY="25.0" text="Label">
+      <Label fx:id="lblDate1" layoutX="925.0" layoutY="25.0" text="Label">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <TableView layoutX="8.0" layoutY="410.0" opacity="0.75" prefHeight="355.0" prefWidth="1050.0">
+      <TableView fx:id="tblItem" layoutX="8.0" layoutY="410.0" opacity="0.75" prefHeight="355.0" prefWidth="1050.0">
          <columns>
-            <TableColumn prefWidth="159.0" text="Item Code" />
-            <TableColumn prefWidth="249.0" text="Parts Name" />
-            <TableColumn minWidth="0.0" prefWidth="161.6666259765625" text="Vehicle Model" />
-            <TableColumn prefWidth="75.0" text="Qty on hand" />
-            <TableColumn minWidth="0.0" prefWidth="155.0" text="Unit Price" />
-            <TableColumn minWidth="0.0" prefWidth="154.0" text="Warrenty Period" />
-            <TableColumn minWidth="0.0" prefWidth="95.0" text="Delete Item" />
+            <TableColumn fx:id="colItemCode" prefWidth="159.0" text="Item Code" />
+            <TableColumn fx:id="colItemName" prefWidth="249.0" text="Parts Name" />
+            <TableColumn fx:id="colModel" minWidth="0.0" prefWidth="161.6666259765625" text="Vehicle Model" />
+            <TableColumn fx:id="colQtyOnHand" prefWidth="75.0" text="Qty on hand" />
+            <TableColumn fx:id="colUnitPrice" minWidth="0.0" prefWidth="155.0" text="Unit Price" />
+            <TableColumn fx:id="colDate" minWidth="0.0" prefWidth="154.0" text="Date" />
+            <TableColumn fx:id="colItemDelete" minWidth="0.0" prefWidth="95.0" text="Delete Item" />
          </columns>
       </TableView>
       <Text fill="#8ffffd00" layoutX="388.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="STOKE MANAGEMENT" underline="true">
@@ -55,7 +55,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtItemCode" layoutX="150.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0">
+      <TextField fx:id="txtItemCode" disable="true" layoutX="150.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0">
          <font>
             <Font size="14.0" />
          </font></TextField>

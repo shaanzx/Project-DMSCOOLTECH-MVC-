@@ -1,34 +1,57 @@
 package lk.ijse.dmscooltech.controller;
 
-import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Item;
+import lk.ijse.dmscooltech.model.tm.ItemTm;
 import lk.ijse.dmscooltech.repository.ItemRepo;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ItemFormController implements Initializable {
 
     @FXML
-    private Pane pagingPane;
+    private TableColumn<String, String> colItemCode;
 
     @FXML
-    private DatePicker datePicker;
+    private TableColumn<String, String> colDate;
+
+    @FXML
+    private TableColumn<String, String> colItemDelete;
+
+    @FXML
+    private TableColumn<String, String> colItemName;
+
+    @FXML
+    private TableColumn<String, String> colModel;
+
+    @FXML
+    private TableColumn<Integer, Integer> colQtyOnHand;
+
+    @FXML
+    private TableColumn<Double, Double> colUnitPrice;
+
+    @FXML
+    private TableView<ItemTm> tblItem;
+
+    @FXML
+    private Pane pagingPane;
 
     @FXML
     private TextField txtDate;
 
     @FXML
-    private Label lblDate1;
+    private Label txtDate1;
 
     @FXML
     private TextField txtItemCode;
@@ -47,9 +70,59 @@ public class ItemFormController implements Initializable {
 
     ItemRepo itemRepo = new ItemRepo();
 
-    @FXML
-    void btnItemDeleteOnAction(ActionEvent event) {
+    private List<Item> itemList = new ArrayList<>();
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            txtItemCode.setText(itemRepo.generateNextItemId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        setCellValueFactory();
+        loadItemsTable();
+        this.itemList = getAllItem();
+    }
+
+    private List<Item> getAllItem() {
+        System.out.println(itemList.size());
+        List<Item> itemList = null;
+        try {
+            itemList = itemRepo.getItem();
+            System.out.println(itemList.size());
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        System.out.println(itemList.size());
+        return itemList;
+    }
+
+    private void loadItemsTable() {
+        ObservableList<ItemTm> tmItemList = FXCollections.observableArrayList();
+
+        for(Item item : itemList) {
+            ItemTm itemTm = new ItemTm(
+                    item.getCode(),
+                    item.getDescription(),
+                    item.getModel(),
+                    item.getQtyOnHand(),
+                    item.getUnitPrice(),
+                    item.getDate()
+            );
+            tmItemList.add(itemTm);
+        }
+        tblItem.setItems(tmItemList);
+        ItemTm selectedItem = tblItem.getSelectionModel().getSelectedItem();
+    }
+
+    private void setCellValueFactory() {
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("ItemCode"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("ItemName"));
+        colModel.setCellValueFactory(new PropertyValueFactory<>("vehicleModel"));
+        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("QtyOnHand"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("UnitPrice"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        colItemDelete.setCellValueFactory(new PropertyValueFactory<>("btnItemDelete"));
     }
 
     @FXML
@@ -61,7 +134,7 @@ public class ItemFormController implements Initializable {
         double price = Double.parseDouble(txtUnitPrice.getText());
         String date = txtDate.getText();
 
-        Item item = new Item(code, name, model, price, qty, date);
+        Item item = new Item(code, name, model, qty, price, date);
         try {
             boolean isSaved = ItemRepo.saveItem(item);
             if(isSaved) {
@@ -76,17 +149,9 @@ public class ItemFormController implements Initializable {
     void btnItemUpdateOnAction(ActionEvent event) {
 
     }
-    @FXML
-    void cmbWarrantyPeriodOnAction(ActionEvent event) {
-        String sql = "SELECT * FROM warranty WHERE warrantyPeriod = ?";
-    }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            txtItemCode.setText(itemRepo.generateNextItemId());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    @FXML
+    void btnItemDeleteOnAction(ActionEvent event) {
+
     }
 }
