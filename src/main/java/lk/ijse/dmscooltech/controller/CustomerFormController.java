@@ -1,5 +1,6 @@
 package lk.ijse.dmscooltech.controller;
 
+import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +14,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CustomerFormController implements Initializable {
+
+    @FXML
+    private JFXComboBox<?> cmbUserId;
 
     @FXML
     private TableColumn<String,String> colCustomerAddress;
@@ -91,6 +95,11 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void txtCusDeleteOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cmbUserIdOnAction(ActionEvent event) {
 
     }
 }

@@ -62,11 +62,11 @@ public class UserRepo {
 
     private String splitUserId(String currentUserId) {
         if(currentUserId != null){
-            String[] split = currentUserId.split("U");
+            String[] split = currentUserId.split("u");
             int id = Integer.parseInt(split[1]);
             id++;
-            return "U00"+id;
+            return "u00"+id;
         }
-        return "U001";
+        return "u001";
     }
 }
