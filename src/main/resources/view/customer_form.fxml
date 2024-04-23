@@ -30,7 +30,7 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="txtDate" layoutX="925.0" layoutY="25.0" text="Label">
+      <Label fx:id="txtDate" layoutX="915.0" layoutY="25.0" text="Label">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
@@ -54,7 +54,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCusId" disable="true" layoutX="150.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0">
+      <TextField fx:id="txtCusId" disable="true" layoutX="150.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font></TextField>
@@ -63,7 +63,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCusName" layoutX="750.0" layoutY="100.0" prefWidth="250.0">
+      <TextField fx:id="txtCusName" layoutX="750.0" layoutY="100.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font></TextField>
@@ -72,7 +72,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCusAddress" layoutX="150.0" layoutY="170.0" prefWidth="250.0">
+      <TextField fx:id="txtCusAddress" layoutX="150.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font></TextField>
@@ -81,11 +81,11 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCusTel" layoutX="750.0" layoutY="170.0" prefWidth="250.0">
+      <TextField fx:id="txtCusTel" layoutX="750.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font></TextField>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="680.0" layoutY="320.0" onAction="#txtCusDeleteOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="680.0" layoutY="320.0" onAction="#txtCusDeleteOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" styleClass="delete-button" stylesheets="@../values/style.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -135,7 +135,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCusEmail" layoutX="150.0" layoutY="240.0" prefWidth="250.0">
+      <TextField fx:id="txtCusEmail" layoutX="150.0" layoutY="240.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font></TextField>

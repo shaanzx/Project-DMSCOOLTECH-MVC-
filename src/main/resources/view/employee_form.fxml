@@ -30,7 +30,7 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="txtDate" layoutX="925.0" layoutY="25.0" text="Label">
+      <Label fx:id="txtDate" layoutX="915.0" layoutY="25.0" text="Label" textFill="#1e36ab">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
@@ -54,7 +54,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmpId" layoutX="150.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0">
+      <TextField fx:id="txtEmpId" layoutX="150.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font>
@@ -64,7 +64,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmpName" layoutX="750.0" layoutY="100.0" prefWidth="250.0">
+      <TextField fx:id="txtEmpName" layoutX="750.0" layoutY="100.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font>
@@ -74,7 +74,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmpAddres" layoutX="150.0" layoutY="170.0" prefWidth="250.0">
+      <TextField fx:id="txtEmpAddres" layoutX="150.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font>
@@ -84,12 +84,12 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmpTel" layoutX="750.0" layoutY="170.0" prefWidth="250.0">
+      <TextField fx:id="txtEmpTel" layoutX="750.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font>
       </TextField>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="680.0" layoutY="320.0" onAction="#txtEmpDeleteOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="680.0" layoutY="320.0" onAction="#txtEmpDeleteOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" styleClass="delete-button" stylesheets="@../values/style.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -139,7 +139,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmpJobRole" layoutX="150.0" layoutY="240.0" prefWidth="250.0">
+      <TextField fx:id="txtEmpJobRole" layoutX="150.0" layoutY="240.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font>
