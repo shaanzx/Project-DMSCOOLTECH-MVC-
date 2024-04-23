@@ -1,10 +1,12 @@
 package lk.ijse.dmscooltech.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
@@ -16,6 +18,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ItemFormController implements Initializable {
@@ -79,9 +82,10 @@ public class ItemFormController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        this.itemList = getAllItem();
         setCellValueFactory();
         loadItemsTable();
-        this.itemList = getAllItem();
+
     }
 
     private List<Item> getAllItem() {
@@ -116,13 +120,23 @@ public class ItemFormController implements Initializable {
     }
 
     private void setCellValueFactory() {
-        colItemCode.setCellValueFactory(new PropertyValueFactory<>("ItemCode"));
-        colItemName.setCellValueFactory(new PropertyValueFactory<>("ItemName"));
-        colModel.setCellValueFactory(new PropertyValueFactory<>("vehicleModel"));
-        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("QtyOnHand"));
-        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("UnitPrice"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colModel.setCellValueFactory(new PropertyValueFactory<>("model"));
+        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colItemDelete.setCellValueFactory(new PropertyValueFactory<>("btnItemDelete"));
+    }
+    private void setRemoveBtnOnAction(Button btn) {
+        btn.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+            Optional<ButtonType> result = new Alert(Alert.AlertType.INFORMATION, "Are you sure to remove?", yes, no).showAndWait();
+            if(result.orElse(no) == yes) {
+                //int index = tmItemList.selectionModel().
+            }
+        });
     }
 
     @FXML
@@ -137,9 +151,15 @@ public class ItemFormController implements Initializable {
         Item item = new Item(code, name, model, qty, price, date);
         try {
             boolean isSaved = ItemRepo.saveItem(item);
+            JFXButton btnRemove = new JFXButton("Remove");
+            btnRemove.setCursor(Cursor.HAND);
+            btnRemove.setStyle("-fx-background-color: red; -fx-text-fill: white;");
             if(isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Item is Saved").show();
+            }else {
+                setRemoveBtnOnAction(btnRemove);
             }
+
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }

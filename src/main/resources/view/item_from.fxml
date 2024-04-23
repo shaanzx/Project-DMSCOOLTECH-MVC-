@@ -45,7 +45,7 @@
             <TableColumn fx:id="colItemDelete" minWidth="0.0" prefWidth="95.0" text="Delete Item" />
          </columns>
       </TableView>
-      <Text fill="#8ffffd00" layoutX="388.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="STOKE MANAGEMENT" underline="true">
+      <Text fill="#8ffffd00" layoutX="388.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="STOCK MANAGEMENT" underline="true">
          <font>
             <Font name="Cambria" size="30.0" />
          </font>
