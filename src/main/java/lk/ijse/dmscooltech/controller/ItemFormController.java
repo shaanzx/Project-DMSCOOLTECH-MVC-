@@ -1,10 +1,12 @@
 package lk.ijse.dmscooltech.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
@@ -14,8 +16,10 @@ import lk.ijse.dmscooltech.repository.ItemRepo;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ItemFormController implements Initializable {
@@ -25,9 +29,6 @@ public class ItemFormController implements Initializable {
 
     @FXML
     private TableColumn<String, String> colDate;
-
-    @FXML
-    private TableColumn<String, String> colItemDelete;
 
     @FXML
     private TableColumn<String, String> colItemName;
@@ -45,13 +46,10 @@ public class ItemFormController implements Initializable {
     private TableView<ItemTm> tblItem;
 
     @FXML
-    private Pane pagingPane;
+    private Label lblDateItem;
 
     @FXML
     private TextField txtDate;
-
-    @FXML
-    private Label txtDate1;
 
     @FXML
     private TextField txtItemCode;
@@ -79,21 +77,24 @@ public class ItemFormController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        this.itemList = getAllItem();
         setCellValueFactory();
         loadItemsTable();
-        this.itemList = getAllItem();
+        setDate();
+    }
+
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+        lblDateItem.setText(String.valueOf(now));
     }
 
     private List<Item> getAllItem() {
-        System.out.println(itemList.size());
         List<Item> itemList = null;
         try {
             itemList = itemRepo.getItem();
-            System.out.println(itemList.size());
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        System.out.println(itemList.size());
         return itemList;
     }
 
@@ -116,13 +117,12 @@ public class ItemFormController implements Initializable {
     }
 
     private void setCellValueFactory() {
-        colItemCode.setCellValueFactory(new PropertyValueFactory<>("ItemCode"));
-        colItemName.setCellValueFactory(new PropertyValueFactory<>("ItemName"));
-        colModel.setCellValueFactory(new PropertyValueFactory<>("vehicleModel"));
-        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("QtyOnHand"));
-        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("UnitPrice"));
-        colDate.setCellValueFactory(new PropertyValueFactory<>("Date"));
-        colItemDelete.setCellValueFactory(new PropertyValueFactory<>("btnItemDelete"));
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colModel.setCellValueFactory(new PropertyValueFactory<>("model"));
+        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
 
     @FXML
@@ -135,14 +135,6 @@ public class ItemFormController implements Initializable {
         String date = txtDate.getText();
 
         Item item = new Item(code, name, model, qty, price, date);
-        try {
-            boolean isSaved = ItemRepo.saveItem(item);
-            if(isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Item is Saved").show();
-            }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
     }
 
     @FXML

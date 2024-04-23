@@ -7,6 +7,12 @@
 .signup-button:hover {
     -fx-background-color: #53ecc8 !important;
 }
+.delete-button:hover {
+    -fx-background-color: #540a0a !important;
+}
+.update-button:hover {
+    -fx-background-color: #055d1b !important;
+}
 .loginrectangle-button {
     -fx-background-radius: 30;
 }
