@@ -76,8 +76,9 @@ public class CustomerFormController implements Initializable {
         String address = txtCusAddress.getText();
         String tel = txtCusTel.getText();
         String email = txtCusEmail.getText();
+        String userId = (String) cmbUserId.getValue();
 
-        Customer customer = new Customer(id, name, address, tel, email);
+        Customer customer = new Customer(id, name, address, tel, email, userId);
         try {
             boolean isSaved = customerRepo.saveCustomer(customer);
             if(isSaved) {

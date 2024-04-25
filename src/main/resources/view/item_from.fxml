@@ -15,12 +15,12 @@
 
 <Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.ItemFormController">
    <children>
-      <ImageView fitHeight="772.0" fitWidth="1066.0" layoutY="-2.0">
+      <ImageView fitHeight="772.0" fitWidth="1066.0" rotate="180.0">
          <image>
-            <Image url="@../asset/v915-techi-017-d.jpg" />
+            <Image url="@../asset/Dashboard_Background.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="500.0" fitWidth="500.0" layoutX="288.0" layoutY="-14.0" opacity="0.1">
+      <ImageView fitHeight="500.0" fitWidth="500.0" layoutX="288.0" layoutY="-14.0" opacity="0.2">
          <image>
             <Image url="@../asset/Autotech(2)-Photoroom.png-Photoroom.png" />
          </image>
@@ -55,36 +55,36 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtItemCode" layoutX="150.0" layoutY="100.0" onAction="#txtSearchItemOnAction" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 35;">
+      <TextField fx:id="txtItemCode" layoutX="150.0" layoutY="100.0" onAction="#txtSearchItemOnAction" prefHeight="35.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font></TextField>
       <Label layoutX="630.0" layoutY="105.0" text="Item Name">
          <font>
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtItemName" layoutX="750.0" layoutY="100.0" prefWidth="250.0" style="-fx-background-radius: 35;">
+      <TextField fx:id="txtItemName" layoutX="750.0" layoutY="100.0" prefHeight="35.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font></TextField>
       <Label layoutX="630.0" layoutY="175.0" text="Qty">
          <font>
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtQytOnHand" layoutX="750.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;">
+      <TextField fx:id="txtQytOnHand" layoutX="750.0" layoutY="170.0" prefHeight="35.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font></TextField>
       <Label layoutX="30.0" layoutY="245.0" text="Unit Price">
          <font>
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUnitPrice" layoutX="150.0" layoutY="240.0" prefWidth="250.0" style="-fx-background-radius: 35;">
+      <TextField fx:id="txtUnitPrice" layoutX="150.0" layoutY="240.0" prefHeight="35.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font></TextField>
       <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="680.0" layoutY="330.0" onAction="#btnItemDeleteOnAction" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: red; -fx-border-radius: 45;" styleClass="delete-button" stylesheets="@../values/style.css" text="Delete" textFill="WHITE">
          <font>
@@ -141,9 +141,9 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtVehicleModel" layoutX="150.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;">
+      <TextField fx:id="txtVehicleModel" layoutX="150.0" layoutY="170.0" prefHeight="35.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextField>
       <DatePicker fx:id="dpDate" layoutX="750.0" layoutY="240.0" prefHeight="30.0" prefWidth="250.0" />

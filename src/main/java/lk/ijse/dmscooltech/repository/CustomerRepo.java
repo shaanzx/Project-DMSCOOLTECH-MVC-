@@ -43,7 +43,7 @@ public class CustomerRepo {
             preparedStatement.setString(3, customer.getAddress());
             preparedStatement.setString(4, customer.getTel());
             preparedStatement.setString(5, customer.getEmail());
-           // preparedStatement.setString(6, user.getId());
+         //   preparedStatement.setString(6, user.getId());
             return preparedStatement.executeUpdate() > 0;
     }
 }
