@@ -103,4 +103,8 @@ public class CustomerFormController implements Initializable {
     void cmbUserIdOnAction(ActionEvent event) {
 
     }
+    @FXML
+    void btnAddVehicleOnAction(ActionEvent event) {
+
+    }
 }
