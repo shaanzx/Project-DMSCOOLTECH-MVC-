@@ -95,7 +95,7 @@ public class CustomerFormController implements Initializable {
     }
 
     @FXML
-    void txtCusDeleteOnAction(ActionEvent event) {
+    void btnCusDeleteOnAction(ActionEvent event) {
 
     }
 

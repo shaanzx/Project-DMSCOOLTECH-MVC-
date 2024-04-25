@@ -25,16 +25,13 @@ public class PlaceOrderFormController {
     private TableColumn<?, ?> colDeleteItem;
 
     @FXML
-    private TableColumn<?, ?> colItemCode;
+    private TableColumn<?, ?> colItemName;
 
     @FXML
     private TableColumn<?, ?> colOrderId;
 
     @FXML
     private TableColumn<?, ?> colQty;
-
-    @FXML
-    private TableColumn<?, ?> colTotalAmount;
 
     @FXML
     private TableColumn<?, ?> colUnitPrice;
@@ -52,6 +49,9 @@ public class PlaceOrderFormController {
     private Label lblItemName;
 
     @FXML
+    private Label lblNetAmount;
+
+    @FXML
     private Label lblOrderId;
 
     @FXML
@@ -64,7 +64,7 @@ public class PlaceOrderFormController {
     private Pane pagingPane;
 
     @FXML
-    private TableView<?> tblEmployee;
+    private TableView<?> tblOrderDetail;
 
     @FXML
     private TextField txtQty;

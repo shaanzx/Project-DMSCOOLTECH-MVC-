@@ -39,7 +39,7 @@ public class EmployeeFormController {
     private Label txtDate;
 
     @FXML
-    private TextField txtEmpAddres;
+    private TextField txtEmpAddress;
 
     @FXML
     private TextField txtEmpId;
@@ -54,17 +54,17 @@ public class EmployeeFormController {
     private TextField txtEmpTel;
 
     @FXML
+    void btnEmpDeleteOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
     void btnEmpSaveOnAction(ActionEvent event) {
 
     }
 
     @FXML
     void btnEmpUpdateOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtEmpDeleteOnAction(ActionEvent event) {
 
     }
 
