@@ -4,10 +4,7 @@ import javafx.collections.ObservableList;
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.Item;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,5 +62,51 @@ public class ItemRepo {
             ));
         }
         return itemList;
+    }
+
+
+    public boolean updateItem(Item item) throws SQLException {
+        String sql = "UPDATE item SET iName = ?, iCategory = ?, qtyOnHand = ?, iPrice = ?, date = ? WHERE iCode = ?";
+
+        PreparedStatement preparedStatement = (PreparedStatement) DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setString(1, item.getDescription());
+        preparedStatement.setString(2, item.getModel());
+        preparedStatement.setInt(3, item.getQtyOnHand());
+        preparedStatement.setDouble(4, item.getUnitPrice());
+        preparedStatement.setString(5, item.getDate());
+        preparedStatement.setString(6, item.getCode());
+
+        return preparedStatement.executeUpdate() > 0;
+    }
+
+    public Item searchByItemCode(String code) throws SQLException {
+        String sql = "SELECT * FROM item WHERE iCode = ?";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setString(1, code);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Item item = null;
+
+        if(resultSet.next()) {
+            String iCode = resultSet.getString(1);
+            String description = resultSet.getString(2);
+            String model = resultSet.getString(3);
+            int qtyOnHand = resultSet.getInt(4);
+            double unitPrice = resultSet.getDouble(5);
+            String date = resultSet.getString(6);
+
+            item = new Item(iCode, description, model, qtyOnHand, unitPrice, date);
+        }
+        return item;
+    }
+
+    public boolean deleteItem(String code) throws SQLException {
+        String sql = "DELETE FROM item WHERE iCode = ?";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setString(1, code);
+        return preparedStatement.executeUpdate() > 0;
     }
 }

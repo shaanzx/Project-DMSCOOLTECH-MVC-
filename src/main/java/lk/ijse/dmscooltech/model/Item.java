@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -14,4 +16,5 @@ public class Item {
     private int qtyOnHand;
     private double unitPrice;
     private String date;
+
 }

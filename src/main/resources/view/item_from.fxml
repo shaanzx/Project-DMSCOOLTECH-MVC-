@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -54,7 +55,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtItemCode" disable="true" layoutX="150.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 35;">
+      <TextField fx:id="txtItemCode" layoutX="150.0" layoutY="100.0" onAction="#txtSearchItemOnAction" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font></TextField>
@@ -145,10 +146,6 @@
             <Font size="16.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtDate" layoutX="750.0" layoutY="240.0" prefWidth="250.0" style="-fx-background-radius: 35;">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </TextField>
+      <DatePicker fx:id="dpDate" layoutX="750.0" layoutY="240.0" prefHeight="30.0" prefWidth="250.0" />
    </children>
 </Pane>

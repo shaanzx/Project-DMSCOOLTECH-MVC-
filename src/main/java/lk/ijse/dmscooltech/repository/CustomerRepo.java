@@ -2,11 +2,13 @@ package lk.ijse.dmscooltech.repository;
 
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.Customer;
+import lk.ijse.dmscooltech.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 public class CustomerRepo {
     public static String generateNextCustomerId() throws SQLException {
@@ -41,7 +43,7 @@ public class CustomerRepo {
             preparedStatement.setString(3, customer.getAddress());
             preparedStatement.setString(4, customer.getTel());
             preparedStatement.setString(5, customer.getEmail());
-          //  preparedStatement.setString(6,);
+           // preparedStatement.setString(6, user.getId());
             return preparedStatement.executeUpdate() > 0;
     }
 }

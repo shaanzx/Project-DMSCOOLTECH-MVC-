@@ -75,11 +75,11 @@ create table item(
                      iCategory varchar(30)NOT NULL,
                      qtyOnHand int(5),
                      iPrice decimal(10,2)NOT NULL,
-                     date varchar(50)
+                     date Date
 );
 INSERT INTO item(iCode,iName,iCategory,qtyOnHand,iPrice,date)VALUES
-                                                                           ('I001','Condensor','TOYOTA',20,7000,'20240320'),
-                                                                           ('I002','Cooler','NISSAN',25,15000,'20240321');
+                                                                           ('I001','Condenser','TOYOTA',20,7000,20240321),
+                                                                           ('I002','Cooler','NISSAN',25,15000,20240321);
 
 create table orderDetails(
                              oDate date NOT NULL,

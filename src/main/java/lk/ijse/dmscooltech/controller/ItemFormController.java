@@ -13,8 +13,10 @@ import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Item;
 import lk.ijse.dmscooltech.model.tm.ItemTm;
 import lk.ijse.dmscooltech.repository.ItemRepo;
+import lombok.Data;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class ItemFormController implements Initializable {
     private TableColumn<String, String> colItemCode;
 
     @FXML
-    private TableColumn<String, String> colDate;
+    private TableColumn<?, ?> colDate;
 
     @FXML
     private TableColumn<String, String> colItemName;
@@ -48,8 +50,11 @@ public class ItemFormController implements Initializable {
     @FXML
     private Label lblDateItem;
 
+  /*  @FXML
+    private TextField txtDate;*/
+
     @FXML
-    private TextField txtDate;
+    private DatePicker dpDate;
 
     @FXML
     private TextField txtItemCode;
@@ -74,6 +79,7 @@ public class ItemFormController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             txtItemCode.setText(itemRepo.generateNextItemId());
+            itemRepo.getItem();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -99,20 +105,25 @@ public class ItemFormController implements Initializable {
     }
 
     private void loadItemsTable() {
+        ItemRepo itemRepo = new ItemRepo();
         ObservableList<ItemTm> tmItemList = FXCollections.observableArrayList();
-
-        for(Item item : itemList) {
-            ItemTm itemTm = new ItemTm(
-                    item.getCode(),
-                    item.getDescription(),
-                    item.getModel(),
-                    item.getQtyOnHand(),
-                    item.getUnitPrice(),
-                    item.getDate()
-            );
-            tmItemList.add(itemTm);
+        try {
+            List<Item> itemList = itemRepo.getItem();
+            for(Item item : itemList) {
+                ItemTm itemTm = new ItemTm(
+                        item.getCode(),
+                        item.getDescription(),
+                        item.getModel(),
+                        item.getQtyOnHand(),
+                        item.getUnitPrice(),
+                        item.getDate()
+                );
+                tmItemList.add(itemTm);
+            }
+            tblItem.setItems(tmItemList);
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
-        tblItem.setItems(tmItemList);
         ItemTm selectedItem = tblItem.getSelectionModel().getSelectedItem();
     }
 
@@ -132,18 +143,73 @@ public class ItemFormController implements Initializable {
         String model = txtVehicleModel.getText();
         int qty = Integer.parseInt(txtQytOnHand.getText());
         double price = Double.parseDouble(txtUnitPrice.getText());
-        String date = txtDate.getText();
+        String date = Date.valueOf(dpDate.getValue()).toString();
 
         Item item = new Item(code, name, model, qty, price, date);
+
+        try {
+            boolean isSaved = itemRepo.saveItem(item);
+            if(isSaved) {
+                new Alert(Alert.AlertType.INFORMATION, "Saved").show();
+                loadItemsTable();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Not Saved").show();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void btnItemUpdateOnAction(ActionEvent event) {
+        String code = txtItemCode.getText();
+        String name = txtItemName.getText();
+        String model = txtVehicleModel.getText();
+        int qty = Integer.parseInt(txtQytOnHand.getText());
+        double price = Double.parseDouble(txtUnitPrice.getText());
+        String date = String.valueOf(Date.valueOf(dpDate.getValue()));
 
+        Item item = new Item(code, name, model, qty, price, date);
+
+        try {
+            boolean isUpdated = itemRepo.updateItem(item);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.INFORMATION, "Item Updated").show();
+            }
+        }catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
     void btnItemDeleteOnAction(ActionEvent event) {
+        String code = txtItemCode.getText();
 
+        try {
+            boolean isDeleted = itemRepo.deleteItem(code);
+            if(isDeleted) {
+                new Alert(Alert.AlertType.INFORMATION, "Item Deleted").show();
+            }
+        }catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    @FXML
+    void txtSearchItemOnAction(ActionEvent event) {
+        String code = txtItemCode.getText();
+        try {
+            Item item = itemRepo.searchByItemCode(code);
+            if(item != null) {
+                txtItemCode.setText(item.getCode());
+                txtItemName.setText(item.getDescription());
+                txtVehicleModel.setText(item.getModel());
+                txtQytOnHand.setText(String.valueOf(item.getQtyOnHand()));
+                txtUnitPrice.setText(String.valueOf(item.getUnitPrice()));
+                dpDate.setValue(LocalDate.parse(item.getDate()));
+            }
+        }catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 }

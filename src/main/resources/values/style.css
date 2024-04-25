@@ -11,7 +11,10 @@
     -fx-background-color: #540a0a !important;
 }
 .update-button:hover {
-    -fx-background-color: #055d1b !important;
+    -fx-background-color: #044d17 !important;
+}
+.save-button:hover {
+    -fx-background-color: #041144 !important;
 }
 .loginrectangle-button {
     -fx-background-radius: 30;

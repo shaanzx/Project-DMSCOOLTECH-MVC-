@@ -6,33 +6,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-image: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.GlobalFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="768.0" stroke="#1d314f00" strokeType="INSIDE" width="300.0">
-         <fill>
-            <LinearGradient cycleMethod="REFLECT" endX="0.5118483412322274" endY="1.0" startX="0.04265402843601896" startY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.012500000186264515" green="0.03125" blue="0.05000000074505806" opacity="0.9007633328437805" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.33576998114585876" green="0.594915509223938" blue="0.6973684430122375" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
+      <ImageView fitHeight="768.0" fitWidth="300.0">
+         <image>
+            <Image url="@../asset/v915-techi-017-d.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5596ad00" height="768.0" stroke="#1d314f00" strokeType="INSIDE" width="300.0" />
       <Pane layoutX="-6.0" prefHeight="766.0" prefWidth="300.0">
          <children>
             <JFXButton fx:id="txtEmployee" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="430.0" onAction="#btnEmployeeOnAction" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: white; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Employee " textFill="#860f0f">
@@ -98,7 +83,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Text fx:id="txtShowUserName" fill="WHITE" layoutX="120.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi Shan">
+            <Text fx:id="txtShowUserName" layoutX="120.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi Shan">
                <font>
                   <Font name="Cambria" size="26.0" />
                </font>

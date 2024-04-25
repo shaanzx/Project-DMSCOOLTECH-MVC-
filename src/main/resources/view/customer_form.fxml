@@ -15,7 +15,7 @@
 
 <Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.CustomerFormController">
    <children>
-      <ImageView fitHeight="772.0" fitWidth="1066.0" layoutX="-10.0" layoutY="-2.0">
+      <ImageView fitHeight="772.0" fitWidth="1066.0" layoutY="-2.0">
          <image>
             <Image url="@../asset/v915-techi-017-d.jpg" />
          </image>
@@ -30,7 +30,7 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="txtDate" layoutX="915.0" layoutY="25.0" text="Label">
+      <Label fx:id="txtDate" layoutX="905.0" layoutY="25.0" text="Label">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
