@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Vehicle {
     private String vehicleNo;
-    private String type;
     private String model;
+    private String type;
+    private String customerId;
 }

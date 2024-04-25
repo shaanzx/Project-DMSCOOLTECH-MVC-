@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-image: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.GlobalFormController">
    <children>
@@ -20,7 +19,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#228cb533" height="768.0" stroke="#1d314f00" strokeType="INSIDE" width="300.0" />
       <Pane prefHeight="766.0" prefWidth="300.0">
          <children>
-            <JFXButton fx:id="txtEmployee" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="430.0" onAction="#btnEmployeeOnAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #00a8ff; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Employee " textFill="#8bfdff">
+            <JFXButton fx:id="txtEmployee" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="490.0" onAction="#btnEmployeeOnAction" prefHeight="60.0" prefWidth="240.0" style="-fx-background-color: #c7ecee; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Employee ">
                <font>
                   <Font size="36.0" />
                </font>
@@ -32,7 +31,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="txtStoke" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="205.0" onAction="#btnStokeOnAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #00a8ff; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Stoke  " textFill="#8bfdff">
+            <JFXButton fx:id="txtStoke" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="265.0" onAction="#btnStokeOnAction" prefHeight="60.0" prefWidth="240.0" style="-fx-background-color: #c7ecee; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Stoke  ">
                <font>
                   <Font size="36.0" />
                </font>
@@ -44,7 +43,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="txtCustomer" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="280.0" onAction="#btnCustomerOnAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #00a8ff; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Customer  " textFill="#8bfdff">
+            <JFXButton fx:id="txtCustomer" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="340.0" onAction="#btnCustomerOnAction" prefHeight="60.0" prefWidth="240.0" style="-fx-background-color: #c7ecee; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Customer  ">
                <font>
                   <Font size="36.0" />
                </font>
@@ -56,7 +55,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="txtOrder" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="355.0" onAction="#btnOrderOnAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #00a8ff; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Order  " textFill="#8bfdff">
+            <JFXButton fx:id="txtOrder" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="415.0" onAction="#btnOrderOnAction" prefHeight="60.0" prefWidth="240.0" style="-fx-background-color: #c7ecee; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Order  ">
                <font>
                   <Font size="36.0" />
                </font>
@@ -68,27 +67,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Text fx:id="txtShowUserName" layoutX="120.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hi Shan">
-               <font>
-                  <Font name="Cambria" size="26.0" />
-               </font>
-            </Text>
-            <ImageView fx:id="imgHome" fitHeight="40.0" fitWidth="50.0" layoutX="210.0" layoutY="709.0" onMouseClicked="#btnGotoHomePageOnAction">
-               <image>
-                  <Image url="@../asset/icon/HomeIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView layoutX="40.0" layoutY="25.0">
-               <image>
-                  <Image url="@../asset/icon/UserIcon.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imgLogOut" fitHeight="40.0" fitWidth="50.0" layoutX="40.0" layoutY="709.0" onMouseClicked="#btnLogoutOnAction">
-               <image>
-                  <Image url="@../asset/icon/LogOutIcon.png" />
-               </image>
-            </ImageView>
-            <JFXButton fx:id="txtDashboard" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="130.0" onAction="#btnDashboardOnAction" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #00a8ff; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Dashboard" textFill="#8bfdff">
+            <JFXButton fx:id="txtDashboard" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="190.0" onAction="#btnDashboardOnAction" prefHeight="60.0" prefWidth="240.0" style="-fx-background-color: #c7ecee; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Dashboard">
                <font>
                   <Font size="36.0" />
                </font>
@@ -103,8 +82,25 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <JFXButton alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="25.0" layoutY="685.0" onAction="#btnLogoutOnAction" prefHeight="60.0" prefWidth="180.0" style="-fx-background-color: #c7ecee; -fx-background-radius: 75;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Log Out">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0">
+                     <image>
+                        <Image url="@../asset/icon/LogOutIcon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </Pane>
       <Pane fx:id="pagingPane" layoutX="300.0" prefHeight="772.0" prefWidth="1066.0" />
+      <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="-30.0">
+         <image>
+            <Image url="@../asset/Autotech(2)-Photoroom.png-Photoroom.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

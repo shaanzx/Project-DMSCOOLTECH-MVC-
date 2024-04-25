@@ -17,9 +17,6 @@ import java.util.ResourceBundle;
 public class GlobalFormController implements Initializable {
 
     @FXML
-    private ImageView imgHome;
-
-    @FXML
     private ImageView imgLogOut;
 
     @FXML
@@ -59,12 +56,7 @@ public class GlobalFormController implements Initializable {
     }
 
     @FXML
-    void btnGotoHomePageOnAction(MouseEvent event) throws IOException {
-        Navigation.switchPaging(pagingPane, "global_form.fxml");
-    }
-
-    @FXML
-    void btnLogoutOnAction(MouseEvent event) throws IOException {
+    void btnLogoutOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(pagingPane, "login_form.fxml");
     }
 
