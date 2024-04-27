@@ -189,6 +189,7 @@ public class ItemFormController implements Initializable {
             boolean isDeleted = itemRepo.deleteItem(code);
             if(isDeleted) {
                 new Alert(Alert.AlertType.INFORMATION, "Item Deleted").show();
+                loadItemsTable();
             }
         }catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();

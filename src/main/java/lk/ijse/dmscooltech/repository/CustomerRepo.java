@@ -43,7 +43,25 @@ public class CustomerRepo {
             preparedStatement.setString(3, customer.getAddress());
             preparedStatement.setString(4, customer.getTel());
             preparedStatement.setString(5, customer.getEmail());
-         //   preparedStatement.setString(6, user.getId());
+            preparedStatement.setString(6, customer.getUserId());
             return preparedStatement.executeUpdate() > 0;
+    }
+
+    public boolean updateCustomer(Customer customer) throws SQLException {
+        String sql = "UPDATE cutomer SET name=?, address=?, tel=?, email=?, uId=? WHERE cId=?";
+
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setString(1, customer.getName());
+        preparedStatement.setString(2, customer.getAddress());
+        preparedStatement.setString(3, customer.getTel());
+        preparedStatement.setString(4, customer.getEmail());
+        preparedStatement.setString(5, customer.getUserId());
+        preparedStatement.setString(6, customer.getId());
+        return preparedStatement.executeUpdate() > 0;
+    }
+
+    public Customer searchCustomer(String customerId) {
+            return null;
     }
 }

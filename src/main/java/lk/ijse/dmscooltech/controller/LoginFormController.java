@@ -33,7 +33,18 @@ public class LoginFormController {
     private CheckBox txtSave;
 
     @FXML
-    private TextField txtUserId;
+    public TextField txtUserId;
+
+    public String userId;
+
+    private static LoginFormController controller;
+
+    public LoginFormController(){
+        controller = this;
+    }
+    public static LoginFormController getInstance(){
+        return controller;
+    }
 
     @FXML
     void btnForgetOnAction(ActionEvent event) {
@@ -47,7 +58,7 @@ public class LoginFormController {
 
     @FXML
     void btnSignInAction(ActionEvent event) {
-        String userId = txtUserId.getText();
+        userId = txtUserId.getText();
         String pw = txtPassword.getText();
 
         try {

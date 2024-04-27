@@ -76,7 +76,7 @@ public class CustomerFormController implements Initializable {
         String address = txtCusAddress.getText();
         String tel = txtCusTel.getText();
         String email = txtCusEmail.getText();
-        String userId = (String) cmbUserId.getValue();
+        String userId = LoginFormController.getInstance().userId;
 
         Customer customer = new Customer(id, name, address, tel, email, userId);
         try {
@@ -91,7 +91,35 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnCusUpdateOnAction(ActionEvent event) {
+        String id = txtCusId.getText();
+        String name = txtCusName.getText();
+        String address = txtCusAddress.getText();
+        String tel = txtCusTel.getText();
+        String email = txtCusEmail.getText();
+        String userId = LoginFormController.getInstance().userId;
 
+        Customer customer = new Customer(id, name, address, tel, email, userId);
+        try {
+            boolean isUpdated = customerRepo.updateCustomer(customer);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer is Updated").show();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    @FXML
+    void txtSearchCustomerOnAction(ActionEvent event) {
+        String customerId = txtCusId.getText();
+        Customer customer = customerRepo.searchCustomer(customerId);
+        if (customer != null) {
+            txtCusId.setText(customer.getId());
+            txtCusName.setText(customer.getName());
+            txtCusAddress.setText(customer.getAddress());
+            txtCusTel.setText(customer.getTel());
+            txtCusEmail.setText(customer.getEmail());
+        }
     }
 
     @FXML
@@ -107,4 +135,5 @@ public class CustomerFormController implements Initializable {
     void btnAddVehicleOnAction(ActionEvent event) {
 
     }
+
 }

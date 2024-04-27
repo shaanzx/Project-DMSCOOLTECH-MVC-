@@ -68,7 +68,7 @@ public class ItemRepo {
     public boolean updateItem(Item item) throws SQLException {
         String sql = "UPDATE item SET iName = ?, iCategory = ?, qtyOnHand = ?, iPrice = ?, date = ? WHERE iCode = ?";
 
-        PreparedStatement preparedStatement = (PreparedStatement) DbConnection.getInstance().getConnection().prepareStatement(sql);
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
 
         preparedStatement.setString(1, item.getDescription());
         preparedStatement.setString(2, item.getModel());

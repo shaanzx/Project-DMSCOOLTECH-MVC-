@@ -17,28 +17,28 @@ import java.util.ResourceBundle;
 public class GlobalFormController implements Initializable {
 
     @FXML
-    private ImageView imgLogOut;
-
-    @FXML
     private Pane pagingPane;
 
     @FXML
-    private JFXButton txtCustomer;
+    private JFXButton btnCustomer;
 
     @FXML
-    private JFXButton txtDashboard;
+    private JFXButton btnDashboard;
 
     @FXML
-    private JFXButton txtEmployee;
+    private JFXButton btnEmployee;
 
     @FXML
-    private JFXButton txtOrder;
+    private JFXButton btnOrder;
 
     @FXML
-    private Text txtShowUserName;
+    private JFXButton btnRepair;
 
     @FXML
-    private JFXButton txtStoke;
+    private JFXButton btnStoke;
+
+    @FXML
+    private JFXButton btnVehicle;
 
     @FXML
     void btnCustomerOnAction(ActionEvent event) throws IOException {
@@ -68,6 +68,16 @@ public class GlobalFormController implements Initializable {
     @FXML
     void btnStokeOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(pagingPane, "item_from.fxml");
+    }
+
+    @FXML
+    void btnVehicleOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(pagingPane, "vehicle_form.fxml");
+    }
+
+    @FXML
+    void btnRepairOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(pagingPane, "repair_form.fxml");
     }
 
     @Override
