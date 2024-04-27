@@ -6,11 +6,10 @@ import lombok.*;
 @AllArgsConstructor
 @Data
 public class CustomerTm {
-    private String customerId;
-    private String customerName;
+    private String id;
+    private String name;
     private String address;
-    private String contact;
+    private String tel;
     private String email;
-    private String userId;
 }
 

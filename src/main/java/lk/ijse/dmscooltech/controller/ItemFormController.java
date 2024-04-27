@@ -105,7 +105,7 @@ public class ItemFormController implements Initializable {
     }
 
     private void loadItemsTable() {
-        ItemRepo itemRepo = new ItemRepo();
+        itemRepo = new ItemRepo();
         ObservableList<ItemTm> tmItemList = FXCollections.observableArrayList();
         try {
             List<Item> itemList = itemRepo.getItem();

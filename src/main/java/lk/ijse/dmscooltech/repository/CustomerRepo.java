@@ -2,12 +2,14 @@ package lk.ijse.dmscooltech.repository;
 
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.Customer;
-import lk.ijse.dmscooltech.model.User;
+import lk.ijse.dmscooltech.model.tm.CustomerTm;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CustomerRepo {
@@ -48,7 +50,7 @@ public class CustomerRepo {
     }
 
     public boolean updateCustomer(Customer customer) throws SQLException {
-        String sql = "UPDATE cutomer SET name=?, address=?, tel=?, email=?, uId=? WHERE cId=?";
+        String sql = "UPDATE customer SET name=?, address=?, tel=?, email=?, uId=? WHERE cId=?";
 
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
 
@@ -61,7 +63,52 @@ public class CustomerRepo {
         return preparedStatement.executeUpdate() > 0;
     }
 
-    public Customer searchCustomer(String customerId) {
-            return null;
+    public Customer searchCustomer(String customerId) throws SQLException {
+        String sql = "SELECT * FROM customer WHERE cId = ?";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        preparedStatement.setString(1, customerId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Customer customer = null;
+
+        if(resultSet.next()) {
+            String id = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String address = resultSet.getString(3);
+            String tel = resultSet.getString(4);
+            String email = resultSet.getString(5);
+            String userId = resultSet.getString(6);
+
+            customer = new Customer(id, name, address, tel, email, userId);
+        }
+        return customer;
+
+    }
+
+    public boolean deleteCustomer(String id) throws SQLException {
+        String sql = "DELETE FROM customer WHERE cId = ?";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        preparedStatement.setString(1,id);
+        return preparedStatement.executeUpdate() > 0;
+    }
+
+    public List<Customer> getCustomer() throws SQLException {
+        String sql = "SELECT * FROM customer";
+
+        ResultSet resultSet = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery();
+
+        List<Customer> customerList = new ArrayList<>();
+
+        while (resultSet.next()) {
+            customerList.add(new Customer(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4),
+                    resultSet.getString(5),
+                    resultSet.getString(6)
+            ));
+        }
+        return customerList;
     }
 }

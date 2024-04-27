@@ -1,16 +1,22 @@
 package lk.ijse.dmscooltech.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Customer;
+import lk.ijse.dmscooltech.model.tm.CustomerTm;
 import lk.ijse.dmscooltech.repository.CustomerRepo;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CustomerFormController implements Initializable {
@@ -37,7 +43,7 @@ public class CustomerFormController implements Initializable {
     private Pane pagingPane;
 
     @FXML
-    private TableView<?> tblCustomer;
+    private TableView<CustomerTm> tblCustomer;
 
     @FXML
     private TextField txtCusAddress;
@@ -58,6 +64,7 @@ public class CustomerFormController implements Initializable {
     private Label txtDate;
 
     CustomerRepo customerRepo = new CustomerRepo();
+    private List<Customer> customerList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,7 +73,48 @@ public class CustomerFormController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        customerList = getAllCustomer();
+        setCellValueFactory();
+        loadCustomerTable();
+    }
 
+    private List<Customer> getAllCustomer() {
+        List<Customer> customerList = null;
+        try{
+            customerList = customerRepo.getCustomer();
+        }catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        return customerList;
+    }
+
+    private void loadCustomerTable() {
+        customerRepo =new CustomerRepo();
+        ObservableList<CustomerTm> tmCustomerList = FXCollections.observableArrayList();
+        try{
+            List<Customer> customersList = customerRepo.getCustomer();
+            for(Customer customer : customersList) {
+                CustomerTm Customertm = new CustomerTm(
+                        customer.getId(),
+                        customer.getName(),
+                        customer.getAddress(),
+                        customer.getTel(),
+                        customer.getEmail()
+                );
+                tmCustomerList.add(Customertm);
+            }
+            tblCustomer.setItems(tmCustomerList);
+        }catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+    }
+
+    private void setCellValueFactory() {
+        colCustomerId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colCustomerName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colCustomerAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colCustomerTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        colCustomerEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
     }
 
     @FXML
@@ -83,6 +131,7 @@ public class CustomerFormController implements Initializable {
             boolean isSaved = customerRepo.saveCustomer(customer);
             if(isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer is Saved").show();
+                loadCustomerTable();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -103,6 +152,7 @@ public class CustomerFormController implements Initializable {
             boolean isUpdated = customerRepo.updateCustomer(customer);
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer is Updated").show();
+                loadCustomerTable();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -112,19 +162,33 @@ public class CustomerFormController implements Initializable {
     @FXML
     void txtSearchCustomerOnAction(ActionEvent event) {
         String customerId = txtCusId.getText();
-        Customer customer = customerRepo.searchCustomer(customerId);
-        if (customer != null) {
-            txtCusId.setText(customer.getId());
-            txtCusName.setText(customer.getName());
-            txtCusAddress.setText(customer.getAddress());
-            txtCusTel.setText(customer.getTel());
-            txtCusEmail.setText(customer.getEmail());
+        try {
+            Customer customer = customerRepo.searchCustomer(customerId);
+            if (customer != null) {
+                txtCusId.setText(customer.getId());
+                txtCusName.setText(customer.getName());
+                txtCusAddress.setText(customer.getAddress());
+                txtCusTel.setText(customer.getTel());
+                txtCusEmail.setText(customer.getEmail());
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 
     @FXML
     void btnCusDeleteOnAction(ActionEvent event) {
+        String id = txtCusId.getText();
 
+        try {
+            boolean isDeleted = customerRepo.deleteCustomer(id);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer is Deleted").show();
+                loadCustomerTable();
+            }
+        }catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
