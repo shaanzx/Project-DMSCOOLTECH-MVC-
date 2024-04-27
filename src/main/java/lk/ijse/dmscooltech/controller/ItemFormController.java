@@ -175,6 +175,7 @@ public class ItemFormController implements Initializable {
             boolean isUpdated = itemRepo.updateItem(item);
             if(isUpdated) {
                 new Alert(Alert.AlertType.INFORMATION, "Item Updated").show();
+                loadItemsTable();
             }
         }catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
