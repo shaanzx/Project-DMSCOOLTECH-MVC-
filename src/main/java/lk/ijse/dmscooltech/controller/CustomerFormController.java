@@ -15,6 +15,7 @@ import lk.ijse.dmscooltech.repository.CustomerRepo;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -61,24 +62,31 @@ public class CustomerFormController implements Initializable {
     private TextField txtCusTel;
 
     @FXML
-    private Label txtDate;
+    private Label lblDate;
 
     CustomerRepo customerRepo = new CustomerRepo();
+
     private List<Customer> customerList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            txtCusId.setText(CustomerRepo.generateNextCustomerId());
+            txtCusId.setText(customerRepo.generateNextCustomerId());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         customerList = getAllCustomer();
         setCellValueFactory();
         loadCustomerTable();
+        setDate();
     }
 
-    private List<Customer> getAllCustomer() {
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+        lblDate.setText(String.valueOf(now));
+    }
+
+    private List<Customer>  getAllCustomer() {
         List<Customer> customerList = null;
         try{
             customerList = customerRepo.getCustomer();
@@ -132,10 +140,20 @@ public class CustomerFormController implements Initializable {
             if(isSaved) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer is Saved").show();
                 loadCustomerTable();
+                clearTextFields();
+                CustomerRepo.generateNextCustomerId();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+    private void clearTextFields() {
+        txtCusId.clear();
+        txtCusName.clear();
+        txtCusAddress.clear();
+        txtCusTel.clear();
+        txtCusEmail.clear();
     }
 
     @FXML
@@ -153,6 +171,7 @@ public class CustomerFormController implements Initializable {
             if(isUpdated) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer is Updated").show();
                 loadCustomerTable();
+                clearTextFields();
             }
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -185,6 +204,7 @@ public class CustomerFormController implements Initializable {
             if (isDeleted) {
                 new Alert(Alert.AlertType.CONFIRMATION, "Customer is Deleted").show();
                 loadCustomerTable();
+                clearTextFields();
             }
         }catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -199,5 +219,4 @@ public class CustomerFormController implements Initializable {
     void btnAddVehicleOnAction(ActionEvent event) {
 
     }
-
 }

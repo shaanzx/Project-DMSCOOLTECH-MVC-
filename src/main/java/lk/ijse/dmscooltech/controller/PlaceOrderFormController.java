@@ -3,14 +3,21 @@ package lk.ijse.dmscooltech.controller;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
-public class PlaceOrderFormController {
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
+
+public class PlaceOrderFormController implements Initializable {
 
     @FXML
     private JFXComboBox<?> cmbCustomerId;
@@ -28,7 +35,7 @@ public class PlaceOrderFormController {
     private TableColumn<?, ?> colItemName;
 
     @FXML
-    private TableColumn<?, ?> colOrderId;
+    private TableColumn<?, ?> colItemCode;
 
     @FXML
     private TableColumn<?, ?> colQty;
@@ -85,8 +92,46 @@ public class PlaceOrderFormController {
     }
 
     @FXML
+    void cmbCustomerIdOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cmbItemCodeOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cmbUserOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void lblNetAmountOnAction(MouseEvent event) {
+
+    }
+
+    @FXML
     void txtQtyOnAction(ActionEvent event) {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setDate();
+        setCellValueFactory();
+    }
+
+    private void setCellValueFactory() {
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
+        colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+        colDeleteItem.setCellValueFactory(new PropertyValueFactory<>("btnDelete"));
+    }
+
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+        lblDate.setText(String.valueOf(now));
+    }
 }

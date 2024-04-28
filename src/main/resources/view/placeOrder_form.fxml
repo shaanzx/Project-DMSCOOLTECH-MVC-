@@ -83,13 +83,13 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbUserId" layoutX="150.0" layoutY="220.0" prefHeight="30.0" prefWidth="160.0" />
+      <JFXComboBox fx:id="cmbUserId" layoutX="150.0" layoutY="220.0" onAction="#cmbUserOnAction" prefHeight="30.0" prefWidth="160.0" />
       <Label layoutX="30.0" layoutY="230.0" text="User Id       :">
          <font>
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbCustomerId" layoutX="150.0" layoutY="160.0" prefWidth="160.0" />
+      <JFXComboBox fx:id="cmbCustomerId" layoutX="150.0" layoutY="160.0" onAction="#cmbCustomerIdOnAction" prefWidth="160.0" />
       <Label fx:id="lblCustomerName" layoutX="430.0" layoutY="170.0" text=" Name" textFill="BLUE">
          <font>
             <Font name="Cambria Bold" size="16.0" />
@@ -111,7 +111,7 @@
          </font>
       </JFXButton>
       <DatePicker fx:id="dpOrderDate" layoutX="150.0" layoutY="280.0" prefHeight="35.0" prefWidth="160.0" />
-      <JFXComboBox fx:id="cmbItemCode" layoutX="850.0" layoutY="115.0" prefWidth="100.0" />
+      <JFXComboBox fx:id="cmbItemCode" layoutX="850.0" layoutY="115.0" onAction="#cmbItemCodeOnAction" prefWidth="100.0" />
       <Label layoutX="700.0" layoutY="225.0" text="Unit Price">
          <font>
             <Font name="Cambria Bold" size="16.0" />
@@ -185,14 +185,14 @@
             <Font name="Cambria Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblNetAmount" layoutX="180.0" layoutY="735.0" textFill="BLUE">
+      <Label fx:id="lblNetAmount" layoutX="180.0" layoutY="735.0" onDragDetected="#lblNetAmountOnAction" textFill="BLUE">
          <font>
             <Font name="Cambria" size="20.0" />
          </font>
       </Label>
       <TableView fx:id="tblOrderDetail" layoutX="8.0" layoutY="363.0" prefHeight="355.0" prefWidth="1050.0">
         <columns>
-          <TableColumn fx:id="colOrderId" prefWidth="168.33333587646484" text="Order ID" />
+          <TableColumn fx:id="colItemCode" prefWidth="168.33333587646484" text="Item Code" />
           <TableColumn fx:id="colItemName" prefWidth="330.66666412353516" text="Item Name" />
             <TableColumn fx:id="colUnitPrice" prefWidth="201.0" text="Unit Price" />
             <TableColumn fx:id="colQty" prefWidth="186.0" text="Qty" />

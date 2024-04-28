@@ -31,7 +31,7 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="txtDate" layoutX="905.0" layoutY="25.0" text="Label">
+      <Label fx:id="lblDate" layoutX="905.0" layoutY="25.0">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
