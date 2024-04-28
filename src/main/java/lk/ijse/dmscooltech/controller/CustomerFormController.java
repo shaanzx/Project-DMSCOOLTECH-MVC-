@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Customer;
 import lk.ijse.dmscooltech.model.tm.CustomerTm;
@@ -218,5 +219,19 @@ public class CustomerFormController implements Initializable {
     @FXML
     void btnAddVehicleOnAction(ActionEvent event) {
 
+    }
+
+
+    @FXML
+    void tblCustomerClick(MouseEvent event) {
+        TablePosition tp = tblCustomer.getSelectionModel().getSelectedCells().get(0);
+        int row = tp.getRow();
+        ObservableList<TableColumn<CustomerTm,?> > columns = tblCustomer.getColumns();
+
+        txtCusId.setText(columns.get(0).getCellData(row).toString());
+        txtCusName.setText(columns.get(1).getCellData(row).toString());
+        txtCusAddress.setText(columns.get(2).getCellData(row).toString());
+        txtCusTel.setText(columns.get(3).getCellData(row).toString());
+        txtCusEmail.setText(columns.get(4).getCellData(row).toString());
     }
 }

@@ -36,7 +36,7 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <TableView fx:id="tblCustomer" layoutX="8.0" layoutY="410.0" opacity="0.75" prefHeight="355.0" prefWidth="1050.0">
+      <TableView fx:id="tblCustomer" layoutX="8.0" layoutY="410.0" onMouseClicked="#tblCustomerClick" opacity="0.75" prefHeight="355.0" prefWidth="1050.0">
          <columns>
             <TableColumn fx:id="colCustomerId" prefWidth="159.0" text="Customer ID" />
             <TableColumn fx:id="colCustomerName" prefWidth="256.33331298828125" text="Customer Name" />
