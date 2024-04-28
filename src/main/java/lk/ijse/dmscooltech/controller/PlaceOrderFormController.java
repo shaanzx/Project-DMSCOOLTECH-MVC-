@@ -1,16 +1,14 @@
 package lk.ijse.dmscooltech.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Cursor;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -25,6 +23,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class PlaceOrderFormController implements Initializable {
@@ -49,6 +48,9 @@ public class PlaceOrderFormController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> colQty;
+
+    @FXML
+    private TableColumn<?, ?> colTotalAmount;
 
     @FXML
     private TableColumn<?, ?> colUnitPrice;
@@ -81,10 +83,12 @@ public class PlaceOrderFormController implements Initializable {
     private Pane pagingPane;
 
     @FXML
-    private TableView<?> tblOrderDetail;
+    private TableView<AddToCartTm> tblOrderDetail;
 
     @FXML
     private TextField txtQty;
+
+    private double netAmount = 0;
 
     OrderRepo orderRepo = new OrderRepo();
 
@@ -135,7 +139,8 @@ public class PlaceOrderFormController implements Initializable {
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         colItemName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-        colQty.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colTotalAmount.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
         colDeleteItem.setCellValueFactory(new PropertyValueFactory<>("btnDelete"));
     }
 
@@ -146,7 +151,52 @@ public class PlaceOrderFormController implements Initializable {
 
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {
+        String itemCode = cmbItemCode.getValue();
+        String itemName = lblItemName.getText();
+        double unitPrice = Double.parseDouble(lblUnitPrice.getText());
+        int qty = Integer.parseInt(txtQty.getText());
+        double totalAmount = unitPrice * qty;
+        JFXButton btnDelete = new JFXButton("Delete");
+        btnDelete.setCursor(Cursor.HAND);
 
+        btnDelete.setOnAction((e)->{
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> type = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure to delete?", yes, no).showAndWait();
+            if(type.orElse(no) == yes){
+                int index = tblOrderDetail.getSelectionModel().getSelectedIndex();
+                cartList.remove(index);
+                tblOrderDetail.refresh();
+                calculateNetAmount();
+            }
+        });
+        for(int i = 0; i < cartList.size(); i++){
+            if(itemCode.equals(colItemCode.getCellData(i))){
+                qty += cartList.get(i).getQty();
+                totalAmount = unitPrice * qty;
+                cartList.get(i).setQty(qty);
+                cartList.get(i).setTotalAmount(totalAmount);
+                tblOrderDetail.refresh();
+                calculateNetAmount();
+                txtQty.clear();
+                cmbItemCode.requestFocus();
+                return;
+            }
+        }
+        AddToCartTm act = new AddToCartTm(itemCode, itemName, unitPrice, qty, totalAmount, btnDelete);
+        cartList.add(act);
+        tblOrderDetail.setItems(cartList);
+        txtQty.clear();
+        calculateNetAmount();
+    }
+
+    private void calculateNetAmount() {
+        netAmount = 0;
+        for(int i = 0; i < tblOrderDetail.getItems().size(); i++){
+            netAmount += (double) colTotalAmount.getCellData(i);
+        }
+        lblNetAmount.setText(String.valueOf(netAmount));
     }
 
     @FXML
@@ -156,6 +206,10 @@ public class PlaceOrderFormController implements Initializable {
 
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) {
+        String orderId = lblOrderId.getText();
+        String customerId = cmbCustomerId.getValue();
+        String date = dpOrderDate.getValue().toString();
+
 
     }
 
@@ -199,6 +253,6 @@ public class PlaceOrderFormController implements Initializable {
 
     @FXML
     void txtQtyOnAction(ActionEvent event) {
-
+        btnAddToCartOnAction(event);
     }
 }

@@ -1,11 +1,18 @@
 package lk.ijse.dmscooltech.model.tm;
 
 import com.jfoenix.controls.JFXButton;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class AddToCartTm {
-    private String ItemCode;
-    private String ItemName;
-    private String UnitPrice;
-    private String QtyOnHand;
+    private String itemCode;
+    private String itemName;
+    private double unitPrice;
+    private int qty;
+    private double totalAmount;
     private JFXButton btnDelete;
 }
