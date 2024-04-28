@@ -21,20 +21,31 @@ public class CustomerRepo {
         String currentCustomerId = null;
         if(resultSet.next()){
             currentCustomerId = resultSet.getString(1);
-            return splitCustomerId(currentCustomerId);
+            return nextid(currentCustomerId);
         }
-        return splitCustomerId(null);
+        return nextid(null);
     }
 
-    private static String splitCustomerId(String currentCustomerId) {
-        if(currentCustomerId != null){
-            String[] split = currentCustomerId.split("C");
-            int id = Integer.parseInt(split[1]);
-            id++;
-            return "C00"+id;
+    public static String nextid(String currentid){
+        String next=null;
+        if (currentid==null){
+            next="C001";
+        }else {
+            String data = currentid.replace("C","");
+            int num = Integer.parseInt(data);
+            num++;
+
+            if (num>= 1 && num<= 9){
+                next = "C00"+num;
+            }else if (num>= 10 && num<= 99){
+                next = "C0"+num;
+            }else if (num>= 100 && num<= 999){
+                next = "C"+num;
+            }
         }
-        return "C001";
+        return next;
     }
+
 
     public boolean saveCustomer(Customer customer) throws SQLException {
         String sql = "INSERT INTO customer VALUES(?,?,?,?,?,?)";
@@ -63,7 +74,7 @@ public class CustomerRepo {
         return preparedStatement.executeUpdate() > 0;
     }
 
-    public Customer searchCustomer(String customerId) throws SQLException {
+    public static Customer searchCustomer(String customerId) throws SQLException {
         String sql = "SELECT * FROM customer WHERE cId = ?";
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
         preparedStatement.setString(1, customerId);

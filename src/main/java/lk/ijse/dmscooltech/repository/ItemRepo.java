@@ -80,7 +80,7 @@ public class ItemRepo {
         return preparedStatement.executeUpdate() > 0;
     }
 
-    public Item searchByItemCode(String code) throws SQLException {
+    public static Item searchByItemCode(String code) throws SQLException {
         String sql = "SELECT * FROM item WHERE iCode = ?";
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
 

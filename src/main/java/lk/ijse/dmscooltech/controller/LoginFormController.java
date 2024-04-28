@@ -58,7 +58,7 @@ public class LoginFormController {
 
     @FXML
     void btnSignInAction(ActionEvent event) {
-        userId = txtUserId.getText();
+        String userId = txtUserId.getText();
         String pw = txtPassword.getText();
 
         try {
