@@ -75,4 +75,50 @@ public class EmployeeRepo {
         return preparedStatement.executeUpdate()>0;
 
     }
+
+    public boolean updateEmployee(Employee employee) throws SQLException {
+        String sql = "UPDATE employee SET eName=?, eAddress=?, eTel=?, ejobRole=?, uId=? WHERE eId=?";
+
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setString(1,employee.getName());
+        preparedStatement.setString(2,employee.getAddress());
+        preparedStatement.setString(3,employee.getTel());
+        preparedStatement.setString(4,employee.getJobRole());
+        preparedStatement.setString(5,employee.getUserId());
+        preparedStatement.setString(6,employee.getId());
+        return preparedStatement.executeUpdate()>0;
+    }
+
+    public boolean deleteEmployee(String empId) throws SQLException {
+        String sql = "DELETE FROM employee WHERE eId = ?";
+
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setString(1,empId);
+        return preparedStatement.executeUpdate()>0;
+    }
+
+    public Employee searchEmployee(String empId) throws SQLException {
+        String sql = "SELECT * FROM employee WHERE eId = ?";
+
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setString(1,empId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Employee employee = null;
+
+        if(resultSet.next()){
+            String id = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String address = resultSet.getString(3);
+            String tel = resultSet.getString(4);
+            String jobRole = resultSet.getString(5);
+            String userId = resultSet.getString(6);
+
+            employee = new Employee(id, name, address, tel, jobRole, userId);
+        }
+        return employee;
+    }
 }

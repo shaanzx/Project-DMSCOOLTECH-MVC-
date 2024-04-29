@@ -25,19 +25,19 @@ public class EmployeeFormController implements Initializable {
     private JFXComboBox<?> cmbUserId;
 
     @FXML
-    private TableColumn<String ,String> colEmpAddress;
+    private TableColumn<String, String> colEmpAddress;
 
     @FXML
-    private TableColumn<String ,String> colEmpId;
+    private TableColumn<String, String> colEmpId;
 
     @FXML
-    private TableColumn<String ,String> colEmpJobRole;
+    private TableColumn<String, String> colEmpJobRole;
 
     @FXML
-    private TableColumn<String ,String> colEmpName;
+    private TableColumn<String, String> colEmpName;
 
     @FXML
-    private TableColumn<String ,String> colEmpTel;
+    private TableColumn<String, String> colEmpTel;
 
     @FXML
     private Pane pagingPane;
@@ -63,7 +63,7 @@ public class EmployeeFormController implements Initializable {
     @FXML
     private TextField txtEmpTel;
 
-    EmployeeRepo employeeRepo=new EmployeeRepo();
+    EmployeeRepo employeeRepo = new EmployeeRepo();
 
     private List<Employee> employeeList = new ArrayList<>();
 
@@ -97,20 +97,20 @@ public class EmployeeFormController implements Initializable {
         try {
             List<Employee> EmployeeList = employeeRepo.getEmployee();
             for (Employee employee : EmployeeList) {
-                    EmployeeTm employeeTm = new EmployeeTm(
-                            employee.getId(),
-                            employee.getName(),
-                            employee.getAddress(),
-                            employee.getTel(),
-                            employee.getJobRole()
-                    );
-                    tmEmployeeList.add(employeeTm);
-                }
-                tblEmployee.setItems(tmEmployeeList);
-            }catch(Exception e){
-                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                EmployeeTm employeeTm = new EmployeeTm(
+                        employee.getId(),
+                        employee.getName(),
+                        employee.getAddress(),
+                        employee.getTel(),
+                        employee.getJobRole()
+                );
+                tmEmployeeList.add(employeeTm);
             }
+            tblEmployee.setItems(tmEmployeeList);
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
 
     private void setCellValueFactory() {
         colEmpId.setCellValueFactory(new PropertyValueFactory<>("empId"));
@@ -122,7 +122,15 @@ public class EmployeeFormController implements Initializable {
 
     @FXML
     void btnEmpDeleteOnAction(ActionEvent event) {
+        String empId = txtEmpId.getText();
 
+        try {
+            boolean isDeleted = employeeRepo.deleteEmployee(empId);
+            new Alert(Alert.AlertType.CONFIRMATION, "Deleted").show();
+            loadEmployeeTable();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
@@ -134,7 +142,7 @@ public class EmployeeFormController implements Initializable {
         String empJobRole = txtEmpJobRole.getText();
         String userId = LoginFormController.getInstance().userId;
 
-        Employee employee = new Employee(empId,empName,empAddress,empTel,empJobRole,userId);
+        Employee employee = new Employee(empId, empName, empAddress, empTel, empJobRole, userId);
         try {
             boolean isSaved = employeeRepo.saveEmployee(employee);
             new Alert(Alert.AlertType.CONFIRMATION, "Saved").show();
@@ -146,11 +154,37 @@ public class EmployeeFormController implements Initializable {
 
     @FXML
     void btnEmpUpdateOnAction(ActionEvent event) {
+        String empId = txtEmpId.getText();
+        String empName = txtEmpName.getText();
+        String empAddress = txtEmpAddress.getText();
+        String empTel = txtEmpTel.getText();
+        String empJobRole = txtEmpJobRole.getText();
+        String userId = LoginFormController.getInstance().userId;
 
+        Employee employee = new Employee(empId, empName, empAddress, empTel, empJobRole, userId);
+        try {
+            boolean isSaved = employeeRepo.updateEmployee(employee);
+            new Alert(Alert.AlertType.CONFIRMATION, "Updated").show();
+            loadEmployeeTable();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
     void txtSearchEmployeeOnAction(ActionEvent event) {
-
+        String empId = txtEmpId.getText();
+        try {
+            Employee employee = employeeRepo.searchEmployee(empId);
+            if (employee != null) {
+                txtEmpId.setText(employee.getId());
+                txtEmpName.setText(employee.getName());
+                txtEmpAddress.setText(employee.getAddress());
+                txtEmpTel.setText(employee.getTel());
+                txtEmpJobRole.setText(employee.getJobRole());
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 }
