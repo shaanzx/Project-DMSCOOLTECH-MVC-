@@ -5,16 +5,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Customer;
 import lk.ijse.dmscooltech.model.Vehicle;
+import lk.ijse.dmscooltech.model.tm.CustomerTm;
 import lk.ijse.dmscooltech.model.tm.VehicleTm;
 import lk.ijse.dmscooltech.repository.CustomerRepo;
 import lk.ijse.dmscooltech.repository.VehicleRepo;
+import lk.ijse.dmscooltech.util.Navigation;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -136,16 +140,29 @@ public class VehicleFormController implements Initializable {
         txtVehicleNo.clear();
         txtVehicleModel.clear();
         txtVehicleType.clear();
+        cmbCusId.setValue("");
+        lblCustomerName.setText("");
     }
 
     @FXML
-    void btnAddNewCustomerOnAction(ActionEvent event) {
-
+    void btnAddNewCustomerOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(pagingPane, "customer_form.fxml");
     }
 
     @FXML
     void btnVehicleDeleteOnAction(ActionEvent event) {
+        String vehicleNo = txtVehicleNo.getText();
 
+        try {
+            boolean isDeleted = vehicleRepo.deleteVehicle(vehicleNo);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer is Deleted").show();
+                loadVehicleTable();
+                clearTextFields();
+            }
+        }catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
@@ -161,7 +178,7 @@ public class VehicleFormController implements Initializable {
             if(isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION,"Vehicle is Saved!").show();
                 loadVehicleTable();
-
+                clearTextFields();
             }
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
@@ -170,7 +187,39 @@ public class VehicleFormController implements Initializable {
 
     @FXML
     void btnVehicleUpdateOnAction(ActionEvent event) {
+        String vehicleNo = txtVehicleNo.getText();
+        String model = txtVehicleModel.getText();
+        String type = txtVehicleType.getText();
+        String customerId = cmbCusId.getValue();
 
+        Vehicle vehicle = new Vehicle(vehicleNo,model,type,customerId);
+        try {
+            boolean isUpdated = vehicleRepo.updateVehicle(vehicle);
+            if(isUpdated) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Customer is Updated").show();
+                loadVehicleTable();
+                clearTextFields();
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+
+    }
+
+    @FXML
+    void txtSearchVehicleOnAction(ActionEvent event) {
+        String vehicleNo = txtVehicleNo.getText();
+        try {
+            Vehicle vehicle = vehicleRepo.searchVehicle(vehicleNo);
+            if (vehicle != null) {
+                txtVehicleNo.setText(vehicle.getVehicleNo());
+                txtVehicleModel.setText(vehicle.getModel());
+                txtVehicleType.setText(vehicle.getType());
+                cmbCusId.setValue(vehicle.getCustomerId());
+            }
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
@@ -182,5 +231,17 @@ public class VehicleFormController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @FXML
+    void tblVehicleClickOnAction(ActionEvent event) {
+        TablePosition tp = tblVehicle.getSelectionModel().getSelectedCells().get(0);
+        int row = tp.getRow();
+        ObservableList<TableColumn<VehicleTm,?> > columns = tblVehicle.getColumns();
+
+        txtVehicleNo.setText(columns.get(0).getCellData(row).toString());
+        txtVehicleModel.setText(columns.get(1).getCellData(row).toString());
+        txtVehicleType.setText(columns.get(2).getCellData(row).toString());
+        cmbCusId.setValue(columns.get(3).getCellData(row).toString());
     }
 }

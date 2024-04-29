@@ -1,6 +1,7 @@
 package lk.ijse.dmscooltech.repository;
 
 import lk.ijse.dmscooltech.db.DbConnection;
+import lk.ijse.dmscooltech.model.Customer;
 import lk.ijse.dmscooltech.model.Vehicle;
 
 import java.sql.PreparedStatement;
@@ -46,5 +47,43 @@ public class VehicleRepo {
             ));
         }
         return vehicleList;
+    }
+
+    public boolean updateVehicle(Vehicle vehicle) throws SQLException {
+        String sql = "UPDATE vehicle SET vModel=?, vType=?, cid=? WHERE vNo=?";
+
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setString(1, vehicle.getModel());
+        preparedStatement.setString(2, vehicle.getType());
+        preparedStatement.setString(3, vehicle.getCustomerId());
+        preparedStatement.setString(4, vehicle.getVehicleNo());
+        return preparedStatement.executeUpdate() > 0;
+    }
+
+    public boolean deleteVehicle(String vehicleNo) throws SQLException {
+        String sql = "DELETE FROM vehicle WHERE vNo = ?";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        preparedStatement.setString(1,vehicleNo);
+        return preparedStatement.executeUpdate() > 0;
+    }
+
+    public Vehicle searchVehicle(String vehicleNo) throws SQLException {
+        String sql = "SELECT * FROM vehicle WHERE vNo= ?";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        preparedStatement.setString(1, vehicleNo);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Vehicle vehicle = null;
+
+        if(resultSet.next()) {
+            String vNo = resultSet.getString(1);
+            String vModel = resultSet.getString(2);
+            String vType = resultSet.getString(3);
+            String cusId = resultSet.getString(4);
+
+            vehicle = new Vehicle(vNo,vModel,vType,cusId);
+        }
+        return vehicle;
     }
 }

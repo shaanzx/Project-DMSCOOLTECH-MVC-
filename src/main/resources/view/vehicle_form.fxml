@@ -36,7 +36,7 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <TableView fx:id="tblVehicle" layoutX="8.0" layoutY="410.0" opacity="0.75" prefHeight="355.0" prefWidth="1050.0">
+      <TableView fx:id="tblVehicle" layoutX="8.0" layoutY="410.0" onSort="#tblVehicleClickOnAction" opacity="0.75" prefHeight="355.0" prefWidth="1050.0">
          <columns>
             <TableColumn fx:id="colVehicleNo" prefWidth="159.0" text="Vehicle No" />
             <TableColumn fx:id="colVehicleModel" prefWidth="256.33331298828125" text="Model" />
@@ -57,7 +57,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtVehicleNo" layoutX="150.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 35;">
+      <TextField fx:id="txtVehicleNo" layoutX="150.0" layoutY="100.0" onAction="#txtSearchVehicleOnAction" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font>
@@ -150,7 +150,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblCustomerName" layoutX="750.0" layoutY="175.0" text="lbl">
+      <Label fx:id="lblCustomerName" layoutX="750.0" layoutY="175.0">
          <font>
             <Font name="Cambria Bold" size="16.0" />
          </font>
