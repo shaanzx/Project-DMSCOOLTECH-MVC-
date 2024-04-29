@@ -1,21 +1,32 @@
 package lk.ijse.dmscooltech.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import lk.ijse.dmscooltech.model.Customer;
+import lk.ijse.dmscooltech.model.Vehicle;
+import lk.ijse.dmscooltech.repository.CustomerRepo;
+import lk.ijse.dmscooltech.repository.VehicleRepo;
 
-public class VehicleFormController {
+import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class VehicleFormController implements Initializable {
 
     @FXML
-    private TextField VehicleType;
+    private TextField txtVehicleType;
 
     @FXML
-    private JFXComboBox<?> cmbCusId;
+    private JFXComboBox<String> cmbCusId;
 
     @FXML
     private TableColumn<?, ?> colCustomerId;
@@ -47,6 +58,41 @@ public class VehicleFormController {
     @FXML
     private TextField txtVehicleNo;
 
+    VehicleRepo vehicleRepo = new VehicleRepo();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setDate();
+        setCellValueFactory();
+        getCustomerId();
+
+    }
+
+    private void getCustomerId() {
+        ObservableList<String> customerList = FXCollections.observableArrayList();
+        try {
+            List<String> idList = VehicleRepo.getCustomerId();
+            for (String id : idList) {
+                customerList.add(id);
+            }
+            cmbCusId.setItems(customerList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setCellValueFactory() {
+        colVehicleNo.setCellValueFactory(new PropertyValueFactory<>("vehicleNo"));
+        colVehicleModel.setCellValueFactory(new PropertyValueFactory<>("model"));
+        colVehicleType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+    }
+
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+        txtDate.setText(now.toString());
+    }
+
     @FXML
     void btnAddNewCustomerOnAction(ActionEvent event) {
 
@@ -58,8 +104,21 @@ public class VehicleFormController {
     }
 
     @FXML
-    void btnVehicleOnAction(ActionEvent event) {
+    void btnVehicleSaveOnAction(ActionEvent event) {
+        String vehicleNo = txtVehicleNo.getText();
+        String model = txtVehicleModel.getText();
+        String type = txtVehicleType.getText();
+        String customerId = cmbCusId.getValue();
 
+        Vehicle vehicle = new Vehicle(vehicleNo, model, type, customerId);
+        try{
+            boolean isSaved = vehicleRepo.saveVehicle(vehicle);
+            if(isSaved){
+                new Alert(Alert.AlertType.CONFIRMATION,"Vehicle is Saved!").show();
+            }
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
     }
 
     @FXML
@@ -69,7 +128,12 @@ public class VehicleFormController {
 
     @FXML
     void cmbCustomerIdOnAction(ActionEvent event) {
-
+        String customerId = cmbCusId.getValue();
+        try {
+            Customer customer = CustomerRepo.searchCustomer(customerId);
+            lblCustomerName.setText(customer.getName());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
-
 }

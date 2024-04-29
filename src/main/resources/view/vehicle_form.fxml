@@ -31,7 +31,7 @@
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="txtDate" layoutX="905.0" layoutY="25.0" text="Label">
+      <Label fx:id="txtDate" layoutX="905.0" layoutY="25.0" text="Label" textFill="#060e4d">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
@@ -102,7 +102,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="925.0" layoutY="320.0" onAction="#btnVehicleOnAction" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: blue;" text="Save" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="925.0" layoutY="320.0" onAction="#btnVehicleSaveOnAction" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: blue;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -122,7 +122,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="VehicleType" layoutX="150.0" layoutY="240.0" prefWidth="250.0" style="-fx-background-radius: 35;">
+      <TextField fx:id="txtVehicleType" layoutX="150.0" layoutY="240.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
             <Font size="16.0" />
          </font>
