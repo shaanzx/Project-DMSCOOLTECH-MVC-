@@ -55,7 +55,7 @@ public class RegisterFormController implements Initializable {
         try {
         boolean isSaved = UserRepo.userSave(user);
         if(isSaved) {
-            new Alert(Alert.AlertType.CONFIRMATION, "User Saved!").show();
+            new Alert(Alert.AlertType.CONFIRMATION, "Successfully Saved!").show();
             txtUserId.clear();
             txtUserName.clear();
             txtPassword.clear();

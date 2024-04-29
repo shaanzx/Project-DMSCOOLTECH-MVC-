@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Item;
 import lk.ijse.dmscooltech.model.tm.ItemTm;
@@ -49,9 +50,6 @@ public class ItemFormController implements Initializable {
 
     @FXML
     private Label lblDateItem;
-
-  /*  @FXML
-    private TextField txtDate;*/
 
     @FXML
     private DatePicker dpDate;
@@ -213,5 +211,22 @@ public class ItemFormController implements Initializable {
         }catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+
+    @FXML
+    void tblItemClickOnAction(MouseEvent event) {
+        TablePosition pos = tblItem.getSelectionModel().getSelectedCells().get(0);
+        int row = pos.getRow();
+        ObservableList<TableColumn<ItemTm,?>> columns = tblItem.getColumns();
+
+        txtItemCode.setText(columns.get(0).getCellData(row).toString());
+        txtItemName.setText(columns.get(1).getCellData(row).toString());
+        txtVehicleModel.setText(columns.get(2).getCellData(row).toString());
+        txtQytOnHand.setText(columns.get(3).getCellData(row).toString());
+        txtUnitPrice.setText(columns.get(4).getCellData(row).toString());
+        dpDate.setValue(LocalDate.parse(columns.get(5).getCellData(row).toString()));
+
+        tblItem.setCursor(Cursor.HAND);
     }
 }

@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -235,5 +236,6 @@ public class CustomerFormController implements Initializable {
         txtCusAddress.setText(columns.get(2).getCellData(row).toString());
         txtCusTel.setText(columns.get(3).getCellData(row).toString());
         txtCusEmail.setText(columns.get(4).getCellData(row).toString());
+        tblCustomer.setCursor(Cursor.HAND);
     }
 }

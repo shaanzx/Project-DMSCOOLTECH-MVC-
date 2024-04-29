@@ -6,8 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Employee;
 import lk.ijse.dmscooltech.model.tm.EmployeeTm;
@@ -191,5 +193,19 @@ public class EmployeeFormController implements Initializable {
         } catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
+    }
+
+
+    @FXML
+    void tblEmployeeClickOnAction(MouseEvent event) {
+        TablePosition tp = tblEmployee.getSelectionModel().getSelectedCells().get(0);
+        int row = tp.getRow();
+        ObservableList<TableColumn<EmployeeTm, ?> > columns = tblEmployee.getColumns();
+        txtEmpId.setText(columns.get(0).getCellData(row).toString());
+        txtEmpName.setText(columns.get(1).getCellData(row).toString());
+        txtEmpAddress.setText(columns.get(2).getCellData(row).toString());
+        txtEmpTel.setText(columns.get(3).getCellData(row).toString());
+        txtEmpJobRole.setText(columns.get(4).getCellData(row).toString());
+        tblEmployee.setCursor(Cursor.HAND);
     }
 }
