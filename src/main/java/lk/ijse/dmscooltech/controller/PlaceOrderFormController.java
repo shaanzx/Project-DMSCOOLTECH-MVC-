@@ -15,14 +15,20 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Customer;
 import lk.ijse.dmscooltech.model.Item;
+import lk.ijse.dmscooltech.model.Order;
+import lk.ijse.dmscooltech.model.OrderDetail;
 import lk.ijse.dmscooltech.model.tm.AddToCartTm;
 import lk.ijse.dmscooltech.repository.CustomerRepo;
 import lk.ijse.dmscooltech.repository.ItemRepo;
 import lk.ijse.dmscooltech.repository.OrderRepo;
+import lk.ijse.dmscooltech.util.Navigation;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -201,15 +207,30 @@ public class PlaceOrderFormController implements Initializable {
     }
 
     @FXML
-    void btnNewCustomerOnAction(ActionEvent event) {
+    void btnNewCustomerOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(pagingPane,"customer_form.fxml");
     }
 
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) {
-        String orderId = lblOrderId.getText();
+ /*       String orderId = lblOrderId.getText();
         String customerId = cmbCustomerId.getValue();
-        String date = dpOrderDate.getValue().toString();
+        Date date = Date.valueOf(dpOrderDate.getValue());
 
+        var order = new Order(orderId, customerId, date);
+
+        List<OrderDetail> orderDetails = new ArrayList<>();
+        for(int i = 0; i < tblOrderDetail.getItems().size(); i++){
+            AddToCartTm tm = cartList.get(i);
+
+            OrderDetail detail = new OrderDetail(
+                    orderId,
+                    tm.getItemCode(),
+                    tm.getUnitPrice(),
+                    tm.getQty()
+            );
+            orderDetails.add(detail);
+        }*/
 
     }
 

@@ -9,8 +9,10 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Order {
-    private String orderId;
-    private String customerId;
+public class OrderDetail {
     private Date date;
+    private int qty;
+    private double unitPrice;
+    private String orderId;
+    private String itemCode;
 }

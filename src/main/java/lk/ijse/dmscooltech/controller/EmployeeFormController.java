@@ -100,8 +100,8 @@ public class EmployeeFormController implements Initializable {
         employeeRepo = new EmployeeRepo();
         ObservableList<EmployeeTm> tmEmployeeList = FXCollections.observableArrayList();
         try {
-            List<Employee> EmployeeList = employeeRepo.getEmployee();
-            for (Employee employee : EmployeeList) {
+            List<Employee> employeeList = employeeRepo.getEmployee();
+            for (Employee employee : employeeList) {
                 EmployeeTm employeeTm = new EmployeeTm(
                         employee.getId(),
                         employee.getName(),
@@ -118,11 +118,11 @@ public class EmployeeFormController implements Initializable {
     }
 
     private void setCellValueFactory() {
-        colEmpId.setCellValueFactory(new PropertyValueFactory<>("empId"));
-        colEmpName.setCellValueFactory(new PropertyValueFactory<>("empName"));
-        colEmpAddress.setCellValueFactory(new PropertyValueFactory<>("empAddress"));
-        colEmpTel.setCellValueFactory(new PropertyValueFactory<>("empTel"));
-        colEmpJobRole.setCellValueFactory(new PropertyValueFactory<>("empJobRole"));
+        colEmpId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colEmpName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colEmpAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colEmpTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        colEmpJobRole.setCellValueFactory(new PropertyValueFactory<>("jobRole"));
     }
 
     @FXML

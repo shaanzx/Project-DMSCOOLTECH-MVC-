@@ -26,7 +26,7 @@ INSERT INTO customer(cId,name,address,tel,email,uId)VALUES
                                                   ('C001','lakshan','galle','0776986455','shan@@gmail.com','u001'),
                                                   ('C002','sisiwari','mathara','0776986456','lasha@@gmail.com','u002');
 
-create table payment(
+/*create table payment(
                         pId varchar(5) primary key,
                         description varchar(100),
                         amount decimal(10,2)NOT NULL,
@@ -35,8 +35,8 @@ create table payment(
                         foreign key(cId) references customer(cId) on update cascade on delete cascade
 );
 INSERT INTO payment(pId,description,amount,bill,cId)VALUES
-                                                        ('P001','Get a condensor',7000,'B001','C001'),
-                                                        ('P002','Get a cooler',15000,'B002','C002');
+                                                        ('P001','Get a condenser',7000,'B001','C001'),
+                                                        ('P002','Get a cooler',15000,'B002','C002');*/
 
 create table report(
                        rId varchar(5) primary key,
@@ -49,25 +49,22 @@ INSERT INTO report(rId,category)VALUES
 create table daignosisReport(
                                 date date,
                                 details varchar(100),
-                                pId varchar(5),
-                                foreign key(pId) references payment(pId) on update cascade on delete cascade,
                                 rId varchar(5),
                                 foreign key(rId) references report(rId) on update cascade on delete cascade
 );
-INSERT INTO daignosisReport(date,details,pId,rId)VALUES
-                                                     ('20240401','Condensor','P001','R001'),
-                                                     ('20240402','Cooler','P002','R001');
+INSERT INTO daignosisReport(date,details,rId)VALUES
+                                                     ('20240401','Condenser','R001'),
+                                                     ('20240402','Cooler','R001');
 
 create table orders(
                        oId varchar(5)primary key,
                        cId varchar(5),
                        foreign key(cId) references customer(cId) on update cascade on delete cascade,
-                       pId varchar(5),
-                       foreign key(pId) references payment(pId) on update cascade on delete cascade
+                       date Date
 );
-INSERT INTO orders(oId,cId,pId)VALUES
-                                   ('OR001','C001','P001'),
-                                   ('OR002','C002','P002');
+INSERT INTO orders(oId,cId,date)VALUES
+                                   ('OR001','C001',20240321),
+                                   ('OR002','C002',20240322);
 
 create table item(
                      iCode varchar(5) primary key,
@@ -137,14 +134,14 @@ create table repair(
                        foreign key(eId) references employee(eId) on update cascade on delete cascade,
                        vNo varchar(15),
                        foreign key(vNo) references vehicle(vNo) on update cascade on delete cascade,
-                       pId varchar(5),
-                       foreign key(pId) references payment(pId) on update cascade on delete cascade,
+/*                       pId varchar(5),
+                       foreign key(pId) references payment(pId) on update cascade on delete cascade,*/
                        iCode varchar(5),
                        foreign key(iCode) references item(iCode) on update cascade on delete cascade
 );
-INSERT INTO repair(repairDate,description,repairCost,eId,vNo,pId,iCode)VALUES
-                                                                ('20240401','REPLACE Condenser',5000,'E002','KP-1111','P001','I001'),
-                                                                ('20240402','REPLACE Cooler',2500,'E002','PB-2048','P002','I002');
+INSERT INTO repair(repairDate,description,repairCost,eId,vNo,iCode)VALUES
+                                                                ('20240401','REPLACE Condenser',5000,'E002','KP-1111','I001'),
+                                                                ('20240402','REPLACE Cooler',2500,'E002','PB-2048','I002');
 
 create table supplier(
                          supId varchar(5) primary key,
