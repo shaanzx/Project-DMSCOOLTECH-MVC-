@@ -43,10 +43,12 @@ public class OrderRepo {
     }
 
     public List<String> getCustomerId() throws SQLException {
+        List<String> customerIds = new ArrayList<>();
+
         String sql = "SELECT cId FROM customer";
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
-        List<String> customerIds = new ArrayList<>();
+
         while (resultSet.next()) {
             customerIds.add(resultSet.getString(1));
         }
@@ -57,8 +59,8 @@ public class OrderRepo {
         List<String> itemCodes = new ArrayList<>();
         String sql = "SELECT iCode FROM item";
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
-
         ResultSet resultSet = preparedStatement.executeQuery();
+
         while (resultSet.next()) {
             itemCodes.add(resultSet.getString(1));
         }

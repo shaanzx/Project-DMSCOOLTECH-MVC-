@@ -184,7 +184,7 @@
       <TableView fx:id="tblRepairDetails" layoutX="8.0" layoutY="343.0" prefHeight="355.0" prefWidth="1050.0">
          <columns>
             <TableColumn fx:id="colVehicleNo" prefWidth="214.6666717529297" text="Vehicle No" />
-            <TableColumn fx:id="colReapirDescription" prefWidth="363.3333282470703" text="Description" />
+            <TableColumn fx:id="colRepairDescription" prefWidth="363.3333282470703" text="Description" />
             <TableColumn fx:id="colRepairDate" prefWidth="166.66665649414062" text="Repair Date" />
             <TableColumn fx:id="colRepairCost" prefWidth="165.33334350585938" text="Repair Cost" />
             <TableColumn fx:id="colRemove" prefWidth="140.0" text="Remove" />

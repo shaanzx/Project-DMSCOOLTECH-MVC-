@@ -15,5 +15,5 @@ public class RepairTm {
     private double repairCost;
     private String repairDate;
     private double totalAmount;
-    private JFXButton delete;
+    private JFXButton deleteButton;
 }

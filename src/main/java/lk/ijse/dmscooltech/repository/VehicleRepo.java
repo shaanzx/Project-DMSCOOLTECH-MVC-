@@ -68,8 +68,8 @@ public class VehicleRepo {
         return preparedStatement.executeUpdate() > 0;
     }
 
-    public Vehicle searchVehicle(String vehicleNo) throws SQLException {
-        String sql = "SELECT * FROM vehicle WHERE vNo= ?";
+    public static Vehicle searchVehicle(String vehicleNo) throws SQLException {
+        String sql = "SELECT * FROM vehicle WHERE vNo = ?";
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
         preparedStatement.setString(1, vehicleNo);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -85,5 +85,18 @@ public class VehicleRepo {
             vehicle = new Vehicle(vNo,vModel,vType,cusId);
         }
         return vehicle;
+    }
+
+    public List<String> getVehicleNo() throws SQLException {
+        String sql = "SELECT vNo FROM vehicle";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        List<String>vehicleNo = new ArrayList<>();
+
+        while(resultSet.next()){
+            vehicleNo.add(resultSet.getString(1));
+        }
+        return vehicleNo;
     }
 }

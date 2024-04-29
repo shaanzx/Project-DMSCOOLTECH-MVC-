@@ -1,28 +1,43 @@
 package lk.ijse.dmscooltech.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import lk.ijse.dmscooltech.model.Customer;
+import lk.ijse.dmscooltech.model.Employee;
+import lk.ijse.dmscooltech.model.Vehicle;
+import lk.ijse.dmscooltech.repository.CustomerRepo;
+import lk.ijse.dmscooltech.repository.EmployeeRepo;
+import lk.ijse.dmscooltech.repository.VehicleRepo;
 
-public class repairFormController  {
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class repairFormController implements Initializable {
 
     @FXML
-    private JFXComboBox<?> cmbEmployeeId;
+    private JFXComboBox<String> cmbEmployeeId;
 
     @FXML
-    private JFXComboBox<?> cmbItemCode;
+    private JFXComboBox<String> cmbItemCode;
 
     @FXML
-    private JFXComboBox<?> cmbVehicleNo;
+    private JFXComboBox<String> cmbVehicleNo;
 
     @FXML
-    private TableColumn<?, ?> colReapirDescription;
+    private TableColumn<?, ?> colRepairDescription;
 
     @FXML
     private TableColumn<?, ?> colRemove;
@@ -75,6 +90,39 @@ public class repairFormController  {
     @FXML
     private TextField txtQty;
 
+    VehicleRepo vehicleRepo = new VehicleRepo();
+    EmployeeRepo employeeRepo = new EmployeeRepo();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setCellValueFactory();
+        getVehicleNo();
+    }
+
+    private void getVehicleNo() {
+        ObservableList<String> vehicleList = FXCollections.observableArrayList();
+
+        try {
+            List<String> vehicleNoList = vehicleRepo.getVehicleNo();
+            for(String no : vehicleNoList){
+                vehicleList.add(no);
+            }
+            cmbVehicleNo.setItems(vehicleList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void setCellValueFactory() {
+        colVehicleNo.setCellValueFactory(new PropertyValueFactory<>("vehicleNo"));
+        colVehicleNo.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
+        colVehicleNo.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colVehicleNo.setCellValueFactory(new PropertyValueFactory<>("repairCost"));
+        colVehicleNo.setCellValueFactory(new PropertyValueFactory<>("repairDate"));
+        colVehicleNo.setCellValueFactory(new PropertyValueFactory<>("totalAmount"));
+        colVehicleNo.setCellValueFactory(new PropertyValueFactory<>("deleteButton"));
+    }
+
     @FXML
     void btnAddNewVehicleOnAction(ActionEvent event) {
 
@@ -92,17 +140,27 @@ public class repairFormController  {
 
     @FXML
     void cmbEmployeeIdOnAction(ActionEvent event) {
+        String employeeId = cmbEmployeeId.getValue();
 
+      //  Employee employee = EmployeeRepo.searchEmployee(employeeId);
     }
 
     @FXML
     void cmbVehicleNoOnAction(ActionEvent event) {
+        String vehicleNo = cmbVehicleNo.getValue();
 
+        try {
+            Vehicle vehicle = vehicleRepo.searchVehicle(vehicleNo);
+            Customer customer = CustomerRepo.searchCustomer(vehicle.getCustomerId());
+            String name = customer.getName();
+            lblCustomerName.setText(name);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
     void txtQtyOnAction(ActionEvent event) {
 
     }
-
 }

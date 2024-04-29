@@ -1,39 +1,49 @@
 package lk.ijse.dmscooltech.controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import lk.ijse.dmscooltech.model.Employee;
+import lk.ijse.dmscooltech.model.tm.EmployeeTm;
+import lk.ijse.dmscooltech.repository.EmployeeRepo;
 
-public class EmployeeFormController {
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class EmployeeFormController implements Initializable {
 
     @FXML
     private JFXComboBox<?> cmbUserId;
 
     @FXML
-    private TableColumn<?, ?> colEmpAddress;
+    private TableColumn<String ,String> colEmpAddress;
 
     @FXML
-    private TableColumn<?, ?> colEmpId;
+    private TableColumn<String ,String> colEmpId;
 
     @FXML
-    private TableColumn<?, ?> colEmpJobRole;
+    private TableColumn<String ,String> colEmpJobRole;
 
     @FXML
-    private TableColumn<?, ?> colEmpName;
+    private TableColumn<String ,String> colEmpName;
 
     @FXML
-    private TableColumn<?, ?> colEmpTel;
+    private TableColumn<String ,String> colEmpTel;
 
     @FXML
     private Pane pagingPane;
 
     @FXML
-    private TableView<?> tblEmployee;
+    private TableView<EmployeeTm> tblEmployee;
 
     @FXML
     private Label txtDate;
@@ -53,6 +63,63 @@ public class EmployeeFormController {
     @FXML
     private TextField txtEmpTel;
 
+    EmployeeRepo employeeRepo=new EmployeeRepo();
+
+    private List<Employee> employeeList = new ArrayList<>();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            txtEmpId.setText(employeeRepo.generateNextEmployeeId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        employeeList = getAllEmployee();
+        setCellValueFactory();
+        loadEmployeeTable();
+
+
+    }
+
+    private List<Employee> getAllEmployee() {
+        List<Employee> employeeList = null;
+        try {
+            employeeList = employeeRepo.getEmployee();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        return employeeList;
+    }
+
+    private void loadEmployeeTable() {
+        employeeRepo = new EmployeeRepo();
+        ObservableList<EmployeeTm> tmEmployeeList = FXCollections.observableArrayList();
+        try {
+            List<Employee> EmployeeList = employeeRepo.getEmployee();
+            for (Employee employee : EmployeeList) {
+                    EmployeeTm employeeTm = new EmployeeTm(
+                            employee.getId(),
+                            employee.getName(),
+                            employee.getAddress(),
+                            employee.getTel(),
+                            employee.getJobRole()
+                    );
+                    tmEmployeeList.add(employeeTm);
+                }
+                tblEmployee.setItems(tmEmployeeList);
+            }catch(Exception e){
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        }
+
+    private void setCellValueFactory() {
+        colEmpId.setCellValueFactory(new PropertyValueFactory<>("empId"));
+        colEmpName.setCellValueFactory(new PropertyValueFactory<>("empName"));
+        colEmpAddress.setCellValueFactory(new PropertyValueFactory<>("empAddress"));
+        colEmpTel.setCellValueFactory(new PropertyValueFactory<>("empTel"));
+        colEmpJobRole.setCellValueFactory(new PropertyValueFactory<>("empJobRole"));
+    }
+
     @FXML
     void btnEmpDeleteOnAction(ActionEvent event) {
 
@@ -60,7 +127,21 @@ public class EmployeeFormController {
 
     @FXML
     void btnEmpSaveOnAction(ActionEvent event) {
+        String empId = txtEmpId.getText();
+        String empName = txtEmpName.getText();
+        String empAddress = txtEmpAddress.getText();
+        String empTel = txtEmpTel.getText();
+        String empJobRole = txtEmpJobRole.getText();
+        String userId = LoginFormController.getInstance().userId;
 
+        Employee employee = new Employee(empId,empName,empAddress,empTel,empJobRole,userId);
+        try {
+            boolean isSaved = employeeRepo.saveEmployee(employee);
+            new Alert(Alert.AlertType.CONFIRMATION, "Saved").show();
+            loadEmployeeTable();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
@@ -68,4 +149,8 @@ public class EmployeeFormController {
 
     }
 
+    @FXML
+    void txtSearchEmployeeOnAction(ActionEvent event) {
+
+    }
 }
