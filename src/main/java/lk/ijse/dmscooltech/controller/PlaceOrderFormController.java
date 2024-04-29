@@ -192,7 +192,7 @@ public class PlaceOrderFormController implements Initializable {
         calculateNetAmount();
     }
 
-    private void calculateNetAmount() {
+    private void calculateNetAmount()    {
         netAmount = 0;
         for(int i = 0; i < tblOrderDetail.getItems().size(); i++){
             netAmount += (double) colTotalAmount.getCellData(i);

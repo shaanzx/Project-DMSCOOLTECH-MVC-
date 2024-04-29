@@ -1,21 +1,20 @@
 package lk.ijse.dmscooltech.controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Cursor;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Customer;
 import lk.ijse.dmscooltech.model.Employee;
 import lk.ijse.dmscooltech.model.Vehicle;
+import lk.ijse.dmscooltech.model.tm.RepairTm;
 import lk.ijse.dmscooltech.repository.CustomerRepo;
 import lk.ijse.dmscooltech.repository.EmployeeRepo;
 import lk.ijse.dmscooltech.repository.VehicleRepo;
@@ -23,6 +22,7 @@ import lk.ijse.dmscooltech.repository.VehicleRepo;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class repairFormController implements Initializable {
@@ -73,10 +73,10 @@ public class repairFormController implements Initializable {
     private Label lblQtyOnHand;
 
     @FXML
-    private Label lblRepairCost;
+    private TextField txtRepairCost;
 
     @FXML
-    private Label lblRepairDescription;
+    private TextField txtRepairDescription;
 
     @FXML
     private Label lblUnitPrice;
@@ -85,18 +85,35 @@ public class repairFormController implements Initializable {
     private Pane pagingPane;
 
     @FXML
-    private TableView<?> tblRepairDetails;
+    private TableView<RepairTm> tblRepairDetails;
 
     @FXML
     private TextField txtQty;
 
     VehicleRepo vehicleRepo = new VehicleRepo();
+
     EmployeeRepo employeeRepo = new EmployeeRepo();
+
+    private ObservableList<RepairTm> tmRepairList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setCellValueFactory();
         getVehicleNo();
+        getEmployeeId();
+    }
+
+    private void getEmployeeId() {
+        ObservableList<String> employeeList = FXCollections.observableArrayList();
+        try {
+            List<String> employeeIdList = employeeRepo.getEmployeeId();
+            for(String id : employeeIdList){
+                employeeList.add(id);
+            }
+            cmbEmployeeId.setItems(employeeList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void getVehicleNo() {
@@ -130,7 +147,32 @@ public class repairFormController implements Initializable {
 
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {
+        String vehicleNo = cmbVehicleNo.getValue();
+        String description = txtRepairDescription.getText();
+        String repairDate = String.valueOf(dpRepairDate.getValue());
+        double repairCost = Double.parseDouble(txtRepairCost.getText());
+        JFXButton btnDelete = new JFXButton("Delete");
+        btnDelete.setCursor(Cursor.HAND);
 
+        btnDelete.setOnAction((e) -> {
+            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Optional<ButtonType> type = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure to delete this item?", yes, no).showAndWait();
+            if(type.orElse(no) == yes){
+                int row = tblRepairDetails.getSelectionModel().getSelectedIndex();
+                tmRepairList.remove(row);
+                tblRepairDetails.refresh();
+                double netAmount = repairCost;
+            }
+        });
+     /*   for (int i = 0; i < tmRepairList.size(); i++) {
+            if(vehicleNo.equals(colVehicleNo.getCellData(i))){
+            }
+        }*/
+        RepairTm tm = new RepairTm(vehicleNo, description, repairCost, repairDate, btnDelete);
+        tmRepairList.add(tm);
+        tblRepairDetails.setItems(tmRepairList);
     }
 
     @FXML
@@ -142,7 +184,12 @@ public class repairFormController implements Initializable {
     void cmbEmployeeIdOnAction(ActionEvent event) {
         String employeeId = cmbEmployeeId.getValue();
 
-      //  Employee employee = EmployeeRepo.searchEmployee(employeeId);
+        try {
+            Employee employee = EmployeeRepo.searchEmployee(employeeId);
+            lblEmployeeName.setText(employee.getName());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML

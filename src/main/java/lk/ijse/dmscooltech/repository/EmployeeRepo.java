@@ -99,7 +99,7 @@ public class EmployeeRepo {
         return preparedStatement.executeUpdate()>0;
     }
 
-    public Employee searchEmployee(String empId) throws SQLException {
+    public static Employee searchEmployee(String empId) throws SQLException {
         String sql = "SELECT * FROM employee WHERE eId = ?";
 
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
@@ -120,5 +120,18 @@ public class EmployeeRepo {
             employee = new Employee(id, name, address, tel, jobRole, userId);
         }
         return employee;
+    }
+
+    public List<String> getEmployeeId() throws SQLException {
+        List<String> employeeIds = new ArrayList<>();
+
+        String sql = "SELECT eId FROM employee";
+        Connection connection = DbConnection.getInstance().getConnection();
+        ResultSet resultSet = connection.prepareStatement(sql).executeQuery();
+
+        while (resultSet.next()) {
+            employeeIds.add(resultSet.getString(1));
+        }
+        return employeeIds;
     }
 }

@@ -15,6 +15,7 @@ import lk.ijse.dmscooltech.repository.EmployeeRepo;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -77,8 +78,12 @@ public class EmployeeFormController implements Initializable {
         employeeList = getAllEmployee();
         setCellValueFactory();
         loadEmployeeTable();
+        setDate();
+    }
 
-
+    private void setDate() {
+        LocalDate now = LocalDate.now();
+        txtDate.setText(String.valueOf(now));
     }
 
     private List<Employee> getAllEmployee() {

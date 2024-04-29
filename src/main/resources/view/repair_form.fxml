@@ -200,20 +200,12 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblRepairDescription" layoutX="150.0" layoutY="215.0" textFill="BLUE">
+      <Label layoutX="30.0" layoutY="260.0" text="Cost Of Repair :">
          <font>
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="30.0" layoutY="265.0" text="Cost Of Repair :">
-         <font>
-            <Font name="Cambria Bold" size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblRepairCost" layoutX="150.0" layoutY="265.0" textFill="BLUE">
-         <font>
-            <Font name="Cambria Bold" size="16.0" />
-         </font>
-      </Label>
+      <TextField fx:id="txtRepairDescription" layoutX="150.0" layoutY="215.0" prefHeight="30.0" prefWidth="160.0" />
+      <TextField fx:id="txtRepairCost" layoutX="150.0" layoutY="260.0" prefHeight="30.0" prefWidth="160.0" />
    </children>
 </Pane>

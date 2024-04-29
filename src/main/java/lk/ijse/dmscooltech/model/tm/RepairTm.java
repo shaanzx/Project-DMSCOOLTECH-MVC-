@@ -10,10 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class RepairTm {
     private String vehicleNo;
-    private String employeeId;
     private String description;
     private double repairCost;
     private String repairDate;
-    private double totalAmount;
     private JFXButton deleteButton;
 }
