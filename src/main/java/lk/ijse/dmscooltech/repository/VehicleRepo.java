@@ -31,4 +31,20 @@ public class VehicleRepo {
 
         return preparedStatement.executeUpdate() > 0;
     }
+
+    public List<Vehicle> getVehicle() throws SQLException {
+        String sql = "SELECT * FROM vehicle";
+        ResultSet resultSet = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery();
+
+        List<Vehicle> vehicleList = new ArrayList<>();
+        while (resultSet.next()){
+            vehicleList.add(new Vehicle(
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4)
+            ));
+        }
+        return vehicleList;
+    }
 }

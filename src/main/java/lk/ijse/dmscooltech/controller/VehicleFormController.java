@@ -11,12 +11,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Customer;
 import lk.ijse.dmscooltech.model.Vehicle;
+import lk.ijse.dmscooltech.model.tm.VehicleTm;
 import lk.ijse.dmscooltech.repository.CustomerRepo;
 import lk.ijse.dmscooltech.repository.VehicleRepo;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -47,7 +49,7 @@ public class VehicleFormController implements Initializable {
     private Pane pagingPane;
 
     @FXML
-    private TableView<?> tblVehicle;
+    private TableView<VehicleTm> tblVehicle;
 
     @FXML
     private Label txtDate;
@@ -60,11 +62,48 @@ public class VehicleFormController implements Initializable {
 
     VehicleRepo vehicleRepo = new VehicleRepo();
 
+    private List<Vehicle> vehicleList = new ArrayList<>();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setDate();
+        vehicleList = getAllVehicle();
         setCellValueFactory();
+        loadVehicleTable();
         getCustomerId();
+
+    }
+
+    private List<Vehicle> getAllVehicle() {
+        List<Vehicle> vehicleList = null;
+        try {
+
+            vehicleList = vehicleRepo.getVehicle();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
+        return vehicleList;
+    }
+
+    private void loadVehicleTable() {
+        vehicleRepo = new VehicleRepo();
+        ObservableList<VehicleTm> tmVehicleLIst  = FXCollections.observableArrayList();
+
+        try {
+            List<Vehicle> vehicleList = vehicleRepo.getVehicle();
+            for(Vehicle vehicle : vehicleList){
+                VehicleTm vehicleTm = new VehicleTm(
+                        vehicle.getVehicleNo(),
+                        vehicle.getModel(),
+                        vehicle.getType(),
+                        vehicle.getCustomerId()
+                );
+                tmVehicleLIst.add(vehicleTm);
+            }
+            tblVehicle.setItems(tmVehicleLIst);
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
 
     }
 
@@ -93,6 +132,12 @@ public class VehicleFormController implements Initializable {
         txtDate.setText(now.toString());
     }
 
+    private void clearTextFields(){
+        txtVehicleNo.clear();
+        txtVehicleModel.clear();
+        txtVehicleType.clear();
+    }
+
     @FXML
     void btnAddNewCustomerOnAction(ActionEvent event) {
 
@@ -115,6 +160,8 @@ public class VehicleFormController implements Initializable {
             boolean isSaved = vehicleRepo.saveVehicle(vehicle);
             if(isSaved){
                 new Alert(Alert.AlertType.CONFIRMATION,"Vehicle is Saved!").show();
+                loadVehicleTable();
+
             }
         }catch (SQLException e){
             new Alert(Alert.AlertType.ERROR,e.getMessage()).show();

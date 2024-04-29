@@ -113,4 +113,13 @@ public class LoginFormController {
         stage.setTitle("Register Form");
         stage.show();
     }
+    @FXML
+    void txtPasswordOnAction(ActionEvent event) {
+        btnSignInAction(event);
+    }
+
+    @FXML
+    void txtUserIdOnAction(ActionEvent event) {
+        txtPassword.requestFocus();
+    }
 }

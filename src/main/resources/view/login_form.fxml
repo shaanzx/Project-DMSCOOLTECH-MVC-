@@ -54,7 +54,7 @@
                         <Font name="Cambria Bold" size="20.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="txtUserId" layoutX="25.0" layoutY="225.0" prefHeight="45.0" prefWidth="550.0" promptText="Enter Your ID" styleClass="username-text" stylesheets="@../values/style.css">
+                  <TextField fx:id="txtUserId" layoutX="25.0" layoutY="225.0" onAction="#txtUserIdOnAction" prefHeight="45.0" prefWidth="550.0" promptText="Enter Your ID" styleClass="username-text" stylesheets="@../values/style.css">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -86,7 +86,7 @@
                         <Font name="Cambria" size="20.0" />
                      </font>
                   </Hyperlink>
-                  <PasswordField fx:id="txtPassword" layoutX="25.0" layoutY="325.0" prefHeight="45.0" prefWidth="550.0" promptText="Enter Your Password" styleClass="username-text" stylesheets="@../values/style.css">
+                  <PasswordField fx:id="txtPassword" layoutX="25.0" layoutY="325.0" onAction="#txtPasswordOnAction" prefHeight="45.0" prefWidth="550.0" promptText="Enter Your Password" styleClass="username-text" stylesheets="@../values/style.css">
                      <font>
                         <Font size="14.0" />
                      </font>

@@ -103,14 +103,14 @@ public class CustomerFormController implements Initializable {
         try{
             List<Customer> customersList = customerRepo.getCustomer();
             for(Customer customer : customersList) {
-                CustomerTm Customertm = new CustomerTm(
+                CustomerTm customertm = new CustomerTm(
                         customer.getId(),
                         customer.getName(),
                         customer.getAddress(),
                         customer.getTel(),
                         customer.getEmail()
                 );
-                tmCustomerList.add(Customertm);
+                tmCustomerList.add(customertm);
             }
             tblCustomer.setItems(tmCustomerList);
         }catch (Exception e) {
