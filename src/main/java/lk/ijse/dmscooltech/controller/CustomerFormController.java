@@ -13,7 +13,9 @@ import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Customer;
 import lk.ijse.dmscooltech.model.tm.CustomerTm;
 import lk.ijse.dmscooltech.repository.CustomerRepo;
+import lk.ijse.dmscooltech.util.Navigation;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -217,8 +219,8 @@ public class CustomerFormController implements Initializable {
 
     }
     @FXML
-    void btnAddVehicleOnAction(ActionEvent event) {
-
+    void btnAddVehicleOnAction(ActionEvent event) throws IOException {
+        Navigation.switchPaging(pagingPane,"vehicle_form.fxml");
     }
 
 

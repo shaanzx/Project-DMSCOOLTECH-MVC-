@@ -10,7 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
-public class repairFormController {
+public class repairFormController  {
 
     @FXML
     private JFXComboBox<?> cmbEmployeeId;
@@ -22,31 +22,19 @@ public class repairFormController {
     private JFXComboBox<?> cmbVehicleNo;
 
     @FXML
-    private TableColumn<?, ?> colDeleteItem3;
-
-    @FXML
-    private TableColumn<?, ?> colDeleteItem31;
-
-    @FXML
-    private TableColumn<?, ?> colItemName;
-
-    @FXML
-    private TableColumn<?, ?> colQty;
-
-    @FXML
     private TableColumn<?, ?> colReapirDescription;
 
     @FXML
-    private TableColumn<?, ?> colRepairCose;
+    private TableColumn<?, ?> colRemove;
+
+    @FXML
+    private TableColumn<?, ?> colRepairCost;
 
     @FXML
     private TableColumn<?, ?> colRepairDate;
 
     @FXML
-    private TableColumn<?, ?> colUnitPrice;
-
-    @FXML
-    private TableColumn<?, ?> colVEhicleNo;
+    private TableColumn<?, ?> colVehicleNo;
 
     @FXML
     private DatePicker dpRepairDate;

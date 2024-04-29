@@ -132,6 +132,7 @@ INSERT INTO vehicle(vNo,vModel,vType,cId)VALUES
 create table repair(
                        repairDate date,
                        description varchar(100),
+                       repairCost decimal(10,2),
                        eId varchar(5),
                        foreign key(eId) references employee(eId) on update cascade on delete cascade,
                        vNo varchar(15),
@@ -141,9 +142,9 @@ create table repair(
                        iCode varchar(5),
                        foreign key(iCode) references item(iCode) on update cascade on delete cascade
 );
-INSERT INTO repair(repairDate,description,eId,vNo,pId,iCode)VALUES
-                                                                ('20240401','REPLACE Condensor','E002','KP-1111','P001','I001'),
-                                                                ('20240402','REPLACE Cooler','E002','PB-2048','P002','I002');
+INSERT INTO repair(repairDate,description,repairCost,eId,vNo,pId,iCode)VALUES
+                                                                ('20240401','REPLACE Condenser',5000,'E002','KP-1111','P001','I001'),
+                                                                ('20240402','REPLACE Cooler',2500,'E002','PB-2048','P002','I002');
 
 create table supplier(
                          supId varchar(5) primary key,

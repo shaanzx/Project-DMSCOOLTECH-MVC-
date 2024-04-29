@@ -237,11 +237,12 @@ public class VehicleFormController implements Initializable {
     void tblVehicleClickOnAction(ActionEvent event) {
         TablePosition tp = tblVehicle.getSelectionModel().getSelectedCells().get(0);
         int row = tp.getRow();
+
         ObservableList<TableColumn<VehicleTm,?> > columns = tblVehicle.getColumns();
 
         txtVehicleNo.setText(columns.get(0).getCellData(row).toString());
         txtVehicleModel.setText(columns.get(1).getCellData(row).toString());
         txtVehicleType.setText(columns.get(2).getCellData(row).toString());
-        cmbCusId.setValue(columns.get(3).getCellData(row).toString());
+        cmbCusId.setValue(cmbCusId.getValue());
     }
 }
