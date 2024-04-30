@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.repository.UserRepo;
 import lk.ijse.dmscooltech.util.Navigation;
@@ -98,8 +99,10 @@ public class LoginFormController {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.centerOnScreen();
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("DashBoard Form");
         stage.show();
+
     }
 
     @FXML

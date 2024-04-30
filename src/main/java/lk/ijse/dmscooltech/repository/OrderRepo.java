@@ -1,7 +1,9 @@
 package lk.ijse.dmscooltech.repository;
 
 import lk.ijse.dmscooltech.db.DbConnection;
+import lk.ijse.dmscooltech.model.Order;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderRepo {
+    public static boolean saveOrder(Order order) throws SQLException {
+        String sql = "INSERT INTO orders VALUES(?,?,?)";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setString(1, order.getOrderId());
+        preparedStatement.setString(2, order.getCustomerId());
+        preparedStatement.setDate(3, (Date) order.getDate());
+
+        return preparedStatement.executeUpdate()>0;
+    }
+
     public String generateNextOrderId() throws SQLException {
         String sql = "SELECT oId FROM orders ORDER BY oId DESC LIMIT 1";
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);

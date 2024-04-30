@@ -13,14 +13,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import lk.ijse.dmscooltech.model.Customer;
-import lk.ijse.dmscooltech.model.Item;
-import lk.ijse.dmscooltech.model.Order;
-import lk.ijse.dmscooltech.model.OrderDetail;
+import lk.ijse.dmscooltech.model.*;
 import lk.ijse.dmscooltech.model.tm.AddToCartTm;
 import lk.ijse.dmscooltech.repository.CustomerRepo;
 import lk.ijse.dmscooltech.repository.ItemRepo;
 import lk.ijse.dmscooltech.repository.OrderRepo;
+import lk.ijse.dmscooltech.repository.PlaceOrderRepo;
 import lk.ijse.dmscooltech.util.Navigation;
 
 import java.io.IOException;
@@ -213,7 +211,7 @@ public class PlaceOrderFormController implements Initializable {
 
     @FXML
     void btnPlaceOrderOnAction(ActionEvent event) {
- /*       String orderId = lblOrderId.getText();
+        /*String orderId = lblOrderId.getText();
         String customerId = cmbCustomerId.getValue();
         Date date = Date.valueOf(dpOrderDate.getValue());
 
@@ -230,7 +228,10 @@ public class PlaceOrderFormController implements Initializable {
                     tm.getQty()
             );
             orderDetails.add(detail);
-        }*/
+        }
+        OrderPlace op = new OrderPlace(order, orderDetails);
+
+            PlaceOrderRepo.placeOrder(op);*/
 
     }
 

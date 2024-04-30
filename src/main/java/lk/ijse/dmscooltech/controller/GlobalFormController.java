@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import lk.ijse.dmscooltech.util.Navigation;
@@ -16,6 +17,7 @@ import java.util.ResourceBundle;
 
 public class GlobalFormController implements Initializable {
 
+    public AnchorPane mainpane;
     @FXML
     private Pane pagingPane;
 
@@ -57,7 +59,7 @@ public class GlobalFormController implements Initializable {
 
     @FXML
     void btnLogoutOnAction(ActionEvent event) throws IOException {
-        Navigation.switchPaging(pagingPane, "login_form.fxml");
+        Navigation.switchNavigation( "login_form.fxml",mainpane);
     }
 
     @FXML

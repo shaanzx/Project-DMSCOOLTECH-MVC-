@@ -1,8 +1,8 @@
 package lk.ijse.dmscooltech.repository;
 
-import javafx.collections.ObservableList;
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.Item;
+import lk.ijse.dmscooltech.model.OrderDetail;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -21,6 +21,17 @@ public class ItemRepo {
         preparedStatement.setString(6, item.getDate());
         return preparedStatement.executeUpdate() > 0;
     }
+
+    public static void updateQty(List<OrderDetail> orderDetails) {
+/*        for (OrderDetail orderDetail : orderDetails) {
+            if(!updateQty(orderDetail)){
+                return false;
+            }
+        }
+
+        return true;*/
+    }
+
     public String generateNextItemId() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         String sql = "SELECT iCode FROM item ORDER BY iCode DESC LIMIT 1";
@@ -33,6 +44,7 @@ public class ItemRepo {
         }
         return splitItemId(null);
     }
+
     private String splitItemId(String currentItemId){
         if(currentItemId!=null){
             String[] split = currentItemId.split("I");
@@ -63,7 +75,6 @@ public class ItemRepo {
         }
         return itemList;
     }
-
 
     public boolean updateItem(Item item) throws SQLException {
         String sql = "UPDATE item SET iName = ?, iCategory = ?, qtyOnHand = ?, iPrice = ?, date = ? WHERE iCode = ?";
