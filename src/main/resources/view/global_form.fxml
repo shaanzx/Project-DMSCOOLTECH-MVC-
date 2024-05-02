@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -87,7 +88,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnDashboard" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="60.0" layoutY="180.0" onAction="#btnDashboardOnAction" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #c7ecee; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Dashboard">
+            <JFXButton fx:id="btnDashboard" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="60.0" layoutY="180.0" onAction="#btnDashboardOnAction" prefHeight="30.0" prefWidth="180.0" style="-fx-background-color: #c7ecee; -fx-background-radius: 75; -fx-font-size: 20;" stylesheets="@../values/style.css" text="Dashboard">
                <font>
                   <Font size="24.0" />
                </font>
@@ -101,6 +102,10 @@
                      </cursor>
                   </ImageView>
                </graphic>
+               <styleClass>
+                  <String fx:value="dashboard-button" />
+                  <String fx:value="dashboard-button" />
+               </styleClass>
             </JFXButton>
             <JFXButton alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="90.0" layoutY="685.0" onAction="#btnLogoutOnAction" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #c7ecee; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Log Out">
                <font>
@@ -146,6 +151,6 @@
             <Image url="@../asset/Autotech(2)-Photoroom.png-Photoroom.png" />
          </image>
       </ImageView>
-      <Line endX="300.0" endY="4.0" layoutY="-3.0" startX="300.0" startY="772.0" strokeWidth="3.0" />
+      <Line endX="300.0" startX="300.0" startY="772.0" strokeWidth="3.0" />
    </children>
 </AnchorPane>
