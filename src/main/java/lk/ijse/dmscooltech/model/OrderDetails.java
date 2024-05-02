@@ -1,11 +1,19 @@
 package lk.ijse.dmscooltech.model;
 
-import java.awt.desktop.ScreenSleepEvent;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.awt.desktop.ScreenSleepEvent;
+import java.sql.Date;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class OrderDetails {
-    private String orderDate;
-    private String qty;
-    private String OrderAmount;
+    private Date orderDate;
+    private int qty;
+    private Double OrderAmount;
     private String orderId;
     private String itemCode;
 }

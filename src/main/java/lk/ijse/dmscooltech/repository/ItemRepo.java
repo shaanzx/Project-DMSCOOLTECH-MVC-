@@ -2,7 +2,7 @@ package lk.ijse.dmscooltech.repository;
 
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.Item;
-import lk.ijse.dmscooltech.model.OrderDetail;
+import lk.ijse.dmscooltech.model.OrderDetails;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,14 +22,22 @@ public class ItemRepo {
         return preparedStatement.executeUpdate() > 0;
     }
 
-    public static void updateQty(List<OrderDetail> orderDetails) {
-/*        for (OrderDetail orderDetail : orderDetails) {
-            if(!updateQty(orderDetail)){
+    public static boolean updateItemQty(List<OrderDetails> orderDetails) throws SQLException {
+        for (OrderDetails orderDetail : orderDetails) {
+            if(!updateItemQty(orderDetail)){
                 return false;
             }
         }
+        return true;
+    }
 
-        return true;*/
+    private static boolean updateItemQty(OrderDetails orderDetail) throws SQLException {
+        String sql = "UPDATE item SET qtyOnHand = qtyOnHand - ? WHERE iCode = ?";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setInt(1, orderDetail.getQty());
+        preparedStatement.setString(2, orderDetail.getItemCode());
+        return preparedStatement.executeUpdate() > 0;
     }
 
     public String generateNextItemId() throws SQLException {

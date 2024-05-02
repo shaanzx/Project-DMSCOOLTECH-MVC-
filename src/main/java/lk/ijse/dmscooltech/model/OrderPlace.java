@@ -11,5 +11,5 @@ import java.util.List;
 @Data
 public class OrderPlace {
     private Order order;
-    private List<OrderDetail> orderDetails;
+    private List<OrderDetails> orderDetails;
 }

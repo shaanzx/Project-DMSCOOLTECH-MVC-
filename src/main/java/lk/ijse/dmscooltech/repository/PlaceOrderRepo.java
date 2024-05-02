@@ -8,13 +8,29 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class PlaceOrderRepo {
-    public static void placeOrder(OrderPlace op) throws SQLException {
+    public static boolean orderPlace(OrderPlace orderPlace) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
         connection.setAutoCommit(false);
 
-        boolean isOrderSaved = OrderRepo.saveOrder((Order) op.getOrderDetails());
-        if(isOrderSaved) {
-            ItemRepo.updateQty(op.getOrderDetails());
+        try{
+            boolean isOdSaved = OrderRepo.saveOrder(orderPlace.getOrder());
+            if(isOdSaved){
+                boolean isOdDetailsSaved = OrderDetailsRepo.saveOrderDetails(orderPlace.getOrderDetails());
+                if(isOdDetailsSaved){
+                    boolean isItemUpadeted = ItemRepo.updateItemQty(orderPlace.getOrderDetails());
+                    if(isItemUpadeted){
+                        connection.commit();
+                        return true;
+                    }
+                }
+            }
+            connection.rollback();
+            return false;
+        }catch (SQLException e){
+            connection.rollback();
+            return false;
+        }finally {
+            connection.setAutoCommit(true);
         }
     }
 }

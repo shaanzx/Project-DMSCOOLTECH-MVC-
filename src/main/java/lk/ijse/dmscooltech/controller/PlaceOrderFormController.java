@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
@@ -210,29 +209,32 @@ public class PlaceOrderFormController implements Initializable {
     }
 
     @FXML
-    void btnPlaceOrderOnAction(ActionEvent event) {
-        /*String orderId = lblOrderId.getText();
+    void btnPlaceOrderOnAction(ActionEvent event) throws SQLException {
+        String orderId = lblOrderId.getText();
         String customerId = cmbCustomerId.getValue();
-        Date date = Date.valueOf(dpOrderDate.getValue());
+        Date date = Date.valueOf(lblDate.getText());
 
-        var order = new Order(orderId, customerId, date);
+        Order order = new Order(orderId, customerId, date);
+        List<OrderDetails> orderList = new ArrayList<>();
 
-        List<OrderDetail> orderDetails = new ArrayList<>();
-        for(int i = 0; i < tblOrderDetail.getItems().size(); i++){
-            AddToCartTm tm = cartList.get(i);
+        for(int i=0; i < tblOrderDetail.getItems().size(); i++){
+            AddToCartTm addToCartTm = cartList.get(i);
 
-            OrderDetail detail = new OrderDetail(
-                    orderId,
-                    tm.getItemCode(),
-                    tm.getUnitPrice(),
-                    tm.getQty()
-            );
-            orderDetails.add(detail);
+            OrderDetails orderDetails = new OrderDetails(date, addToCartTm.getQty(), addToCartTm.getUnitPrice(),orderId, addToCartTm.getItemCode());
+            orderList.add(orderDetails);
         }
-        OrderPlace op = new OrderPlace(order, orderDetails);
 
-            PlaceOrderRepo.placeOrder(op);*/
-
+        OrderPlace orderPlace = new OrderPlace(order, orderList);
+        try {
+            boolean isOrderPlaced = PlaceOrderRepo.orderPlace(orderPlace);
+            if (isOrderPlaced) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Order Placed Successfully").show();
+            } else {
+                new Alert(Alert.AlertType.WARNING, "Something went wrong. Please try again").show();
+            }
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML
