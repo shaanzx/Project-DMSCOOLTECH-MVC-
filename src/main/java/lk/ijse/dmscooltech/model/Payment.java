@@ -4,15 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class OrderDetail {
-    private Date date;
-    private int qty;
-    private double unitPrice;
+public class Payment {
+    private String paymentId;
+    private String customerId;
     private String orderId;
-    private String itemCode;
+    private double totalAmount;
+    private String paymentDate;
 }

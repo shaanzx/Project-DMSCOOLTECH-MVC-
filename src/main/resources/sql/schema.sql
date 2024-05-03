@@ -26,17 +26,6 @@ INSERT INTO customer(cId,name,address,tel,email,uId)VALUES
                                                   ('C001','lakshan','galle','0776986455','shan@@gmail.com','u001'),
                                                   ('C002','sisiwari','mathara','0776986456','lasha@@gmail.com','u002');
 
-/*create table payment(
-                        pId varchar(5) primary key,
-                        description varchar(100),
-                        amount decimal(10,2)NOT NULL,
-                        bill varchar(10)NOT NULL,
-                        cId varchar(5),
-                        foreign key(cId) references customer(cId) on update cascade on delete cascade
-);
-INSERT INTO payment(pId,description,amount,bill,cId)VALUES
-                                                        ('P001','Get a condenser',7000,'B001','C001'),
-                                                        ('P002','Get a cooler',15000,'B002','C002');*/
 
 create table report(
                        rId varchar(5) primary key,
@@ -139,6 +128,20 @@ create table repair(
                        iCode varchar(5),
                        foreign key(iCode) references item(iCode) on update cascade on delete cascade
 );
+
+create table payment(
+                        pId varchar(5) primary key,
+                        cId varchar(5)not null,
+                        foreign key(cId) references customer(cId) on update cascade on delete cascade,
+                        oId varchar(5)not null,
+                        foreign key(oId) references orders(oId) on update cascade on delete cascade,
+                        totalAmount decimal(10,2)NOT NULL,
+                        date Date
+);
+INSERT INTO payment(pId,cId,oId,totalAmount,date)VALUES
+                                                        ('P001','C001','OR001',7000,20240321),
+                                                        ('P002','C002','OR002',15000,20240321);
+
 INSERT INTO repair(repairDate,description,repairCost,eId,vNo,iCode)VALUES
                                                                 ('20240401','REPLACE Condenser',5000,'E002','KP-1111','I001'),
                                                                 ('20240402','REPLACE Cooler',2500,'E002','PB-2048','I002');
