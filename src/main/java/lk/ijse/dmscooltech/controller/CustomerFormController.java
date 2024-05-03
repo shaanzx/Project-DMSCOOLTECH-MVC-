@@ -217,13 +217,11 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void cmbUserIdOnAction(ActionEvent event) {
-
     }
     @FXML
     void btnAddVehicleOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(pagingPane,"vehicle_form.fxml");
     }
-
 
     @FXML
     void tblCustomerClick(MouseEvent event) {

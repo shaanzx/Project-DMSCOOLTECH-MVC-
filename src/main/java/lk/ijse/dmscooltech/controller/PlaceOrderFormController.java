@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
@@ -279,5 +280,10 @@ public class PlaceOrderFormController implements Initializable {
     @FXML
     void txtQtyOnAction(ActionEvent event) {
         btnAddToCartOnAction(event);
+    }
+
+    @FXML
+    void btnViewOrderDetailsOnAction(ActionEvent event) throws IOException {
+        FXMLLoader.load(this.getClass().getResource("../view/OrderDetailsForm.fxml"));
     }
 }

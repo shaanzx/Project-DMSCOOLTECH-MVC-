@@ -165,7 +165,7 @@
          </font>
       </Label>
       <TextField fx:id="txtQty" layoutX="750.0" layoutY="290.0" onAction="#txtQtyOnAction" prefHeight="40.0" prefWidth="135.0" />
-      <JFXButton buttonType="RAISED" layoutX="900.0" layoutY="704.0" onAction="#btnPlaceOrderOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: blue;" text="Order Confirm" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="900.0" layoutY="704.0" onAction="#btnPlaceOrderOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #303952;" text="Order Confirm" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -200,5 +200,10 @@
             <TableColumn fx:id="colDeleteItem" minWidth="0.0" prefWidth="163.6666259765625" text="Delete Item" />
         </columns>
       </TableView>
+      <JFXButton layoutX="743.0" layoutY="704.0" onAction="#btnViewOrderDetailsOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #44bd32;" text="View Order Details" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXButton>
    </children>
 </Pane>
