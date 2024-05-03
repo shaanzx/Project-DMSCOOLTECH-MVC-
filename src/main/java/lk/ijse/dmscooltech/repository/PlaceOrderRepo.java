@@ -19,8 +19,11 @@ public class PlaceOrderRepo {
                 if(isOdDetailsSaved){
                     boolean isItemUpadeted = ItemRepo.updateItemQty(orderPlace.getOrderDetails());
                     if(isItemUpadeted){
-                        connection.commit();
-                        return true;
+                        boolean isPaymentSaved = PaymentRepo.savePayment(orderPlace.getPayment());
+                        if(isPaymentSaved){
+                            connection.commit();
+                            return true;
+                        }
                     }
                 }
             }

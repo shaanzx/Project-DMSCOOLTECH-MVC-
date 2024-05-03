@@ -46,7 +46,6 @@ public class CustomerRepo {
         return next;
     }
 
-
     public boolean saveCustomer(Customer customer) throws SQLException {
         String sql = "INSERT INTO customer VALUES(?,?,?,?,?,?)";
         Connection connection = DbConnection.getInstance().getConnection();

@@ -14,10 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.*;
 import lk.ijse.dmscooltech.model.tm.AddToCartTm;
-import lk.ijse.dmscooltech.repository.CustomerRepo;
-import lk.ijse.dmscooltech.repository.ItemRepo;
-import lk.ijse.dmscooltech.repository.OrderRepo;
-import lk.ijse.dmscooltech.repository.PlaceOrderRepo;
+import lk.ijse.dmscooltech.repository.*;
 import lk.ijse.dmscooltech.util.Navigation;
 
 import java.io.IOException;
@@ -216,15 +213,19 @@ public class PlaceOrderFormController implements Initializable {
 
         Order order = new Order(orderId, customerId, date);
         List<OrderDetails> orderList = new ArrayList<>();
-
+        double netAmount = 0;
         for(int i=0; i < tblOrderDetail.getItems().size(); i++){
             AddToCartTm addToCartTm = cartList.get(i);
-
             OrderDetails orderDetails = new OrderDetails(date, addToCartTm.getQty(), addToCartTm.getUnitPrice(),orderId, addToCartTm.getItemCode());
             orderList.add(orderDetails);
-        }
 
-        OrderPlace orderPlace = new OrderPlace(order, orderList);
+            netAmount += addToCartTm.getTotalAmount();
+        }
+        String paymentId = PaymentRepo.generatePaymentId();
+
+        Payment payment = new Payment(paymentId, customerId, orderId, netAmount, date);
+
+        OrderPlace orderPlace = new OrderPlace(order, orderList , payment);
         try {
             boolean isOrderPlaced = PlaceOrderRepo.orderPlace(orderPlace);
             if (isOrderPlaced) {
