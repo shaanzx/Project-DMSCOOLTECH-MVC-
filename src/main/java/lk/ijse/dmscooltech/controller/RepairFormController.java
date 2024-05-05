@@ -330,7 +330,7 @@ public class RepairFormController implements Initializable {
         try {
             boolean isRepairDone = RepairDetailsRepo.addNewRepair(repairDetails);
             if (isRepairDone) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Repair Done And Generate Your Bill").show();
+                new Alert(Alert.AlertType.CONFIRMATION, "Repair Process Done").show();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Something went wrong").show();
             }
