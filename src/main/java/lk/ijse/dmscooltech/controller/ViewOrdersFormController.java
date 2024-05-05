@@ -2,11 +2,15 @@ package lk.ijse.dmscooltech.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 
-public class ViewOrdersFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ViewOrdersFormController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> colCustomerId;
@@ -29,9 +33,12 @@ public class ViewOrdersFormController {
     @FXML
     private TableColumn<?, ?> txtTotalAmount;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
     @FXML
     void btnSearchOnAction(ActionEvent event) {
 
     }
-
 }

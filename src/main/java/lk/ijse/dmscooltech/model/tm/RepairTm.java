@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class RepairTm {
     private String vehicleNo;
     private String description;
-    private double repairCost;
     private String repairDate;
+    private double repairCost;
     private JFXButton deleteButton;
 }

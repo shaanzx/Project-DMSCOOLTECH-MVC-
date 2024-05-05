@@ -68,7 +68,7 @@ public class OrderRepo {
         return customerIds;
     }
 
-    public List<String> getItemCodes() throws SQLException {
+    public static List<String> getItemCodes() throws SQLException {
         List<String> itemCodes = new ArrayList<>();
         String sql = "SELECT iCode FROM item";
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
