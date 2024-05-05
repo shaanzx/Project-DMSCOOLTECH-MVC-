@@ -88,7 +88,7 @@ public class repairFormController implements Initializable {
     private Label lblNetAmount;
 
     @FXML
-    private Label lblPaymentId;
+    private Label lblRepairId;
 
     @FXML
     private Label lblUnitPrice;
@@ -107,8 +107,7 @@ public class repairFormController implements Initializable {
 
     @FXML
     private TextField txtRepairDescription;
-
-    PaymentRepo paymentRepo = new PaymentRepo();
+    RepairRepo repairRepo = new RepairRepo();
     VehicleRepo vehicleRepo = new VehicleRepo();
     EmployeeRepo employeeRepo = new EmployeeRepo();
     OrderRepo orderRepo = new OrderRepo();
@@ -119,7 +118,7 @@ public class repairFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            lblPaymentId.setText(paymentRepo.generatePaymentId());
+            lblRepairId.setText(repairRepo.generateRepairId());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
