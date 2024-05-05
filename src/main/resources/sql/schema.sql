@@ -116,35 +116,45 @@ INSERT INTO vehicle(vNo,vModel,vType,cId)VALUES
                                              ('PB-2048','NISSAN','VAN','C002');
 
 create table repair(
-                       repairDate date,
+                       rId varchar(15) primary key,
+                       vNo varchar(15),
+                       foreign key(vNo) references vehicle(vNo) on update cascade on delete cascade,
                        description varchar(100),
+                       repairDate date,
                        repairCost decimal(10,2),
                        eId varchar(5),
                        foreign key(eId) references employee(eId) on update cascade on delete cascade,
-                       vNo varchar(15),
-                       foreign key(vNo) references vehicle(vNo) on update cascade on delete cascade,
-/*                       pId varchar(5),
+/*                     pId varchar(5),
                        foreign key(pId) references payment(pId) on update cascade on delete cascade,*/
                        iCode varchar(5),
-                       foreign key(iCode) references item(iCode) on update cascade on delete cascade
+                       foreign key(iCode) references item(iCode) on update cascade on delete cascade,
+                       qty int(5),
+                       unitPrice decimal(10,2),
+                       totalPrice decimal(10,2)
 );
+INSERT INTO repair(rId,vNo,description,repairDate,repairCost,eId,iCode,qty,unitPrice,totalPrice)VALUES
+                    ('R001','KP-1111','Repair Cooler','20230421',5000,'E001','I002',1,15000,20000),
+                    ('R002','PB-2048','Repair Condenser','20230421',4500,'E002','I001',1,7000,11500);
 
 create table payment(
                         pId varchar(5) primary key,
                         cId varchar(5)not null,
                         foreign key(cId) references customer(cId) on update cascade on delete cascade,
-                        oId varchar(5)not null,
+                        oId varchar(5),
                         foreign key(oId) references orders(oId) on update cascade on delete cascade,
+                        rId varchar(15),
+                        foreign key(rId) references repair(rId) on update cascade on delete cascade,
                         totalAmount decimal(10,2)NOT NULL,
                         date Date
-);
-INSERT INTO payment(pId,cId,oId,totalAmount,date)VALUES
-                                                        ('P001','C001','OR001',7000,20240321),
-                                                        ('P002','C002','OR002',15000,20240321);
 
-INSERT INTO repair(repairDate,description,repairCost,eId,vNo,iCode)VALUES
+);
+INSERT INTO payment(pId,cId,oId,rId,totalAmount,date)VALUES
+                                                        ('P001','C001','OR001','R001',7000,20240321),
+                                                        ('P002','C002','OR002','R002',15000,20240321);
+
+/*INSERT INTO repair(repairDate,description,repairCost,eId,vNo,iCode)VALUES
                                                                 ('20240401','REPLACE Condenser',5000,'E002','KP-1111','I001'),
-                                                                ('20240402','REPLACE Cooler',2500,'E002','PB-2048','I002');
+                                                                ('20240402','REPLACE Cooler',2500,'E002','PB-2048','I002');*/
 
 create table supplier(
                          supId varchar(5) primary key,
