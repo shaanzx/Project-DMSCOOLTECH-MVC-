@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.repairFormController">
+<Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.RepairFormController">
    <children>
       <ImageView fitHeight="772.0" fitWidth="1066.0" layoutX="-3.0" layoutY="-9.0" rotate="180.0">
          <image>
@@ -212,6 +212,16 @@
          </font>
       </Label>
       <Label fx:id="lblRepairId" layoutX="155.0" layoutY="75.0" textFill="#1e36ab">
+         <font>
+            <Font name="Cambria" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="720.0" layoutY="75.0" text="Order Id     :">
+         <font>
+            <Font name="Cambria Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOrderId" layoutX="845.0" layoutY="75.0" textFill="#1e36ab">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>

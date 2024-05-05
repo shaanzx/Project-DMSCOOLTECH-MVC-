@@ -224,7 +224,7 @@ public class PlaceOrderFormController implements Initializable {
         }
         String paymentId = PaymentRepo.generatePaymentId();
 
-        Payment payment = new Payment(paymentId, customerId, orderId, netAmount, date);
+        Payment payment = new Payment(paymentId, customerId, orderId,null, netAmount, date);
 
         OrderPlace orderPlace = new OrderPlace(order, orderList , payment);
         try {

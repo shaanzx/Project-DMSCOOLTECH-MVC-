@@ -1,6 +1,7 @@
 package lk.ijse.dmscooltech.repository;
 
 import lk.ijse.dmscooltech.db.DbConnection;
+import lk.ijse.dmscooltech.model.Repair;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 
 public class RepairRepo {
 
-    public String generateRepairId() throws SQLException {
+    public static String generateRepairId() throws SQLException {
         String sql = "SELECT rId FROM repair ORDER BY rId DESC LIMIT 1";
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -21,7 +22,7 @@ public class RepairRepo {
         return nextRepairId(null);
     }
 
-    private String nextRepairId(String currentRepairId) {
+    private static String nextRepairId(String currentRepairId) {
         String nextRepairId=null;
         if (currentRepairId==null){
             nextRepairId="R001";
@@ -39,5 +40,23 @@ public class RepairRepo {
             }
         }
         return nextRepairId;
+    }
+
+    public static boolean saveRepair(Repair repair) throws SQLException {
+        String sql = "INSERT INTO repair VALUES(?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+
+        preparedStatement.setString(1, repair.getRepairId());
+        preparedStatement.setString(2,repair.getVehicleNo());
+        preparedStatement.setString(3,repair.getDescription());
+        preparedStatement.setString(4, String.valueOf(repair.getRepairDate()));
+        preparedStatement.setDouble(5, repair.getRepairCost());
+        preparedStatement.setString(6,repair.getEmployeeId());
+        preparedStatement.setString(7,repair.getItemCode());
+        preparedStatement.setString(6, String.valueOf(repair.getQty()));
+        preparedStatement.setString(6, String.valueOf(repair.getUnitPrice()));
+        preparedStatement.setString(6, String.valueOf(repair.getTotalAmount()));
+
+        return preparedStatement.executeUpdate()>0;
     }
 }

@@ -11,10 +11,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
-import lk.ijse.dmscooltech.model.Customer;
-import lk.ijse.dmscooltech.model.Employee;
-import lk.ijse.dmscooltech.model.Item;
-import lk.ijse.dmscooltech.model.Vehicle;
+import lk.ijse.dmscooltech.model.*;
 import lk.ijse.dmscooltech.model.tm.RepairTm;
 import lk.ijse.dmscooltech.repository.*;
 import lk.ijse.dmscooltech.util.Navigation;
@@ -24,11 +21,14 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class repairFormController implements Initializable {
+import static lk.ijse.dmscooltech.repository.RepairRepo.generateRepairId;
+
+public class RepairFormController implements Initializable {
 
     @FXML
     private JFXComboBox<String> cmbEmployeeId;
@@ -88,6 +88,9 @@ public class repairFormController implements Initializable {
     private Label lblNetAmount;
 
     @FXML
+    private Label lblOrderId;
+
+    @FXML
     private Label lblRepairId;
 
     @FXML
@@ -111,6 +114,10 @@ public class repairFormController implements Initializable {
     VehicleRepo vehicleRepo = new VehicleRepo();
     EmployeeRepo employeeRepo = new EmployeeRepo();
     OrderRepo orderRepo = new OrderRepo();
+    Vehicle vehicle = new Vehicle();
+    Order order = new Order();
+    RepairTm repairTm = new RepairTm();
+    Payment payment = new Payment();
 
     private ObservableList<RepairTm> addToCartRepairList = FXCollections.observableArrayList();
 
@@ -118,7 +125,9 @@ public class repairFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            lblRepairId.setText(repairRepo.generateRepairId());
+           lblRepairId.setText(repairRepo.generateRepairId());
+            lblOrderId.setText(orderRepo.generateNextOrderId());
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -269,8 +278,65 @@ public class repairFormController implements Initializable {
     }
 
     @FXML
-    void btnConfirmRepairBillOnAction(ActionEvent event) {
+    void btnConfirmRepairBillOnAction(ActionEvent event) throws SQLException {
+        String orderId = lblOrderId.getText();
+        String customerId = vehicle.getCustomerId();
+        Date date = Date.valueOf(lblDate.getText());
 
+        order = new Order(orderId, customerId, date);
+
+        List<OrderDetails> orderList = new ArrayList<>();
+        double netAmount = 0;
+
+        for(int i=0; i < tblRepairDetails.getItems().size(); i++){
+            RepairTm repairTm = addToCartRepairList.get(i);
+
+            OrderDetails orderDetails = new OrderDetails(
+                    date,
+                    repairTm.getQty(),
+                    repairTm.getTotalAmount(),
+                    orderId,
+                    cmbItemCode.getValue()
+            );
+            orderList.add(orderDetails);
+            netAmount += repairTm.getTotalAmount();
+        }
+
+
+        Repair repair = new Repair(
+                lblRepairId.getText(),
+                repairTm.getVehicleNo(),
+                repairTm.getDescription(),
+                Date.valueOf(dpRepairDate.getValue()),
+                repairTm.getRepairCost(),
+                cmbEmployeeId.getValue(),
+                cmbItemCode.getValue(),
+                repairTm.getQty(),
+                repairTm.getUnitPrice(),
+                netAmount
+        );
+
+        payment = new Payment(
+                payment.getPaymentId(),
+                customerId,
+                orderId,
+                lblRepairId.getText(),
+                netAmount,
+                Date.valueOf(lblDate.getText())
+        );
+
+        RepairDetails repairDetails = new RepairDetails(order, orderList, repair,payment);
+
+        try {
+            boolean isRepairDone = RepairDetailsRepo.addNewRepair(repairDetails);
+            if (isRepairDone) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Repair Done And Generate Your Bill").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Something went wrong").show();
+            }
+        }catch (SQLException e){
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }
     }
 
     @FXML

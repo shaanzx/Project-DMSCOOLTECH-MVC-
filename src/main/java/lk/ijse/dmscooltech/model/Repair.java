@@ -15,6 +15,7 @@ public class Repair {
     private String description;
     private Date repairDate;
     private double repairCost;
+    private  String employeeId;
     private String itemCode;
     private int qty;
     private double unitPrice;
