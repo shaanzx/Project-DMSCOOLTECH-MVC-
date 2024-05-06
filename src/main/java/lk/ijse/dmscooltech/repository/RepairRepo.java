@@ -53,9 +53,9 @@ public class RepairRepo {
         preparedStatement.setDouble(5, repair.getRepairCost());
         preparedStatement.setString(6,repair.getEmployeeId());
         preparedStatement.setString(7,repair.getItemCode());
-        preparedStatement.setString(6, String.valueOf(repair.getQty()));
-        preparedStatement.setString(6, String.valueOf(repair.getUnitPrice()));
-        preparedStatement.setString(6, String.valueOf(repair.getTotalAmount()));
+        preparedStatement.setString(8, String.valueOf(repair.getQty()));
+        preparedStatement.setString(9, String.valueOf(repair.getUnitPrice()));
+        preparedStatement.setString(10, String.valueOf(repair.getTotalAmount()));
 
         return preparedStatement.executeUpdate()>0;
     }

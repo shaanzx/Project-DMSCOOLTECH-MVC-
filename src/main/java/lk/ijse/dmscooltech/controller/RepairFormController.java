@@ -114,11 +114,8 @@ public class RepairFormController implements Initializable {
     VehicleRepo vehicleRepo = new VehicleRepo();
     EmployeeRepo employeeRepo = new EmployeeRepo();
     OrderRepo orderRepo = new OrderRepo();
-    Vehicle vehicle = new Vehicle();
     Order order = new Order();
     RepairTm repairTm = new RepairTm();
-    Payment payment = new Payment();
-
     private ObservableList<RepairTm> addToCartRepairList = FXCollections.observableArrayList();
 
 
@@ -280,10 +277,11 @@ public class RepairFormController implements Initializable {
     @FXML
     void btnConfirmRepairBillOnAction(ActionEvent event) throws SQLException {
         String orderId = lblOrderId.getText();
-        String customerId = vehicle.getCustomerId();
+        Vehicle vehicle = VehicleRepo.searchVehicle(cmbVehicleNo.getValue());
+
         Date date = Date.valueOf(lblDate.getText());
 
-        order = new Order(orderId, customerId, date);
+        order = new Order(orderId, vehicle.getCustomerId(), date);
 
         List<OrderDetails> orderList = new ArrayList<>();
         double netAmount = 0;
@@ -316,13 +314,13 @@ public class RepairFormController implements Initializable {
                 netAmount
         );
 
-        payment = new Payment(
-                payment.getPaymentId(),
-                customerId,
+      Payment  payment = new Payment(
+                PaymentRepo.generatePaymentId(),
+                vehicle.getCustomerId(),
                 orderId,
                 lblRepairId.getText(),
                 netAmount,
-                Date.valueOf(lblDate.getText())
+              Date.valueOf(lblDate.getText())
         );
 
         RepairDetails repairDetails = new RepairDetails(order, orderList, repair,payment);

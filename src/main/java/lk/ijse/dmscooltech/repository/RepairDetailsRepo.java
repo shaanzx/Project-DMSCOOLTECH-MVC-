@@ -13,14 +13,19 @@ public class RepairDetailsRepo {
 
         try {
             boolean isOrderSaved = OrderRepo.saveOrder(repairDetails.getOrder());
+            System.out.println(isOrderSaved);
             if (isOrderSaved) {
                 boolean isOrderDetailsSaved = OrderDetailsRepo.saveOrderDetails(repairDetails.getOrderDetails());
+                System.out.println(isOrderDetailsSaved);
                 if (isOrderDetailsSaved) {
                     boolean isItemUpdated = ItemRepo.updateItemQty(repairDetails.getOrderDetails());
+                    System.out.println(isItemUpdated+"Item");
                     if (isItemUpdated) {
                         boolean isRepairSaved = RepairRepo.saveRepair(repairDetails.getRepair());
+                        System.out.println(isRepairSaved+"Repair");
                         if (isRepairSaved) {
                             boolean isPaymentSaved = PaymentRepo.savePayment(repairDetails.getPayment());
+                            System.out.println(isPaymentSaved+"Payment");
                             if (isPaymentSaved) {
                                 connection.commit();
                                 return true;

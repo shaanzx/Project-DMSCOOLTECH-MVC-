@@ -15,5 +15,5 @@ public class Payment {
     private String orderId;
     private String repairId;
     private double totalAmount;
-    private Date paymentDate;
+    private Date  paymentDate;
 }

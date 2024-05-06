@@ -44,14 +44,16 @@ public class PaymentRepo {
     }
 
     public static boolean savePayment(Payment payment) throws SQLException {
-        String sql = "INSERT INTO payment VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO payment VALUES(?,?,?,?,?,?)";
+        System.out.println(payment);
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, payment.getPaymentId());
         preparedStatement.setString(2, payment.getCustomerId());
         preparedStatement.setString(3, payment.getOrderId());
-        preparedStatement.setDouble(4, payment.getTotalAmount());
-        preparedStatement.setString(5, String.valueOf(payment.getPaymentDate()));
+        preparedStatement.setString(4, payment.getRepairId());
+        preparedStatement.setDouble(5, payment.getTotalAmount());
+        preparedStatement.setString(6, String.valueOf(payment.getPaymentDate()));
         return preparedStatement.executeUpdate() > 0;
     }
 }
