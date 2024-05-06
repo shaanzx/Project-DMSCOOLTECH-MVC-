@@ -128,13 +128,11 @@ create table repair(
                        foreign key(pId) references payment(pId) on update cascade on delete cascade,*/
                        iCode varchar(5),
                        foreign key(iCode) references item(iCode) on update cascade on delete cascade,
-                       qty int(5),
-                       unitPrice decimal(10,2),
                        totalPrice decimal(10,2)
 );
-INSERT INTO repair(rId,vNo,description,repairDate,repairCost,eId,iCode,qty,unitPrice,totalPrice)VALUES
-                    ('R001','KP-1111','Repair Cooler','20230421',5000,'E001','I002',1,15000,20000),
-                    ('R002','PB-2048','Repair Condenser','20230421',4500,'E002','I001',1,7000,11500);
+INSERT INTO repair(rId,vNo,description,repairDate,repairCost,eId,iCode,totalPrice)VALUES
+                    ('R001','KP-1111','Repair Cooler','20230421',5000,'E001','I002',20000),
+                    ('R002','PB-2048','Repair Condenser','20230421',4500,'E002','I001',11500);
 
 create table payment(
                         pId varchar(5) primary key,

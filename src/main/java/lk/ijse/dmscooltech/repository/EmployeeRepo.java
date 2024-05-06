@@ -122,7 +122,7 @@ public class EmployeeRepo {
         return employee;
     }
 
-    public List<String> getEmployeeId() throws SQLException {
+    public static List<String> getEmployeeId() throws SQLException {
         List<String> employeeIds = new ArrayList<>();
 
         String sql = "SELECT eId FROM employee";

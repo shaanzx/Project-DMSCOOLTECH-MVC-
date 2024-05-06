@@ -22,7 +22,7 @@ public class OrderRepo {
         return preparedStatement.executeUpdate()>0;
     }
 
-    public String generateNextOrderId() throws SQLException {
+    public static String generateNextOrderId() throws SQLException {
         String sql = "SELECT oId FROM orders ORDER BY oId DESC LIMIT 1";
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -35,7 +35,7 @@ public class OrderRepo {
         return nextOrderId(null);
     }
 
-    private String nextOrderId(String currentOrderId) {
+    private static String nextOrderId(String currentOrderId) {
         String nextOrderId=null;
         if (currentOrderId==null){
             nextOrderId="OR001";

@@ -87,7 +87,7 @@ public class VehicleRepo {
         return vehicle;
     }
 
-    public List<String> getVehicleNo() throws SQLException {
+    public static List<String> getVehicleNo() throws SQLException {
         String sql = "SELECT vNo FROM vehicle";
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
         ResultSet resultSet = preparedStatement.executeQuery();

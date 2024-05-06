@@ -110,20 +110,15 @@ public class RepairFormController implements Initializable {
 
     @FXML
     private TextField txtRepairDescription;
-    RepairRepo repairRepo = new RepairRepo();
-    VehicleRepo vehicleRepo = new VehicleRepo();
-    EmployeeRepo employeeRepo = new EmployeeRepo();
-    OrderRepo orderRepo = new OrderRepo();
-    Order order = new Order();
-    RepairTm repairTm = new RepairTm();
+
     private ObservableList<RepairTm> addToCartRepairList = FXCollections.observableArrayList();
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-           lblRepairId.setText(repairRepo.generateRepairId());
-            lblOrderId.setText(orderRepo.generateNextOrderId());
+           lblRepairId.setText(RepairRepo.generateRepairId());
+            lblOrderId.setText(OrderRepo.generateNextOrderId());
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -169,7 +164,7 @@ public class RepairFormController implements Initializable {
     private void getEmployeeId() {
         ObservableList<String> employeeList = FXCollections.observableArrayList();
         try {
-            List<String> employeeIdList = employeeRepo.getEmployeeId();
+            List<String> employeeIdList = EmployeeRepo.getEmployeeId();
             for(String id : employeeIdList){
                 employeeList.add(id);
             }
@@ -183,7 +178,7 @@ public class RepairFormController implements Initializable {
         ObservableList<String> vehicleList = FXCollections.observableArrayList();
 
         try {
-            List<String> vehicleNoList = vehicleRepo.getVehicleNo();
+            List<String> vehicleNoList = VehicleRepo.getVehicleNo();
             for(String no : vehicleNoList){
                 vehicleList.add(no);
             }
@@ -281,7 +276,7 @@ public class RepairFormController implements Initializable {
 
         Date date = Date.valueOf(lblDate.getText());
 
-        order = new Order(orderId, vehicle.getCustomerId(), date);
+       Order order = new Order(orderId, vehicle.getCustomerId(), date);
 
         List<OrderDetails> orderList = new ArrayList<>();
         double netAmount = 0;
@@ -303,14 +298,12 @@ public class RepairFormController implements Initializable {
 
         Repair repair = new Repair(
                 lblRepairId.getText(),
-                repairTm.getVehicleNo(),
-                repairTm.getDescription(),
+                vehicle.getVehicleNo(),
+                txtRepairDescription.getText(),
                 Date.valueOf(dpRepairDate.getValue()),
-                repairTm.getRepairCost(),
+                Double.valueOf(txtRepairCost.getText()),
                 cmbEmployeeId.getValue(),
                 cmbItemCode.getValue(),
-                repairTm.getQty(),
-                repairTm.getUnitPrice(),
                 netAmount
         );
 
@@ -373,7 +366,7 @@ public class RepairFormController implements Initializable {
     void cmbVehicleNoOnAction(ActionEvent event) {
         String vehicleNo = cmbVehicleNo.getValue();
         try {
-            Vehicle vehicle = vehicleRepo.searchVehicle(vehicleNo);
+            Vehicle vehicle = VehicleRepo.searchVehicle(vehicleNo);
             Customer customer = CustomerRepo.searchCustomer(vehicle.getCustomerId());
             String name = customer.getName();
             lblCustomerName.setText(name);

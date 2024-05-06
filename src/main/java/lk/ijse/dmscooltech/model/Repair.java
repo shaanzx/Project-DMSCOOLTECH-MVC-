@@ -17,7 +17,5 @@ public class Repair {
     private double repairCost;
     private  String employeeId;
     private String itemCode;
-    private int qty;
-    private double unitPrice;
     private double totalAmount;
 }
