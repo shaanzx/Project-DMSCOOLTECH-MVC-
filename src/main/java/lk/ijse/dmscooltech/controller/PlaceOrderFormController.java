@@ -173,12 +173,14 @@ public class PlaceOrderFormController implements Initializable {
                 calculateNetAmount();
             }
         });
-        for(int i = 0; i < cartList.size(); i++){
+        for(int i = 0; i < tblOrderDetail.getItems().size(); i++){
             if(itemCode.equals(colItemCode.getCellData(i))){
                 qty += cartList.get(i).getQty();
                 totalAmount = unitPrice * qty;
+
                 cartList.get(i).setQty(qty);
                 cartList.get(i).setTotalAmount(totalAmount);
+
                 tblOrderDetail.refresh();
                 calculateNetAmount();
                 txtQty.clear();

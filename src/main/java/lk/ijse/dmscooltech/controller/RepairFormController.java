@@ -220,15 +220,15 @@ public class RepairFormController implements Initializable {
         int qty = Integer.parseInt(txtQty.getText());
         double unitPrice = Double.parseDouble(lblUnitPrice.getText());
         double totalAmount = repairCost+(qty*unitPrice);
-        JFXButton btnDelete = new JFXButton("Delete");
+        JFXButton btnDelete = new JFXButton("Remove");
         btnDelete.setCursor(Cursor.HAND);
 
-        btnDelete.setOnAction(e -> {
+        btnDelete.setOnAction((e)->{
             ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
             ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
 
             Optional<ButtonType> type = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure to delete?", yes, no).showAndWait();
-            if (type.orElse(no) == yes) {
+            if(type.orElse(no) == yes){
                 int index = tblRepairDetails.getSelectionModel().getSelectedIndex();
                 addToCartRepairList.remove(index);
                 tblRepairDetails.refresh();
@@ -254,7 +254,6 @@ public class RepairFormController implements Initializable {
             }
         }
         RepairTm repair = new RepairTm(vehicleNo, description, repairDate,   repairCost, itemCode, qty, unitPrice, totalAmount, btnDelete);
-        System.out.println(repair);
         addToCartRepairList.add(repair);
         tblRepairDetails.setItems(addToCartRepairList);
         txtQty.clear();
@@ -280,6 +279,7 @@ public class RepairFormController implements Initializable {
 
         List<OrderDetails> orderList = new ArrayList<>();
         double netAmount = 0;
+        double orderAmount = 0;
 
         for(int i=0; i < tblRepairDetails.getItems().size(); i++){
             RepairTm repairTm = addToCartRepairList.get(i);
@@ -287,7 +287,7 @@ public class RepairFormController implements Initializable {
             OrderDetails orderDetails = new OrderDetails(
                     date,
                     repairTm.getQty(),
-                    repairTm.getTotalAmount(),
+                    orderAmount += repairTm.getQty() * repairTm.getUnitPrice(),
                     orderId,
                     repairTm.getItemCode()
             );
