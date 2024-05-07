@@ -91,4 +91,8 @@ public class GlobalFormController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void imgUserOnAction(MouseEvent mouseEvent) {
+
+    }
 }
