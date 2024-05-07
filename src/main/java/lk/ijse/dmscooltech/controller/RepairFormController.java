@@ -235,7 +235,7 @@ public class RepairFormController implements Initializable {
                 calculateNetAmount();
             }
         });
-        for (int i = 0; i < addToCartRepairList.size(); i++) {
+        for (int i = 0; i < tblRepairDetails.getItems().size(); i++) {
             /*if(i == 0){
                 totalAmount = repairCost+(qty*unitPrice);
             } else if (i > 0) {
@@ -289,7 +289,7 @@ public class RepairFormController implements Initializable {
                     repairTm.getQty(),
                     repairTm.getTotalAmount(),
                     orderId,
-                    cmbItemCode.getValue()
+                    repairTm.getItemCode()
             );
             orderList.add(orderDetails);
             netAmount += repairTm.getTotalAmount();
