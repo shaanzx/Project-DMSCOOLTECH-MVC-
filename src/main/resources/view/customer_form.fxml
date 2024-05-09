@@ -85,7 +85,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCusTel" layoutX="680.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;">
+      <TextField fx:id="txtCusTel" layoutX="680.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;" text="+94">
          <font>
             <Font size="16.0" />
          </font></TextField>
@@ -161,5 +161,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
+      <Label fx:id="customerNameValidate" layoutX="696.0" layoutY="138.0" prefHeight="17.0" prefWidth="224.0" textFill="#7c0d0d" />
+      <Label fx:id="customerAddressValidate" layoutX="156.0" layoutY="208.0" prefHeight="17.0" prefWidth="224.0" textFill="#7c0d0d" />
+      <Label fx:id="customerEmailValidate" layoutX="156.0" layoutY="278.0" prefHeight="17.0" prefWidth="224.0" textFill="#7c0d0d" />
+      <Label fx:id="customerTelValidate" layoutX="696.0" layoutY="208.0" prefHeight="17.0" prefWidth="224.0" textFill="#7c0d0d" />
    </children>
 </Pane>

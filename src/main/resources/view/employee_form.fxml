@@ -15,14 +15,9 @@
 
 <Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="978.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.EmployeeFormController">
    <children>
-      <ImageView fitHeight="978.0" fitWidth="598.0" layoutX="190.0" layoutY="-190.0" rotate="90.0">
+      <ImageView fitHeight="598.0" fitWidth="978.0" opacity="0.5">
          <image>
-            <Image url="@../asset/Dashboard_Background.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="273.0" opacity="0.2">
-         <image>
-            <Image url="@../asset/Autotech(2)-Photoroom.png-Photoroom.png" />
+            <Image url="@../asset/Shan.jpg" />
          </image>
       </ImageView>
       <Label layoutX="760.0" layoutY="20.0" text="Date :- ">

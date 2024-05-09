@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Customer;
 import lk.ijse.dmscooltech.model.tm.CustomerTm;
 import lk.ijse.dmscooltech.repository.CustomerRepo;
+import lk.ijse.dmscooltech.util.DataValidateController;
 import lk.ijse.dmscooltech.util.Navigation;
 
 import java.io.IOException;
@@ -67,6 +68,18 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     private Label lblDate;
+
+    @FXML
+    private Label customerAddressValidate;
+
+    @FXML
+    private Label customerEmailValidate;
+
+    @FXML
+    private Label customerNameValidate;
+
+    @FXML
+    private Label customerTelValidate;
 
     CustomerRepo customerRepo = new CustomerRepo();
 
@@ -136,19 +149,40 @@ public class CustomerFormController implements Initializable {
         String address = txtCusAddress.getText();
         String tel = txtCusTel.getText();
         String email = txtCusEmail.getText();
-        String userId = LoginFormController.getInstance().userId;
+        String userId = NewLoginFormController.getInstance().userId;
 
         Customer customer = new Customer(id, name, address, tel, email, userId);
-        try {
-            boolean isSaved = customerRepo.saveCustomer(customer);
-            if(isSaved) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Customer is Saved").show();
-                loadCustomerTable();
-                clearTextFields();
-                CustomerRepo.generateNextCustomerId();
+
+        if(DataValidateController.validateCustomerName(txtCusName.getText())) {
+            customerNameValidate.setText("");
+            if (DataValidateController.validateCustomerAddress(txtCusAddress.getText())) {
+                customerAddressValidate.setText("");
+            if (DataValidateController.validateCustomerTel(txtCusTel.getText())) {
+                customerTelValidate.setText("");
+                    if (DataValidateController.validateCustomerEmail(txtCusEmail.getText())) {
+                        customerEmailValidate.setText("");
+                        try {
+                            boolean isSaved = customerRepo.saveCustomer(customer);
+                            if (isSaved) {
+                                new Alert(Alert.AlertType.CONFIRMATION, "Customer is Saved").show();
+                                loadCustomerTable();
+                                clearTextFields();
+                                CustomerRepo.generateNextCustomerId();
+                            }
+                        } catch (SQLException e) {
+                            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        }
+                    } else {
+                        customerEmailValidate.setText("Invalid Email");
+                    }
+            } else {
+                customerTelValidate.setText("Invalid Telephone Number");
+                }
+            } else {
+                customerAddressValidate.setText("Invalid Address");
             }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+        }else{
+            customerNameValidate.setText("Invalid Name");
         }
     }
 
@@ -167,7 +201,7 @@ public class CustomerFormController implements Initializable {
         String address = txtCusAddress.getText();
         String tel = txtCusTel.getText();
         String email = txtCusEmail.getText();
-        String userId = LoginFormController.getInstance().userId;
+        String userId = NewLoginFormController.getInstance().userId;
 
         Customer customer = new Customer(id, name, address, tel, email, userId);
         try {
