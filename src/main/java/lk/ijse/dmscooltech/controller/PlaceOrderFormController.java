@@ -13,20 +13,21 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.*;
 import lk.ijse.dmscooltech.model.tm.AddToCartTm;
 import lk.ijse.dmscooltech.repository.*;
 import lk.ijse.dmscooltech.util.Navigation;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class PlaceOrderFormController implements Initializable {
 
@@ -230,7 +231,6 @@ public class PlaceOrderFormController implements Initializable {
                     orderAmount += addToCartTm.getQty()*addToCartTm.getUnitPrice()
             );
             orderList.add(orderDetails);
-            System.out.println(orderDetails);
 
             netAmount += addToCartTm.getTotalAmount();
         }
@@ -242,7 +242,22 @@ public class PlaceOrderFormController implements Initializable {
         try {
             boolean isOrderPlaced = PlaceOrderRepo.orderPlace(orderPlace);
             if (isOrderPlaced) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Order Placed Successfully").show();
+                //new Alert(Alert.AlertType.CONFIRMATION, "Order Placed Successfully").show();
+                ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Optional<ButtonType> result = new Alert(Alert.AlertType.CONFIRMATION, "Order Completed.Do you want to generate a bill?", yes, no).showAndWait();
+
+                if (result.orElse(no) == yes) {
+                    Map<String, Object> parameters = new HashMap<>();
+                    InputStream resource = this.getClass().getResourceAsStream("/reports/dmscooltech.jrxml");
+                    try{
+                        JasperReport jasperReport = JasperCompileManager.compileReport(resource);
+                        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameters,DbConnection.getInstance().getConnection());
+                        JasperViewer.viewReport(jasperPrint, false);
+                    }catch (JRException e){
+                        throw new RuntimeException(e);
+                    }
+                }
             } else {
                 new Alert(Alert.AlertType.WARNING, "Something went wrong. Please try again").show();
             }
