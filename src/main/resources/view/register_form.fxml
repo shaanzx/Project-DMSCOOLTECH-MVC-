@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -45,5 +46,7 @@
          </font></JFXButton>
       <PasswordField fx:id="txtPassword" layoutX="23.0" layoutY="370.0" prefHeight="30.0" prefWidth="400.0" promptText="Input password" styleClass="username-text" stylesheets="@../values/style.css" />
       <PasswordField fx:id="txtRePassword" layoutX="23.0" layoutY="445.0" prefHeight="30.0" prefWidth="400.0" promptText="Re-enter password" styleClass="username-text" stylesheets="@../values/style.css" />
+      <Label fx:id="userNameValidate" layoutX="40.0" layoutY="325.0" prefHeight="17.0" prefWidth="316.0" textFill="#860e0e" />
+      <Label fx:id="passwordValidate" layoutX="40.0" layoutY="402.0" prefHeight="17.0" prefWidth="316.0" textFill="#860e0e" />
    </children>
 </AnchorPane>

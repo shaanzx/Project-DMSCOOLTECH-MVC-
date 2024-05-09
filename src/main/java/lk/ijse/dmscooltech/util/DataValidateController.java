@@ -101,4 +101,18 @@ public class DataValidateController {
         Matcher matcher = pattern.matcher(type);
         return matcher.matches();
     }
+
+    //User Class
+    public static boolean validateUserName(String name){
+        String nameRegex = "^[A-z|\\s]{3,}$";
+        Pattern pattern = Pattern.compile(nameRegex);
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
+    public static boolean validateUserPassword(String password){
+        String passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+        Pattern pattern = Pattern.compile(passwordRegex);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
 }

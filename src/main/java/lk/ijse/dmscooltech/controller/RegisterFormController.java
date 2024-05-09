@@ -5,11 +5,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.dmscooltech.db.DbConnection;
+import lk.ijse.dmscooltech.model.DashBoard;
 import lk.ijse.dmscooltech.model.User;
 import lk.ijse.dmscooltech.repository.UserRepo;
+import lk.ijse.dmscooltech.util.DataValidateController;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -37,6 +40,12 @@ public class RegisterFormController implements Initializable {
     @FXML
     private TextField txtUserName;
 
+    @FXML
+    private Label passwordValidate;
+
+    @FXML
+    private Label userNameValidate;
+
     UserRepo userRepo = new UserRepo();
 
     @Override
@@ -56,18 +65,29 @@ public class RegisterFormController implements Initializable {
         String rePw = txtRePassword.getText();
 
         User user = new User(uId, uName, password);
-        try {
-        boolean isSaved = UserRepo.userSave(user);
-        if(isSaved) {
-            new Alert(Alert.AlertType.CONFIRMATION, "Successfully Saved!").show();
-            txtUserId.clear();
-            txtUserName.clear();
-            txtPassword.clear();
-            txtRePassword.clear();
-            txtUserId.requestFocus();
-        }
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,"Already exists").show();
+
+        if(DataValidateController.validateUserName(txtUserName.getText())) {
+            userNameValidate.setText("");
+            if (DataValidateController.validateUserPassword(txtPassword.getText())) {
+                passwordValidate.setText("");
+                try {
+                    boolean isSaved = UserRepo.userSave(user);
+                    if (isSaved) {
+                        new Alert(Alert.AlertType.CONFIRMATION, "Successfully Saved!").show();
+                        txtUserId.clear();
+                        txtUserName.clear();
+                        txtPassword.clear();
+                        txtRePassword.clear();
+                        txtUserId.requestFocus();
+                    }
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, "Already exists").show();
+                }
+            } else {
+                passwordValidate.setText("Input any character and try again!");
+            }
+        }else{
+            userNameValidate.setText("Invalid User Name and try again!");
         }
     }
 
