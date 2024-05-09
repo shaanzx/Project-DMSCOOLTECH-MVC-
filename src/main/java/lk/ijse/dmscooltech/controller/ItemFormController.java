@@ -166,12 +166,13 @@ public class ItemFormController implements Initializable {
                 if (DataValidateController.validateItemQty(txtQytOnHand.getText())) {
                     itemQtyValidate.setText("");
                     if (DataValidateController.validateItemPrice(txtUnitPrice.getText())) {
-                        itemNameValidate.setText("");
+                        itemUnitPriceValidate.setText("");
                         try {
                             boolean isSaved = itemRepo.saveItem(item);
                             if (isSaved) {
                                 new Alert(Alert.AlertType.INFORMATION, "Saved").show();
                                 loadItemsTable();
+                                textFieldClear();
                             } else {
                                 new Alert(Alert.AlertType.ERROR, "Not Saved").show();
                             }
@@ -179,7 +180,7 @@ public class ItemFormController implements Initializable {
                             throw new RuntimeException(e);
                         }
                     } else {
-                        itemNameValidate.setText("Invalid Price");
+                        itemUnitPriceValidate.setText("Invalid Price");
                     }
                 } else {
                     itemQtyValidate.setText("Invalid Quantity");
@@ -208,6 +209,7 @@ public class ItemFormController implements Initializable {
             if(isUpdated) {
                 new Alert(Alert.AlertType.INFORMATION, "Item Updated").show();
                 loadItemsTable();
+                textFieldClear();
             }
         }catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -223,6 +225,7 @@ public class ItemFormController implements Initializable {
             if(isDeleted) {
                 new Alert(Alert.AlertType.INFORMATION, "Item Deleted").show();
                 loadItemsTable();
+                textFieldClear();
             }
         }catch (SQLException e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -262,5 +265,13 @@ public class ItemFormController implements Initializable {
         dpDate.setValue(LocalDate.parse(columns.get(5).getCellData(row).toString()));
 
         tblItem.setCursor(Cursor.HAND);
+    }
+    public void textFieldClear() {
+        txtItemCode.clear();
+        txtItemName.clear();
+        txtVehicleModel.clear();
+        txtQytOnHand.clear();
+        txtUnitPrice.clear();
+        dpDate.setValue(null);
     }
 }

@@ -58,7 +58,7 @@ public class DataValidateController {
 
     //Item class
     public static boolean validateItemName(String name){
-        String nameRegex = "^([A-z0-9]|[-/,.@+]|\\s){4,}$";
+        String nameRegex = "^[A-z|\\s]{3,}$";
         Pattern pattern = Pattern.compile(nameRegex);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
@@ -84,7 +84,7 @@ public class DataValidateController {
 
     //Vehicle class
     public static boolean validateVehicleNo(String no){
-        String vehicleNoRegex = "^[A-Z]{2}[0-9]{4}[A-Z]{2}|[-]|\\s{1,}$";
+        String vehicleNoRegex = "^[A-Z]{2,3}[-]\\d{4}$";
         Pattern pattern = Pattern.compile(vehicleNoRegex);
         Matcher matcher = pattern.matcher(no);
         return matcher.matches();

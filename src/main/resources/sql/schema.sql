@@ -179,4 +179,17 @@ create table supplierDetails(
 );
 INSERT INTO supplierDetails(itemName,itemPrice,itemQty,innovice,supplyDate,supId,iCode)VALUES
                                                                                            ('condensor',5000,10,'IN001',20240201,'S001','I001'),
-                                                                                           ('cooler',10000,5,'IN002',20240201,'S002','I002');
+                                                                                           ('cooler',10000,5,'IN002',20240201,'S002','I002')
+
+/*select item.iName,customer.name,iPrice,orderdetails.qty,(item.iPrice*orderdetails.qty) AS value
+FROM orderdetails
+         INNER JOIN orders
+                    ON orderdetails.oId=orders.oId
+         INNER JOIN item
+                    ON item.iCode=orderdetails.iCode
+         INNER JOIN payment
+                    ON payment.oId=orders.oId
+        INNER JOIN customer
+                    ON customer.cId=orders.cId
+WHERE orders.oId=(select max(orders.oId ) FROM orders)
+ORDER BY orderdetails.oId desc;*/
