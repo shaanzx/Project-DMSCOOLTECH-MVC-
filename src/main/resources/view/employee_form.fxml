@@ -16,9 +16,9 @@
 
 <Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="978.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.EmployeeFormController">
    <children>
-      <ImageView fitHeight="578.0" fitWidth="978.0" layoutY="20.0" opacity="0.5">
+      <ImageView fitHeight="500.0" fitWidth="500.0" layoutX="250.0" layoutY="40.0" opacity="0.4">
          <image>
-            <Image url="@../asset/Shan.jpg" />
+            <Image url="@../asset/Employee.jpg" />
          </image>
       </ImageView>
       <Label layoutX="770.0" layoutY="35.0" text="Date :- ">

@@ -19,9 +19,9 @@
 
 <Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="978.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.PlaceOrderFormController">
    <children>
-      <ImageView fitHeight="383.0" fitWidth="400.0" layoutX="283.0" layoutY="17.0" opacity="0.5">
+      <ImageView fitHeight="550.0" fitWidth="600.0" layoutX="200.0" layoutY="-60.0" opacity="0.4">
          <image>
-            <Image url="@../asset/Autotech(2)-Photoroom.png-Photoroom.png" />
+            <Image url="@../asset/Order.jpg" />
          </image>
       </ImageView>
       <Label layoutX="770.0" layoutY="35.0" text="Date :- ">

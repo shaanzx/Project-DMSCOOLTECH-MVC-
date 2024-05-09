@@ -17,9 +17,14 @@
 
 <Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="978.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.VehicleFormController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="283.0" layoutY="10.0" opacity="0.2">
+      <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="650.0" layoutY="50.0" opacity="0.5">
          <image>
-            <Image url="@../asset/Autotech(2)-Photoroom.png-Photoroom.png" />
+            <Image url="@../asset/Vehi.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="450.0" fitWidth="600.0" layoutX="150.0" opacity="0.5">
+         <image>
+            <Image url="@../asset/Vehicle.png" />
          </image>
       </ImageView>
       <Label layoutX="770.0" layoutY="35.0" text="Date :- ">
