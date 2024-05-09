@@ -11,27 +11,18 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="978.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.CustomerFormController">
    <children>
-      <ImageView fitHeight="978.0" fitWidth="598.0" layoutX="190.0" layoutY="-190.0" rotate="90.0">
-         <image>
-            <Image url="@../asset/Dashboard_Background.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="273.0" opacity="0.2">
-         <image>
-            <Image url="@../asset/Autotech(2)-Photoroom.png-Photoroom.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="810.0" layoutY="20.0" text="Date :- ">
+      <Label layoutX="770.0" layoutY="20.0" text="Date :- ">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="lblDate" layoutX="885.0" layoutY="20.0">
+      <Label fx:id="lblDate" layoutX="845.0" layoutY="20.0" textFill="#11585e82">
          <font>
             <Font name="Cambria" size="16.0" />
          </font>
@@ -48,7 +39,7 @@
             <Point3D />
          </rotationAxis>
       </TableView>
-      <Text fill="#8ffffd00" layoutX="313.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="CUSTOMER MANAGEMENT" underline="true">
+      <Text fill="#279ca4" layoutX="313.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="CUSTOMER MANAGEMENT" underline="true">
          <font>
             <Font name="Cambria" size="30.0" />
          </font>
@@ -89,7 +80,7 @@
          <font>
             <Font size="16.0" />
          </font></TextField>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="615.0" layoutY="320.0" onAction="#btnCusDeleteOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" styleClass="delete-button" stylesheets="@../values/style.css" text="Delete" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="615.0" layoutY="320.0" onAction="#btnCusDeleteOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #11585e;" styleClass="delete-button" stylesheets="@../values/style.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -104,7 +95,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="728.0" layoutY="320.0" onAction="#btnCusUpdateOnAction" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: green;" text="Update  " textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="728.0" layoutY="320.0" onAction="#btnCusUpdateOnAction" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #0e2f68;" text="Update  " textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -119,7 +110,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="855.0" layoutY="320.0" onAction="#btnCusSaveOnAction" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: blue;" text="Save" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="855.0" layoutY="320.0" onAction="#btnCusSaveOnAction" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #7ed6df;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -165,5 +156,6 @@
       <Label fx:id="customerAddressValidate" layoutX="156.0" layoutY="208.0" prefHeight="17.0" prefWidth="224.0" textFill="#7c0d0d" />
       <Label fx:id="customerEmailValidate" layoutX="156.0" layoutY="278.0" prefHeight="17.0" prefWidth="224.0" textFill="#7c0d0d" />
       <Label fx:id="customerTelValidate" layoutX="696.0" layoutY="208.0" prefHeight="17.0" prefWidth="224.0" textFill="#7c0d0d" />
+      <Line endX="950.0" layoutY="70.0" stroke="#7ed6df" strokeWidth="5.0" />
    </children>
 </Pane>

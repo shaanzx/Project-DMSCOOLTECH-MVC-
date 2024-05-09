@@ -3,10 +3,7 @@ package lk.ijse.dmscooltech.repository;
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.Order;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,5 +75,19 @@ public class OrderRepo {
             itemCodes.add(resultSet.getString(1));
         }
         return itemCodes;
+    }
+
+    public int countOrderId() throws SQLException {
+        String sql = "SELECT COUNT(oId) from orders";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()) {
+            int idd = Integer.parseInt(resultSet.getString(1));
+            return idd;
+        }
+        return Integer.parseInt(null);
     }
 }

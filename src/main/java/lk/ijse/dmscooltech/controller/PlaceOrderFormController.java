@@ -311,6 +311,7 @@ public class PlaceOrderFormController implements Initializable {
 
     @FXML
     void btnViewOrderDetailsOnAction(ActionEvent event) throws IOException {
-        FXMLLoader.load(this.getClass().getResource("../view/OrderDetailsForm.fxml"));
+        //FXMLLoader.load(this.getClass().getResource("../view/OrderDetailsForm.fxml"));
+        Navigation.changeStage("/view/viewOrders_Form.fxml","Order Details Form");
     }
 }

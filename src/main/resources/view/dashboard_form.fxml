@@ -1,68 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="950.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.DashboardFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="154.0" layoutX="99.0" layoutY="39.0" stroke="#a9b3d6" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="350.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.2078431397676468" green="0.3803921639919281" blue="0.5137255191802979" opacity="0.6299999952316284" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill></Rectangle>
-      <Text layoutX="145.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Customer Count">
+      <Pane layoutX="116.0" layoutY="100.0" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: #c7ecee; -fx-background-radius: 35;">
+         <children>
+            <Text fontSmoothingType="LCD" layoutX="30.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Order Count">
+               <font>
+                  <Font name="Cambria" size="30.0" />
+               </font>
+            </Text>
+            <Label fx:id="lblOrderCount" layoutX="112.0" layoutY="45.0" text="Label" textFill="#1e26bf">
+               <font>
+                  <Font name="Cambria Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="545.0" layoutY="100.0" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: #c7ecee; -fx-background-radius: 35;">
+         <children>
+            <Text fontSmoothingType="LCD" layoutX="30.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Repair Count">
+               <font>
+                  <Font name="Cambria" size="30.0" />
+               </font>
+            </Text>
+            <Label fx:id="lblRepairCount" layoutX="114.0" layoutY="46.0" text="Label" textFill="#1e26bf">
+               <font>
+                  <Font name="Cambria Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Line endX="950.0" layoutY="70.0" stroke="#7ed6df" strokeWidth="5.0" />
+      <Pane layoutX="70.0" layoutY="235.0" prefHeight="350.0" prefWidth="400.0">
+         <children>
+            <PieChart fx:id="pieChart" prefHeight="353.0" prefWidth="403.0" />
+         </children>
+      </Pane>
+      <Label layoutX="24.0" layoutY="28.0" text="Welcome Back...">
          <font>
-            <Font name="Cambria" size="30.0" />
+            <Font name="Cambria" size="18.0" />
          </font>
-      </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="152.0" layoutX="495.0" layoutY="40.0" stroke="#a9b3d6" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="350.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.6299999952316284" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.2078431397676468" green="0.3803921639919281" blue="0.5137255191802979" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill></Rectangle>
-      <Text fx:id="txtCustomerCount" fill="#0f3f99" layoutX="231.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Count">
+      </Label>
+      <Pane layoutX="500.0" layoutY="235.0" prefHeight="350.0" prefWidth="400.0">
+         <children>
+            <BarChart fx:id="barChart" prefHeight="350.0" prefWidth="400.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+         </children>
+      </Pane>
+      <Label fx:id="lblDate" layoutX="784.0" layoutY="28.0" text="date">
          <font>
-            <Font name="Cambria" size="30.0" />
+            <Font name="Cambria" size="18.0" />
          </font>
-      </Text>
-      <Text fx:id="txtRepairCount" fill="#0f3f99" layoutX="636.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Count">
-         <font>
-            <Font name="Cambria" size="30.0" />
-         </font>
-      </Text>
-      <Text layoutX="556.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Repair Count">
-         <font>
-            <Font name="Cambria" size="30.0" />
-         </font>
-      </Text>
+      </Label>
    </children>
 </Pane>

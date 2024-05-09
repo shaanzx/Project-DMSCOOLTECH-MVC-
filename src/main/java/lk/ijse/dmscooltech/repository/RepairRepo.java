@@ -3,6 +3,7 @@ package lk.ijse.dmscooltech.repository;
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.Repair;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -56,5 +57,19 @@ public class RepairRepo {
         preparedStatement.setString(8, String.valueOf(repair.getTotalAmount()));
 
         return preparedStatement.executeUpdate()>0;
+    }
+
+    public int countRepairId() throws SQLException {
+        String sql = "SELECT COUNT(eId) from repair";
+
+        Connection connection = DbConnection.getInstance().getConnection();
+        PreparedStatement pstm = connection.prepareStatement(sql);
+
+        ResultSet resultSet = pstm.executeQuery();
+        if (resultSet.next()) {
+            int idd = Integer.parseInt(resultSet.getString(1));
+            return idd;
+        }
+        return Integer.parseInt(null);
     }
 }

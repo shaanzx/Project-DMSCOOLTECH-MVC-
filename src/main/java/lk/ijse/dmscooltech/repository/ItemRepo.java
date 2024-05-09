@@ -1,5 +1,8 @@
 package lk.ijse.dmscooltech.repository;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.Item;
 import lk.ijse.dmscooltech.model.OrderDetails;
@@ -38,6 +41,28 @@ public class ItemRepo {
         preparedStatement.setInt(1, orderDetail.getQty());
         preparedStatement.setString(2, orderDetail.getItemCode());
         return preparedStatement.executeUpdate() > 0;
+    }
+
+    public static ObservableList<XYChart.Series<String, Integer>> getDataToBarChart() throws SQLException {
+            Connection connection = DbConnection.getInstance().getConnection();
+            String sql="SELECT iName,qtyOnHand FROM item ";
+
+            ObservableList<XYChart.Series<String, Integer>> datalist = FXCollections.observableArrayList();
+
+            PreparedStatement pstm= connection.prepareStatement(sql);
+            ResultSet resultSet = pstm.executeQuery();
+
+            // Creating a new series object
+            XYChart.Series<String, Integer> series = new XYChart.Series<>();
+
+            while(resultSet.next()){
+                String itemName = resultSet.getString("name");
+                int itemQty = resultSet.getInt("qty");
+                series.getData().add(new XYChart.Data<>(itemName, itemQty));
+            }
+
+            datalist.add(series);
+            return datalist;
     }
 
     public String generateNextItemId() throws SQLException {

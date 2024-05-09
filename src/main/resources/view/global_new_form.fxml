@@ -23,7 +23,7 @@
                   <Image url="@../asset/Autotech(2)-Photoroom.png-Photoroom.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="btnDashboard" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="10.0" layoutY="140.0" onAction="#btnDashboardOnAction" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Dashboard" textAlignment="CENTER">
+            <JFXButton fx:id="btnDashboard" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="20.0" layoutY="140.0" onAction="#btnDashboardOnAction" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Dashboard" textAlignment="CENTER">
                <font>
                   <Font name="Cambria Bold" size="24.0" />
                </font>
@@ -38,7 +38,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnEmployee" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="10.0" layoutY="340.0" onAction="#btnEmployeeOnAction" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Employee ">
+            <JFXButton fx:id="btnEmployee" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="20.0" layoutY="340.0" onAction="#btnEmployeeOnAction" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Employee ">
                <font>
                   <Font size="36.0" />
                </font>
@@ -50,7 +50,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnStoke" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="10.0" layoutY="190.0" onAction="#btnStokeOnAction" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Stoke  ">
+            <JFXButton fx:id="btnStoke" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="20.0" layoutY="190.0" onAction="#btnStokeOnAction" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Stoke  ">
                <font>
                   <Font size="36.0" />
                </font>
@@ -62,7 +62,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnCustomer" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="10.0" layoutY="240.0" onAction="#btnCustomerOnAction" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Customer  ">
+            <JFXButton fx:id="btnCustomer" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="20.0" layoutY="240.0" onAction="#btnCustomerOnAction" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Customer  ">
                <font>
                   <Font size="36.0" />
                </font>
@@ -74,7 +74,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnOrder" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="10.0" layoutY="290.0" onAction="#btnOrderOnAction" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Order  ">
+            <JFXButton fx:id="btnOrder" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="20.0" layoutY="290.0" onAction="#btnOrderOnAction" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Order  ">
                <font>
                   <Font size="36.0" />
                </font>
@@ -98,7 +98,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnVehicle" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="10.0" layoutY="390.0" onAction="#btnVehicleOnAction" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Vehicle">
+            <JFXButton fx:id="btnVehicle" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="20.0" layoutY="390.0" onAction="#btnVehicleOnAction" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Vehicle">
                <font>
                   <Font size="36.0" />
                </font>
@@ -110,7 +110,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton fx:id="btnRepair" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="10.0" layoutY="440.0" onAction="#btnRepairOnAction" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Repair">
+            <JFXButton fx:id="btnRepair" alignment="CENTER_RIGHT" buttonType="RAISED" contentDisplay="RIGHT" layoutX="20.0" layoutY="440.0" onAction="#btnRepairOnAction" prefHeight="30.0" prefWidth="210.0" style="-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;" styleClass="dashboard-button" stylesheets="@../values/style.css" text="Repair">
                <font>
                   <Font size="36.0" />
                </font>
