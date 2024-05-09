@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Employee;
 import lk.ijse.dmscooltech.model.tm.EmployeeTm;
 import lk.ijse.dmscooltech.repository.EmployeeRepo;
+import lk.ijse.dmscooltech.util.DataValidateController;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -65,6 +66,19 @@ public class EmployeeFormController implements Initializable {
 
     @FXML
     private TextField txtEmpTel;
+
+    @FXML
+    private Label employeeAddressValidate;
+
+    @FXML
+    private Label employeeJobRoleValidate;
+
+    @FXML
+    private Label employeeNameValidate;
+
+    @FXML
+    private Label employeeTelValidate;
+
 
     EmployeeRepo employeeRepo = new EmployeeRepo();
 
@@ -147,15 +161,36 @@ public class EmployeeFormController implements Initializable {
         String empAddress = txtEmpAddress.getText();
         String empTel = txtEmpTel.getText();
         String empJobRole = txtEmpJobRole.getText();
-        String userId = LoginFormController.getInstance().userId;
+        String userId = NewLoginFormController.getInstance().userId;
 
         Employee employee = new Employee(empId, empName, empAddress, empTel, empJobRole, userId);
-        try {
-            boolean isSaved = employeeRepo.saveEmployee(employee);
-            new Alert(Alert.AlertType.CONFIRMATION, "Saved").show();
-            loadEmployeeTable();
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+
+        if(DataValidateController.validateEmployeeName(txtEmpName.getText())) {
+            employeeNameValidate.setText("");
+            if (DataValidateController.validateEmployeeAddress(txtEmpAddress.getText())) {
+                employeeAddressValidate.setText("");
+                if (DataValidateController.validateEmployeeTel(txtEmpTel.getText())) {
+                    employeeTelValidate.setText("");
+                    if (DataValidateController.validateEmployeeJobRole(txtEmpJobRole.getText())) {
+                        employeeJobRoleValidate.setText("");
+                        try {
+                            boolean isSaved = employeeRepo.saveEmployee(employee);
+                            new Alert(Alert.AlertType.CONFIRMATION, "Saved").show();
+                            loadEmployeeTable();
+                        } catch (SQLException e) {
+                            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        }
+                    } else {
+                        employeeJobRoleValidate.setText("Invalid Job Role");
+                    }
+                } else {
+                    employeeTelValidate.setText("Invalid Telephone Number");
+                }
+            } else {
+                employeeAddressValidate.setText("Invalid Address");
+            }
+        }else{
+            employeeNameValidate.setText("Invalid Name");
         }
     }
 
@@ -166,7 +201,7 @@ public class EmployeeFormController implements Initializable {
         String empAddress = txtEmpAddress.getText();
         String empTel = txtEmpTel.getText();
         String empJobRole = txtEmpJobRole.getText();
-        String userId = LoginFormController.getInstance().userId;
+        String userId = NewLoginFormController.getInstance().userId;
 
         Employee employee = new Employee(empId, empName, empAddress, empTel, empJobRole, userId);
         try {

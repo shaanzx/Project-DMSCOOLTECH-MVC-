@@ -145,5 +145,9 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
+      <Label fx:id="employeeNameValidate" layoutX="673.0" layoutY="138.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
+      <Label fx:id="employeeAddressValidate" layoutX="158.0" layoutY="209.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
+      <Label fx:id="employeeTelValidate" layoutX="678.0" layoutY="209.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
+      <Label fx:id="employeeJobRoleValidate" layoutX="156.0" layoutY="277.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
    </children>
 </Pane>
