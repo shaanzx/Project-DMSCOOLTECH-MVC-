@@ -45,7 +45,6 @@ public class PaymentRepo {
 
     public static boolean savePayment(Payment payment) throws SQLException {
         String sql = "INSERT INTO payment VALUES(?,?,?,?,?,?)";
-        System.out.println(payment);
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, payment.getPaymentId());

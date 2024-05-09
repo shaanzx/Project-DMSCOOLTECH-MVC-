@@ -39,3 +39,22 @@
 .count-rectangle{
     -fx-background-radius: 35;
 }
+.image-corner{
+    -fx-background-radius: 35;
+}
+
+.dashboard-button:hover {
+    -fx-background-color: #53ecc8
+}
+
+.dashboard-button:pressed{
+    -fx-background-color: red;
+}
+
+.dashboard-button:focused{
+    -fx-background-color: red;
+}
+
+.dashboard-button:selected{
+    -fx-background-color: green;
+}

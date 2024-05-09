@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -13,14 +8,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="772.0" prefWidth="1066.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.DashboardFormController">
+<Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="950.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.DashboardFormController">
    <children>
-      <ImageView fitHeight="772.0" fitWidth="1066.0" rotate="180.0">
-         <image>
-            <Image url="@../asset/Dashboard_Background.jpg" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="152.0" layoutX="100.0" layoutY="40.0" stroke="#a9b3d6" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="350.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="154.0" layoutX="99.0" layoutY="39.0" stroke="#a9b3d6" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="350.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -42,7 +32,7 @@
             <Font name="Cambria" size="30.0" />
          </font>
       </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="152.0" layoutX="625.0" layoutY="40.0" stroke="#a9b3d6" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="350.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="152.0" layoutX="495.0" layoutY="40.0" stroke="#a9b3d6" strokeLineCap="BUTT" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="350.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -64,23 +54,15 @@
             <Font name="Cambria" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="txtRepairCount" fill="#0f3f99" layoutX="766.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Count">
+      <Text fx:id="txtRepairCount" fill="#0f3f99" layoutX="636.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Count">
          <font>
             <Font name="Cambria" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="686.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Repair Count">
+      <Text layoutX="556.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Repair Count">
          <font>
             <Font name="Cambria" size="30.0" />
          </font>
       </Text>
-      <BarChart layoutX="95.0" layoutY="245.0" prefHeight="490.0" prefWidth="880.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </BarChart>
    </children>
 </Pane>

@@ -11,9 +11,10 @@ import java.sql.Date;
 @AllArgsConstructor
 @Data
 public class OrderDetails {
-    private Date orderDate;
-    private int qty;
-    private Double OrderAmount;
     private String orderId;
     private String itemCode;
+    private Date orderDate;
+    private int qty;
+    private  double unitPrice;
+    private double OrderAmount;
 }

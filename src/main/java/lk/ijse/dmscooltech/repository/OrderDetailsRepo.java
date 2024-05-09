@@ -3,6 +3,7 @@ package lk.ijse.dmscooltech.repository;
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.OrderDetails;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,14 +19,15 @@ public class OrderDetailsRepo {
     }
 
     private static boolean orderSave(OrderDetails orderDetail) throws SQLException {
-        String sql = "INSERT INTO orderdetails VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO orderdetails VALUES(?,?,?,?,?,?)";
         PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
 
-        preparedStatement.setString(1, String.valueOf(orderDetail.getOrderDate()));
-        preparedStatement.setString(2, String.valueOf(orderDetail.getQty()));
-        preparedStatement.setDouble(3, orderDetail.getOrderAmount());
-        preparedStatement.setString(4, orderDetail.getOrderId());
-        preparedStatement.setString(5, orderDetail.getItemCode());
+        preparedStatement.setString(1,orderDetail.getOrderId());
+        preparedStatement.setString(2,orderDetail.getItemCode());
+        preparedStatement.setDate(3, Date.valueOf(orderDetail.getOrderDate().toLocalDate()));
+        preparedStatement.setInt(4,orderDetail.getQty());
+        preparedStatement.setDouble(5,orderDetail.getUnitPrice());
+        preparedStatement.setDouble(6,orderDetail.getOrderAmount());
         return preparedStatement.executeUpdate() > 0;
     }
 }

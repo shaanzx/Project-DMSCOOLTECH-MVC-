@@ -272,7 +272,6 @@ public class RepairFormController implements Initializable {
     void btnConfirmRepairBillOnAction(ActionEvent event) throws SQLException {
         String orderId = lblOrderId.getText();
         Vehicle vehicle = VehicleRepo.searchVehicle(cmbVehicleNo.getValue());
-
         Date date = Date.valueOf(lblDate.getText());
 
        Order order = new Order(orderId, vehicle.getCustomerId(), date);
@@ -285,11 +284,12 @@ public class RepairFormController implements Initializable {
             RepairTm repairTm = addToCartRepairList.get(i);
 
             OrderDetails orderDetails = new OrderDetails(
+                    orderId,
+                    repairTm.getItemCode(),
                     date,
                     repairTm.getQty(),
-                    orderAmount += repairTm.getQty() * repairTm.getUnitPrice(),
-                    orderId,
-                    repairTm.getItemCode()
+                    repairTm.getUnitPrice(),
+                    orderAmount += repairTm.getQty() * repairTm.getUnitPrice()
             );
             orderList.add(orderDetails);
             netAmount += repairTm.getTotalAmount();

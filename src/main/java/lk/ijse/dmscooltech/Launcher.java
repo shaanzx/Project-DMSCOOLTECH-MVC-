@@ -13,10 +13,10 @@ public class Launcher extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/global_form.fxml"))));
+        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/new_login_form.fxml"))));
 
         stage.setTitle("Login Form");
-        stage.initStyle(StageStyle.UNDECORATED);
+      //  stage.initStyle(StageStyle.UNDECORATED);
         stage.centerOnScreen();
         stage.show();
     }

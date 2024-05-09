@@ -177,10 +177,8 @@ public class PlaceOrderFormController implements Initializable {
             if(itemCode.equals(colItemCode.getCellData(i))){
                 qty += cartList.get(i).getQty();
                 totalAmount = unitPrice * qty;
-
                 cartList.get(i).setQty(qty);
                 cartList.get(i).setTotalAmount(totalAmount);
-
                 tblOrderDetail.refresh();
                 calculateNetAmount();
                 txtQty.clear();
@@ -215,17 +213,29 @@ public class PlaceOrderFormController implements Initializable {
         Date date = Date.valueOf(lblDate.getText());
 
         Order order = new Order(orderId, customerId, date);
+
         List<OrderDetails> orderList = new ArrayList<>();
         double netAmount = 0;
+        double orderAmount = 0;
+
         for(int i=0; i < tblOrderDetail.getItems().size(); i++){
             AddToCartTm addToCartTm = cartList.get(i);
-            OrderDetails orderDetails = new OrderDetails(date, addToCartTm.getQty(), addToCartTm.getUnitPrice(),orderId, addToCartTm.getItemCode());
+
+            OrderDetails orderDetails = new OrderDetails(
+                    orderId,
+                    addToCartTm.getItemCode(),
+                    date,
+                    addToCartTm.getQty(),
+                    addToCartTm.getUnitPrice(),
+                    orderAmount += addToCartTm.getQty()*addToCartTm.getUnitPrice()
+            );
             orderList.add(orderDetails);
+            System.out.println(orderDetails);
 
             netAmount += addToCartTm.getTotalAmount();
         }
-        String paymentId = PaymentRepo.generatePaymentId();
 
+        String paymentId = PaymentRepo.generatePaymentId();
         Payment payment = new Payment(paymentId, customerId, orderId,null, netAmount, date);
 
         OrderPlace orderPlace = new OrderPlace(order, orderList , payment);

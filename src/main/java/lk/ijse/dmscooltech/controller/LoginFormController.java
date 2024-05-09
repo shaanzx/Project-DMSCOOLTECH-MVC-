@@ -24,6 +24,8 @@ import java.sql.SQLException;
 
 public class LoginFormController {
 
+    public AnchorPane registerPane;
+
     @FXML
     private AnchorPane ancLogin;
 
@@ -107,14 +109,7 @@ public class LoginFormController {
 
     @FXML
     void btnSignUpOnAction(ActionEvent event) throws IOException {
-        Parent rootNode = FXMLLoader.load(this.getClass().getResource("/view/register_form.fxml"));
-
-        Scene scene = new Scene(rootNode);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.setTitle("Register Form");
-        stage.show();
+        Navigation.switchNavigation( "register_form.fxml",registerPane);
     }
     @FXML
     void txtPasswordOnAction(ActionEvent event) {

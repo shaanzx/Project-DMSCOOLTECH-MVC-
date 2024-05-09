@@ -16,6 +16,7 @@ public class PlaceOrderRepo {
             boolean isOdSaved = OrderRepo.saveOrder(orderPlace.getOrder());
             if(isOdSaved){
                 boolean isOdDetailsSaved = OrderDetailsRepo.saveOrderDetails(orderPlace.getOrderDetails());
+                System.out.println(isOdDetailsSaved);
                 if(isOdDetailsSaved){
                     boolean isItemUpdated = ItemRepo.updateItemQty(orderPlace.getOrderDetails());
                     if(isItemUpdated){

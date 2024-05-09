@@ -2,7 +2,9 @@ package lk.ijse.dmscooltech.repository;
 
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.controller.LoginFormController;
+import lk.ijse.dmscooltech.controller.NewLoginFormController;
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.User;
 
@@ -26,8 +28,8 @@ public class UserRepo {
             return preparedStatement.executeUpdate() > 0;
     }
 
-    public static void checkUserNamePassword(String userId, String pw, AnchorPane ancLogin) throws SQLException, IOException {
-        String sqlQuery = "SELECT uId, uPassword FROM user WHERE uId = ?";
+    public static void checkUserNamePassword(String userId, String pw, Pane ancLogin) throws SQLException, IOException {
+        String sqlQuery = "SELECT uName, uPassword FROM user WHERE uName = ?";
 
         Connection connection = DbConnection.getInstance().getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
@@ -37,8 +39,8 @@ public class UserRepo {
         if(resultSet.next()){
             String psw = resultSet.getString(2);
             if(psw.equals(pw)){
-                ancLogin.getScene().getWindow().hide();
-                new LoginFormController().gotoDashBoard();
+               ancLogin.getScene().getWindow().hide();
+                new NewLoginFormController().gotoDashBoard();
             }else {
                 new Alert(Alert.AlertType.ERROR,"Incorrect Password!").show();
             }

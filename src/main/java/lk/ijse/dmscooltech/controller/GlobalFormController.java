@@ -45,41 +45,91 @@ public class GlobalFormController implements Initializable {
     @FXML
     void btnCustomerOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(pagingPane, "customer_form.fxml");
+        btnCustomer.setStyle("-fx-background-color: white; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnDashboard.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnEmployee.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnOrder.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnRepair.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnStoke.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnVehicle.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+
     }
 
     @FXML
     void btnDashboardOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(pagingPane, "dashboard_form.fxml");
+        btnCustomer.setStyle("-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnDashboard.setStyle("-fx-background-color:  white; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnEmployee.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnOrder.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnRepair.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnStoke.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnVehicle.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
     }
 
     @FXML
     void btnEmployeeOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(pagingPane, "employee_form.fxml");
+        btnCustomer.setStyle("-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnDashboard.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnEmployee.setStyle("-fx-background-color:  white; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnOrder.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnRepair.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnStoke.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnVehicle.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
     }
 
     @FXML
     void btnLogoutOnAction(ActionEvent event) throws IOException {
-        Navigation.switchNavigation( "login_form.fxml",mainpane);
+        Navigation.switchNavigation( "new_login_form.fxml",mainpane);
     }
 
     @FXML
     void btnOrderOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(pagingPane, "placeOrder_form.fxml");
+        btnCustomer.setStyle("-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnDashboard.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnEmployee.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnOrder.setStyle("-fx-background-color:  white; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnRepair.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnStoke.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnVehicle.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
     }
 
     @FXML
     void btnStokeOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(pagingPane, "item_from.fxml");
+        btnCustomer.setStyle("-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnDashboard.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnEmployee.setStyle("-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnOrder.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnRepair.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnStoke.setStyle("-fx-background-color:  white; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnVehicle.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
     }
 
     @FXML
     void btnVehicleOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(pagingPane, "vehicle_form.fxml");
+        btnCustomer.setStyle("-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnDashboard.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnEmployee.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnOrder.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnRepair.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnStoke.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnVehicle.setStyle("-fx-background-color: white; -fx-background-radius: 75; -fx-font-size: 20;");
     }
 
     @FXML
     void btnRepairOnAction(ActionEvent event) throws IOException {
         Navigation.switchPaging(pagingPane, "repair_form.fxml");
+        btnCustomer.setStyle("-fx-background-color: #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnDashboard.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnEmployee.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnOrder.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnRepair.setStyle("-fx-background-color:  white; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnStoke.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
+        btnVehicle.setStyle("-fx-background-color:  #7ed6df; -fx-background-radius: 75; -fx-font-size: 20;");
     }
 
     @Override
@@ -87,6 +137,7 @@ public class GlobalFormController implements Initializable {
         pagingPane.setVisible(true);
         try {
             Navigation.switchPaging(pagingPane, "dashboard_form.fxml");
+            btnDashboard.setStyle("-fx-background-color:  white; -fx-background-radius: 75; -fx-font-size: 20;");
         } catch (IOException e) {
             e.printStackTrace();
         }

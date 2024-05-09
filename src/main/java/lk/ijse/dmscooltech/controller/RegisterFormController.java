@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.User;
 import lk.ijse.dmscooltech.repository.UserRepo;
@@ -17,6 +18,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class RegisterFormController implements Initializable {
+
+    @FXML
+    private AnchorPane registerPane;
 
     @FXML
     private JFXButton txtConfirm;

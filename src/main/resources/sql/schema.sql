@@ -68,17 +68,18 @@ INSERT INTO item(iCode,iName,iCategory,qtyOnHand,iPrice,date)VALUES
                                                                            ('I002','Cooler','NISSAN',25,15000,20240321);
 
 create table orderDetails(
-                             oDate date NOT NULL,
-                             qty int(5),
-                             oPrice decimal(10,2) NOT NULL,
                              oId varchar(5),
                              foreign key(oId) references orders(oId) on update cascade on delete cascade,
                              iCode varchar(5),
-                             foreign key(iCode) references item(iCode) on update cascade on delete cascade
+                             foreign key(iCode) references item(iCode) on update cascade on delete cascade,
+                             oDate date NOT NULL,
+                             qty int(5),
+                            unitPrice decimal(10,2),
+                             oPrice decimal(10,2) NOT NULL
 );
-INSERT INTO orderDetails(oDate,qty,oPrice,oId,iCode)VALUES
-                                                        (20240401,1,7000,'OR001','I001'),
-                                                        (20240402,1,150000,'OR002','I002');
+INSERT INTO orderDetails(oId,iCode,oDate,qty,unitPrice,oPrice)VALUES
+                                                        ('OR001','I001',20240321,5,7000,35000),
+                                                        ('OR002','I002',20240321,5,15000,75000);
 
 create table employee(
                          eId varchar(5) primary key,
