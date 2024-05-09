@@ -147,5 +147,9 @@
          </font>
       </TextField>
       <DatePicker fx:id="dpDate" layoutX="680.0" layoutY="240.0" prefHeight="30.0" prefWidth="250.0" />
+      <Label fx:id="itemNameValidate" layoutX="693.0" layoutY="138.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
+      <Label fx:id="itemVehicleModelValidate" layoutX="156.0" layoutY="207.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
+      <Label fx:id="itemQtyValidate" layoutX="693.0" layoutY="208.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
+      <Label fx:id="itemUnitPriceValidate" layoutX="156.0" layoutY="277.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
    </children>
 </Pane>

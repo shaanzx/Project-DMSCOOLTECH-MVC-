@@ -79,7 +79,7 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="txtEmpTel" layoutX="660.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;">
+      <TextField fx:id="txtEmpTel" layoutX="660.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;" text="+94">
          <font>
             <Font size="16.0" />
          </font>

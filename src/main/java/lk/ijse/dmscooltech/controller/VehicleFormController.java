@@ -16,6 +16,7 @@ import lk.ijse.dmscooltech.model.tm.CustomerTm;
 import lk.ijse.dmscooltech.model.tm.VehicleTm;
 import lk.ijse.dmscooltech.repository.CustomerRepo;
 import lk.ijse.dmscooltech.repository.VehicleRepo;
+import lk.ijse.dmscooltech.util.DataValidateController;
 import lk.ijse.dmscooltech.util.Navigation;
 
 import java.io.IOException;
@@ -63,6 +64,16 @@ public class VehicleFormController implements Initializable {
 
     @FXML
     private TextField txtVehicleNo;
+
+    @FXML
+    private Label vehicleModelValidate;
+
+    @FXML
+    private Label vehicleNoValidate;
+
+    @FXML
+    private Label vehicleTypeValidate;
+
 
     VehicleRepo vehicleRepo = new VehicleRepo();
 
@@ -173,15 +184,31 @@ public class VehicleFormController implements Initializable {
         String customerId = cmbCusId.getValue();
 
         Vehicle vehicle = new Vehicle(vehicleNo, model, type, customerId);
-        try{
-            boolean isSaved = vehicleRepo.saveVehicle(vehicle);
-            if(isSaved){
-                new Alert(Alert.AlertType.CONFIRMATION,"Vehicle is Saved!").show();
-                loadVehicleTable();
-                clearTextFields();
+
+        if(DataValidateController.validateVehicleNo(txtVehicleNo.getText())) {
+            vehicleNoValidate.setText("");
+            if (DataValidateController.validateVehicleModels(txtVehicleModel.getText())) {
+                vehicleModelValidate.setText("");
+                if (DataValidateController.validateVehicleType(txtVehicleType.getText())) {
+                    vehicleTypeValidate.setText("");
+                    try {
+                        boolean isSaved = vehicleRepo.saveVehicle(vehicle);
+                        if (isSaved) {
+                            new Alert(Alert.AlertType.CONFIRMATION, "Vehicle is Saved!").show();
+                            loadVehicleTable();
+                            clearTextFields();
+                        }
+                    } catch (SQLException e) {
+                        new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                    }
+                } else {
+                    vehicleTypeValidate.setText("Invalid Vehicle Type");
+                }
+            } else {
+                vehicleModelValidate.setText("Invalid Vehicle Model");
             }
-        }catch (SQLException e){
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }else{
+            vehicleNoValidate.setText("Invalid Vehicle No");
         }
     }
 

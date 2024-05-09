@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.Item;
 import lk.ijse.dmscooltech.model.tm.ItemTm;
 import lk.ijse.dmscooltech.repository.ItemRepo;
+import lk.ijse.dmscooltech.util.DataValidateController;
 import lombok.Data;
 
 import java.net.URL;
@@ -68,6 +69,19 @@ public class ItemFormController implements Initializable {
 
     @FXML
     private TextField txtVehicleModel;
+
+    @FXML
+    private Label itemNameValidate;
+
+    @FXML
+    private Label itemQtyValidate;
+
+    @FXML
+    private Label itemUnitPriceValidate;
+
+    @FXML
+    private Label itemVehicleModelValidate;
+
 
     ItemRepo itemRepo = new ItemRepo();
 
@@ -145,16 +159,36 @@ public class ItemFormController implements Initializable {
 
         Item item = new Item(code, name, model, qty, price, date);
 
-        try {
-            boolean isSaved = itemRepo.saveItem(item);
-            if(isSaved) {
-                new Alert(Alert.AlertType.INFORMATION, "Saved").show();
-                loadItemsTable();
+        if(DataValidateController.validateItemName(txtItemName.getText())) {
+            itemNameValidate.setText("");
+            if (DataValidateController.validateVehicleModel(txtVehicleModel.getText())) {
+                itemVehicleModelValidate.setText("");
+                if (DataValidateController.validateItemQty(txtQytOnHand.getText())) {
+                    itemQtyValidate.setText("");
+                    if (DataValidateController.validateItemPrice(txtUnitPrice.getText())) {
+                        itemNameValidate.setText("");
+                        try {
+                            boolean isSaved = itemRepo.saveItem(item);
+                            if (isSaved) {
+                                new Alert(Alert.AlertType.INFORMATION, "Saved").show();
+                                loadItemsTable();
+                            } else {
+                                new Alert(Alert.AlertType.ERROR, "Not Saved").show();
+                            }
+                        } catch (SQLException e) {
+                            throw new RuntimeException(e);
+                        }
+                    } else {
+                        itemNameValidate.setText("Invalid Price");
+                    }
+                } else {
+                    itemQtyValidate.setText("Invalid Quantity");
+                }
             } else {
-                new Alert(Alert.AlertType.ERROR, "Not Saved").show();
+                itemVehicleModelValidate.setText("Invalid Vehicle Model");
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        }else{
+            itemNameValidate.setText("Invalid Name");
         }
     }
 

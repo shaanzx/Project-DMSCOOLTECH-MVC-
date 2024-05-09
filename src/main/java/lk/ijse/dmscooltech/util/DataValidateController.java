@@ -55,4 +55,50 @@ public class DataValidateController {
         Matcher matcher = pattern.matcher(job);
         return matcher.matches();
     }
+
+    //Item class
+    public static boolean validateItemName(String name){
+        String nameRegex = "^([A-z0-9]|[-/,.@+]|\\s){4,}$";
+        Pattern pattern = Pattern.compile(nameRegex);
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
+    public static boolean validateVehicleModel(String price){
+        String vehicleModelRegex = "^[A-z|\\s]{3,}$";
+        Pattern pattern = Pattern.compile(vehicleModelRegex);
+        Matcher matcher = pattern.matcher(price);
+        return matcher.matches();
+    }
+    public static boolean validateItemQty(String qty){
+        String qtyRegex = "^[0-9]{1,}$";
+        Pattern pattern = Pattern.compile(qtyRegex);
+        Matcher matcher = pattern.matcher(qty);
+        return matcher.matches();
+    }
+    public static boolean validateItemPrice(String price){
+        String priceRegex = "^([0-9]){1,}[.]([0-9]){1,}$";
+        Pattern pattern = Pattern.compile(priceRegex);
+        Matcher matcher = pattern.matcher(price);
+        return matcher.matches();
+    }
+
+    //Vehicle class
+    public static boolean validateVehicleNo(String no){
+        String vehicleNoRegex = "^[A-Z]{2}[0-9]{4}[A-Z]{2}|[-]|\\s{1,}$";
+        Pattern pattern = Pattern.compile(vehicleNoRegex);
+        Matcher matcher = pattern.matcher(no);
+        return matcher.matches();
+    }
+    public static boolean validateVehicleModels(String model){
+        String vehicleModelRegex = "^[A-z|\\s]{3,}$";
+        Pattern pattern = Pattern.compile(vehicleModelRegex);
+        Matcher matcher = pattern.matcher(model);
+        return matcher.matches();
+    }
+    public  static boolean validateVehicleType(String type){
+        String vehicleTypeRegex = "^[A-z|\\s]{3,}$";
+        Pattern pattern = Pattern.compile(vehicleTypeRegex);
+        Matcher matcher = pattern.matcher(type);
+        return matcher.matches();
+    }
 }

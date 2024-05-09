@@ -16,7 +16,7 @@ public class ItemRepo {
         preparedStatement.setString(1, item.getCode());
         preparedStatement.setString(2, item.getDescription());
         preparedStatement.setString(3, item.getModel());
-        preparedStatement.setInt(4, item.getQtyOnHand());
+        preparedStatement.setString(4, String.valueOf(item.getQtyOnHand()));
         preparedStatement.setDouble(5, item.getUnitPrice());
         preparedStatement.setString(6, item.getDate());
         return preparedStatement.executeUpdate() > 0;

@@ -155,5 +155,8 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
+      <Label fx:id="vehicleNoValidate" layoutX="163.0" layoutY="138.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
+      <Label fx:id="vehicleModelValidate" layoutX="163.0" layoutY="208.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
+      <Label fx:id="vehicleTypeValidate" layoutX="163.0" layoutY="278.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
    </children>
 </Pane>
