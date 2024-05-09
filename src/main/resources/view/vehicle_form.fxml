@@ -32,7 +32,7 @@
             <Font name="Cambria" size="18.0" />
          </font>
       </Label>
-      <TableView fx:id="tblVehicle" layoutX="8.0" layoutY="304.0" onSort="#tblVehicleClickOnAction" opacity="0.75" prefHeight="285.0" prefWidth="961.0">
+      <TableView fx:id="tblVehicle" layoutX="8.0" layoutY="304.0" onMouseClicked="#tblVehicleClickOnAction" opacity="0.75" prefHeight="285.0" prefWidth="961.0">
          <columns>
             <TableColumn fx:id="colVehicleNo" prefWidth="159.0" text="Vehicle No" />
             <TableColumn fx:id="colVehicleModel" prefWidth="256.33331298828125" text="Model" />
