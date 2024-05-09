@@ -11,29 +11,25 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="978.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.VehicleFormController">
    <children>
-      <ImageView fitHeight="978.0" fitWidth="598.0" layoutX="190.0" layoutY="-190.0" rotate="90.0">
-         <image>
-            <Image url="@../asset/Dashboard_Background.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="283.0" opacity="0.2">
+      <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="283.0" layoutY="10.0" opacity="0.2">
          <image>
             <Image url="@../asset/Autotech(2)-Photoroom.png-Photoroom.png" />
          </image>
       </ImageView>
-      <Label layoutX="760.0" layoutY="25.0" text="Date :- ">
+      <Label layoutX="770.0" layoutY="35.0" text="Date :- ">
          <font>
-            <Font name="Cambria" size="16.0" />
+            <Font name="Cambria" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="txtDate" layoutX="835.0" layoutY="25.0" text="Label" textFill="#060e4d">
+      <Label fx:id="txtDate" layoutX="825.0" layoutY="35.0" text="Label">
          <font>
-            <Font name="Cambria" size="16.0" />
+            <Font name="Cambria" size="18.0" />
          </font>
       </Label>
       <TableView fx:id="tblVehicle" layoutX="8.0" layoutY="304.0" onSort="#tblVehicleClickOnAction" opacity="0.75" prefHeight="285.0" prefWidth="961.0">
@@ -47,9 +43,9 @@
             <Point3D />
          </rotationAxis>
       </TableView>
-      <Text fill="#8ffffd00" layoutX="323.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="VEHICLE MANAGEMENT" underline="true">
+      <Text layoutX="10.0" layoutY="50.0" stroke="TRANSPARENT" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="VEHICLE MANAGEMENT" underline="true">
          <font>
-            <Font name="Cambria" size="30.0" />
+            <Font name="Cambria" size="20.0" />
          </font>
       </Text>
       <Label layoutX="30.0" layoutY="105.0" text="Vehicle No">
@@ -59,7 +55,7 @@
       </Label>
       <TextField fx:id="txtVehicleNo" layoutX="150.0" layoutY="100.0" onAction="#txtSearchVehicleOnAction" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextField>
       <Label layoutX="30.0" layoutY="175.0" text="Model">
@@ -69,7 +65,7 @@
       </Label>
       <TextField fx:id="txtVehicleModel" layoutX="150.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextField>
       <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="615.0" layoutY="250.0" onAction="#btnVehicleDeleteOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" styleClass="delete-button" stylesheets="@../values/style.css" text="Delete" textFill="WHITE">
@@ -124,7 +120,7 @@
       </Label>
       <TextField fx:id="txtVehicleType" layoutX="150.0" layoutY="240.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextField>
       <JFXComboBox fx:id="cmbCusId" layoutX="750.0" layoutY="100.0" onAction="#cmbCustomerIdOnAction" prefHeight="30.0" prefWidth="150.0" />
@@ -158,5 +154,6 @@
       <Label fx:id="vehicleNoValidate" layoutX="163.0" layoutY="138.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
       <Label fx:id="vehicleModelValidate" layoutX="163.0" layoutY="208.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
       <Label fx:id="vehicleTypeValidate" layoutX="163.0" layoutY="278.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
+      <Line endX="950.0" layoutY="70.0" stroke="#7ed6df" strokeWidth="5.0" />
    </children>
 </Pane>

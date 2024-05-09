@@ -15,16 +15,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="978.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.CustomerFormController">
+<Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="978.0" style="-fx-background-color: white; -fx-background-radius: 35;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.CustomerFormController">
    <children>
-      <Label layoutX="770.0" layoutY="20.0" text="Date :- ">
+      <ImageView fitHeight="583.0" fitWidth="795.0" layoutY="15.0" opacity="0.6">
+         <image>
+            <Image url="@../asset/Shan1.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="770.0" layoutY="35.0" text="Date :- ">
          <font>
-            <Font name="Cambria" size="16.0" />
+            <Font name="Cambria" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblDate" layoutX="845.0" layoutY="20.0" textFill="#11585e82">
+      <Label fx:id="lblDate" layoutX="825.0" layoutY="35.0" textFill="#00000082">
          <font>
-            <Font name="Cambria" size="16.0" />
+            <Font name="Cambria" size="18.0" />
          </font>
       </Label>
       <TableView fx:id="tblCustomer" layoutX="8.0" layoutY="390.0" onMouseClicked="#tblCustomerClick" opacity="0.75" prefHeight="201.0" prefWidth="960.0">
@@ -39,9 +44,9 @@
             <Point3D />
          </rotationAxis>
       </TableView>
-      <Text fill="#279ca4" layoutX="313.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="CUSTOMER MANAGEMENT" underline="true">
+      <Text layoutX="10.0" layoutY="50.0" stroke="TRANSPARENT" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="CUSTOMER MANAGEMENT" underline="true">
          <font>
-            <Font name="Cambria" size="30.0" />
+            <Font name="Cambria" size="20.0" />
          </font>
       </Text>
       <Label layoutX="30.0" layoutY="105.0" text="Customer ID">
@@ -51,7 +56,7 @@
       </Label>
       <TextField fx:id="txtCusId" layoutX="150.0" layoutY="100.0" onAction="#txtSearchCustomerOnAction" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font></TextField>
       <Label layoutX="530.0" layoutY="105.0" text="Customer Name">
          <font>
@@ -60,7 +65,7 @@
       </Label>
       <TextField fx:id="txtCusName" layoutX="680.0" layoutY="100.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font></TextField>
       <Label layoutX="30.0" layoutY="175.0" text="Address">
          <font>
@@ -69,7 +74,7 @@
       </Label>
       <TextField fx:id="txtCusAddress" layoutX="150.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font></TextField>
       <Label layoutX="530.0" layoutY="175.0" text="Telephone">
          <font>
@@ -78,7 +83,7 @@
       </Label>
       <TextField fx:id="txtCusTel" layoutX="680.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;" text="+94">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font></TextField>
       <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="615.0" layoutY="320.0" onAction="#btnCusDeleteOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #11585e;" styleClass="delete-button" stylesheets="@../values/style.css" text="Delete" textFill="WHITE">
          <font>
@@ -132,7 +137,7 @@
       </Label>
       <TextField fx:id="txtCusEmail" layoutX="150.0" layoutY="240.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font></TextField>
       <JFXComboBox fx:id="cmbUserId" layoutX="680.0" layoutY="240.0" onAction="#cmbUserIdOnAction" prefHeight="30.0" prefWidth="250.0" />
       <Label layoutX="530.0" layoutY="245.0" text="User Id">

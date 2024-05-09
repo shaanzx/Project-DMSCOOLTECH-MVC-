@@ -10,24 +10,25 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="978.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.EmployeeFormController">
+<Pane fx:id="pagingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="598.0" prefWidth="978.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dmscooltech.controller.EmployeeFormController">
    <children>
-      <ImageView fitHeight="598.0" fitWidth="978.0" opacity="0.5">
+      <ImageView fitHeight="578.0" fitWidth="978.0" layoutY="20.0" opacity="0.5">
          <image>
             <Image url="@../asset/Shan.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="760.0" layoutY="20.0" text="Date :- ">
+      <Label layoutX="770.0" layoutY="35.0" text="Date :- ">
          <font>
-            <Font name="Cambria" size="16.0" />
+            <Font name="Cambria" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="txtDate" layoutX="815.0" layoutY="20.0" textFill="#1e36ab">
+      <Label fx:id="txtDate" layoutX="825.0" layoutY="35.0">
          <font>
-            <Font name="Cambria" size="16.0" />
+            <Font name="Cambria" size="18.0" />
          </font>
       </Label>
       <TableView fx:id="tblEmployee" layoutX="8.0" layoutY="370.0" onMouseClicked="#tblEmployeeClickOnAction" opacity="0.75" prefHeight="222.0" prefWidth="964.0">
@@ -39,9 +40,9 @@
             <TableColumn fx:id="colEmpJobRole" prefWidth="299.0" text="Job Role" />
          </columns>
       </TableView>
-      <Text fill="#8ffffd00" layoutX="318.0" layoutY="40.0" stroke="#000000cf" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="EMPLOYEE MANAGEMENT" underline="true">
+      <Text layoutX="10.0" layoutY="50.0" stroke="TRANSPARENT" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" text="EMPLOYEE MANAGEMENT" underline="true">
          <font>
-            <Font name="Cambria" size="30.0" />
+            <Font name="Cambria" size="20.0" />
          </font>
       </Text>
       <Label layoutX="30.0" layoutY="105.0" text="Employee ID">
@@ -51,7 +52,7 @@
       </Label>
       <TextField fx:id="txtEmpId" layoutX="150.0" layoutY="100.0" onAction="#txtSearchEmployeeOnAction" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextField>
       <Label layoutX="510.0" layoutY="105.0" text="Employee Name">
@@ -61,7 +62,7 @@
       </Label>
       <TextField fx:id="txtEmpName" layoutX="660.0" layoutY="100.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextField>
       <Label layoutX="30.0" layoutY="175.0" text="Address">
@@ -71,7 +72,7 @@
       </Label>
       <TextField fx:id="txtEmpAddress" layoutX="150.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextField>
       <Label layoutX="510.0" layoutY="175.0" text="Telephone">
@@ -81,10 +82,10 @@
       </Label>
       <TextField fx:id="txtEmpTel" layoutX="660.0" layoutY="170.0" prefWidth="250.0" style="-fx-background-radius: 35;" text="+94">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextField>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="590.0" layoutY="320.0" onAction="#btnEmpDeleteOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" styleClass="delete-button" stylesheets="@../values/style.css" text="Delete" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="590.0" layoutY="320.0" onAction="#btnEmpDeleteOnAction" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: #11585e;" styleClass="delete-button" stylesheets="@../values/style.css" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -99,7 +100,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="703.0" layoutY="320.0" onAction="#btnEmpUpdateOnAction" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: green;" text="Update  " textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="703.0" layoutY="320.0" onAction="#btnEmpUpdateOnAction" prefHeight="40.0" prefWidth="110.0" style="-fx-background-color: #0e2f68;" text="Update  " textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -114,7 +115,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="830.0" layoutY="320.0" onAction="#btnEmpSaveOnAction" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: blue;" text="Save" textFill="WHITE">
+      <JFXButton buttonType="RAISED" contentDisplay="RIGHT" layoutX="830.0" layoutY="320.0" onAction="#btnEmpSaveOnAction" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #7ed6df;" text="Save" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -136,7 +137,7 @@
       </Label>
       <TextField fx:id="txtEmpJobRole" layoutX="150.0" layoutY="240.0" prefWidth="250.0" style="-fx-background-radius: 35;">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextField>
       <JFXComboBox fx:id="cmbUserId" layoutX="660.0" layoutY="240.0" prefHeight="30.0" prefWidth="250.0" />
@@ -149,5 +150,6 @@
       <Label fx:id="employeeAddressValidate" layoutX="158.0" layoutY="209.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
       <Label fx:id="employeeTelValidate" layoutX="678.0" layoutY="209.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
       <Label fx:id="employeeJobRoleValidate" layoutX="156.0" layoutY="277.0" prefHeight="17.0" prefWidth="227.0" textFill="#7c0d0d" />
+      <Line endX="950.0" layoutY="70.0" stroke="#7ed6df" strokeWidth="5.0" />
    </children>
 </Pane>
