@@ -26,13 +26,7 @@ public class RegisterFormController implements Initializable {
     private AnchorPane registerPane;
 
     @FXML
-    private JFXButton txtConfirm;
-
-    @FXML
     private TextField txtPassword;
-
-    @FXML
-    private TextField txtRePassword;
 
     @FXML
     private TextField txtUserId;
@@ -62,7 +56,6 @@ public class RegisterFormController implements Initializable {
         String uId = txtUserId.getText();
         String uName = txtUserName.getText();
         String password = txtPassword.getText();
-        String rePw = txtRePassword.getText();
 
         User user = new User(uId, uName, password);
 
@@ -77,7 +70,6 @@ public class RegisterFormController implements Initializable {
                         txtUserId.clear();
                         txtUserName.clear();
                         txtPassword.clear();
-                        txtRePassword.clear();
                         txtUserId.requestFocus();
                     }
                 } catch (SQLException e) {
