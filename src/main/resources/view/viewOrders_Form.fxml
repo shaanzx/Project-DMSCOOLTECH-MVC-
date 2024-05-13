@@ -24,14 +24,16 @@
       </Text>
       <TableView fx:id="tblOrderView" layoutX="10.0" layoutY="135.0" prefHeight="450.0" prefWidth="780.0">
         <columns>
-          <TableColumn fx:id="colOrderId" prefWidth="156.0" text="Order Id" />
-          <TableColumn fx:id="colItemCode" prefWidth="156.0" text="Item Code" />
-            <TableColumn fx:id="colCustomerId" prefWidth="156.0" text="Customer Id" />
-            <TableColumn fx:id="colPayemntId" prefWidth="156.0" text="Payment Id" />
-            <TableColumn fx:id="txtTotalAmount" prefWidth="156.0" text="Total Amount" />
+          <TableColumn fx:id="colCustomerId" minWidth="0.0" prefWidth="109.33334350585938" text="Customer Id" />
+          <TableColumn fx:id="colOrderId" prefWidth="100.66667175292969" text="Order Id" />
+            <TableColumn fx:id="colOrderDate" prefWidth="112.0" text="Date" />
+            <TableColumn fx:id="colItemCode" prefWidth="109.33331298828125" text="Item Code" />
+            <TableColumn fx:id="colItemQty" prefWidth="92.66668701171875" text="Qty" />
+            <TableColumn fx:id="colItemUnitPrice" prefWidth="125.66668701171875" text="unit Price" />
+            <TableColumn fx:id="colTotalAmount" prefWidth="125.33331298828125" text="Total Amount" />
         </columns>
       </TableView>
-      <TextField layoutX="560.0" layoutY="90.0" promptText="Enter Order Id" />
+      <TextField fx:id="txtOrderId" layoutX="560.0" layoutY="90.0" promptText="Enter Order Id" />
       <JFXButton buttonType="RAISED" layoutX="730.0" layoutY="90.0" onAction="#btnSearchOnAction" style="-fx-background-color: blue;" text="Search" textFill="WHITE" />
    </children>
 </Pane>

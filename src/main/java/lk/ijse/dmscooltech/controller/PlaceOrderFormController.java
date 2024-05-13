@@ -83,10 +83,19 @@ public class PlaceOrderFormController implements Initializable {
     private Label lblUnitPrice;
 
     @FXML
+    private Label lblBalance;
+
+    @FXML
+    private Label lblPayment;
+
+    @FXML
     private Pane pagingPane;
 
     @FXML
     private TableView<AddToCartTm> tblOrderDetail;
+
+    @FXML
+    private TextField txtCustomerMobile;
 
     @FXML
     private TextField txtQty;
@@ -313,5 +322,26 @@ public class PlaceOrderFormController implements Initializable {
     void btnViewOrderDetailsOnAction(ActionEvent event) throws IOException {
         //FXMLLoader.load(this.getClass().getResource("../view/OrderDetailsForm.fxml"));
         Navigation.changeStage("/view/viewOrders_Form.fxml","Order Details Form");
+    }
+    @FXML
+    void txtSearchCustomerTelephoneOnAction(ActionEvent event) {
+        String tel = txtCustomerMobile.getText();
+
+        try {
+            Customer customer = CustomerRepo.searchByMobile(tel);
+            if(customer != null){
+                lblCustomerName.setText(customer.getName());
+                cmbCustomerId.setValue(customer.getId());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void lblPaymentOnAction(MouseEvent mouseEvent) {
+    }
+
+    public void lblBalanceOnAction(MouseEvent mouseEvent) {
+
     }
 }

@@ -104,7 +104,7 @@ public class DataValidateController {
 
     //User Class
     public static boolean validateUserName(String name){
-        String nameRegex = "^[A-z|\\s]{3,}$";
+        String nameRegex = "^[a-z|\\s]{3,}$";
         Pattern pattern = Pattern.compile(nameRegex);
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();

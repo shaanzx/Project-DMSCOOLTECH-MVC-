@@ -46,6 +46,27 @@ public class CustomerRepo {
         return next;
     }
 
+    public static Customer searchByMobile(String tel) throws SQLException {
+        String sql = "SELECT * FROM customer WHERE tel = ?";
+        PreparedStatement preparedStatement = DbConnection.getInstance().getConnection().prepareStatement(sql);
+        preparedStatement.setString(1,tel);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        Customer customer = null;
+
+        if(resultSet.next()){
+            String id = resultSet.getString(1);
+            String name = resultSet.getString(1);
+            String address = resultSet.getString(1);
+            String mobile = resultSet.getString(1);
+            String email = resultSet.getString(1);
+            String userId = resultSet.getString(1);
+
+            customer = new Customer(id,name,address,mobile,email,userId);
+        }
+        return customer;
+    }
+
     public boolean saveCustomer(Customer customer) throws SQLException {
         String sql = "INSERT INTO customer VALUES(?,?,?,?,?,?)";
         Connection connection = DbConnection.getInstance().getConnection();
@@ -102,7 +123,7 @@ public class CustomerRepo {
         return preparedStatement.executeUpdate() > 0;
     }
 
-    public List<Customer> getCustomer() throws SQLException {
+    public List<Customer>getCustomer() throws SQLException {
         String sql = "SELECT * FROM customer";
 
         ResultSet resultSet = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery();

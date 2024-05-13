@@ -5,15 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lk.ijse.dmscooltech.repository.UserRepo;
+import lk.ijse.dmscooltech.util.DataValidateController;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,6 +31,12 @@ public class NewLoginFormController {
     public TextField txtUserId;
 
     public String userId;
+
+    @FXML
+    private Label passwordValidate;
+
+    @FXML
+    private Label userIdValidate;
 
     private static NewLoginFormController controller;
 
@@ -58,12 +62,22 @@ public class NewLoginFormController {
         String userId = txtUserId.getText();
         String pw = txtPassword.getText();
 
-        try {
-            UserRepo.checkUserNamePassword(userId, pw, ancLogin);
-        } catch (SQLException e) {
-            new Alert(Alert.AlertType.ERROR,"User Id Or password doesn't match.Try aging!").show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if(DataValidateController.validateUserName(userId)) {
+            userIdValidate.setText("");
+          /*  if (DataValidateController.validateUserPassword(txtPassword.getText())) {
+                passwordValidate.setText("");*/
+                try {
+                    UserRepo.checkUserNamePassword(userId, pw, ancLogin);
+                } catch (SQLException e) {
+                    new Alert(Alert.AlertType.ERROR, "User Id Or password doesn't match.Try aging!").show();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+      /*      } else {
+                passwordValidate.setText("Invalid Password");
+            }*/
+        }else{
+            userIdValidate.setText("Invalid User Id");
         }
     }
 
