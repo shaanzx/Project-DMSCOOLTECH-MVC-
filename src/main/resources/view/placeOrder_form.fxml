@@ -190,7 +190,7 @@
             <TableColumn fx:id="colDeleteItem" minWidth="0.0" prefWidth="103.66665649414062" text="Delete Item" />
         </columns>
       </TableView>
-      <JFXButton layoutX="653.0" layoutY="550.0" onAction="#btnViewOrderDetailsOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #11585e;" text="View Order Details" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="653.0" layoutY="550.0" onAction="#btnViewOrderDetailsOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #11585e;" text="View Order Details" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
