@@ -86,9 +86,6 @@ public class PlaceOrderFormController implements Initializable {
     private Label lblBalance;
 
     @FXML
-    private Label lblPayment;
-
-    @FXML
     private Pane pagingPane;
 
     @FXML
@@ -96,6 +93,9 @@ public class PlaceOrderFormController implements Initializable {
 
     @FXML
     private TextField txtCustomerMobile;
+
+    @FXML
+    private TextField txtPayment;
 
     @FXML
     private TextField txtQty;
@@ -338,7 +338,7 @@ public class PlaceOrderFormController implements Initializable {
         }
     }
 
-    public void lblPaymentOnAction(MouseEvent mouseEvent) {
+    public void txtPaymentOnAction(MouseEvent mouseEvent) {
     }
 
     public void lblBalanceOnAction(MouseEvent mouseEvent) {

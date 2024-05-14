@@ -106,6 +106,28 @@ public class ViewOrdersFormController implements Initializable {
 
     @FXML
     void btnSearchOnAction(ActionEvent event) {
+        ObservableList<ViewOrderTm> tmOrderList = FXCollections.observableArrayList();
+
+        String orderId = txtOrderId.getText();
+
+        try {
+            List<ViewOrders>  viewOrderList = ViewOrderRepo.getViewOrdersByOrderId(orderId);
+            for(ViewOrders viewOrder : viewOrderList ){
+            ViewOrderTm viewOrderTm = new ViewOrderTm(
+                    viewOrder.getCustomerId(),
+                    viewOrder.getOrderId(),
+                    viewOrder.getDate(),
+                    viewOrder.getItemCode(),
+                    viewOrder.getItemQty(),
+                    viewOrder.getItemUnitPrice(),
+                    viewOrder.getTotalAmount()
+            );
+            tmOrderList.add(viewOrderTm);
+            }
+            tblOrderView.setItems(tmOrderList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

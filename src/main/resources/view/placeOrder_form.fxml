@@ -202,11 +202,6 @@
             <Font name="Cambria Bold" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="lblPayment" layoutX="177.0" layoutY="560.0" onDragDetected="#lblPaymentOnAction" prefHeight="30.0" prefWidth="111.0" textFill="BLUE">
-         <font>
-            <Font name="Cambria" size="20.0" />
-         </font>
-      </Label>
       <Label layoutX="350.0" layoutY="560.0" prefHeight="30.0" prefWidth="130.0" text="BALANCE    :">
          <font>
             <Font name="Cambria Bold" size="20.0" />
@@ -217,5 +212,6 @@
             <Font name="Cambria" size="20.0" />
          </font>
       </Label>
+      <TextField fx:id="txtPayment" layoutX="165.0" layoutY="567.0" onAction="#txtPaymentOnAction" promptText="Enter Customer Amount" />
    </children>
 </Pane>
