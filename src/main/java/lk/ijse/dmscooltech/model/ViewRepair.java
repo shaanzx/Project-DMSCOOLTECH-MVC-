@@ -1,16 +1,18 @@
-package lk.ijse.dmscooltech.model.tm;
+package lk.ijse.dmscooltech.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class RepairViewTm {
+public class ViewRepair {
     private String repairId;
     private String vehicleNo;
-    private String repairDate;
+    private Date repairDate;
     private String itemCode;
     private int itemQty;
     private double itemUnitPrice;
