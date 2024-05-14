@@ -111,6 +111,30 @@ public class ViewRepairFormController implements Initializable {
 
     @FXML
     void btnSearchOnAction(ActionEvent event) {
+        ObservableList<ViewRepairTm> tmRepairList = FXCollections.observableArrayList();
+
+        String repairId = txtRepairId.getText();
+
+        try {
+            List<ViewRepair> viewRepairList = ViewRepairRepo.getViewRepairByRepairId(repairId);
+            for(ViewRepair viewRepair : viewRepairList){
+                ViewRepairTm viewRepairTm = new ViewRepairTm(
+                        viewRepair.getRepairId(),
+                        viewRepair.getVehicleNo(),
+                        viewRepair.getRepairDate(),
+                        viewRepair.getItemCode(),
+                        viewRepair.getItemQty(),
+                        viewRepair.getItemUnitPrice(),
+                        viewRepair.getRepairCost(),
+                        viewRepair.getTotalPrice()
+                );
+                tmRepairList.add(viewRepairTm);
+            }
+            tblRepairDetailsTable.setItems(tmRepairList);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 }

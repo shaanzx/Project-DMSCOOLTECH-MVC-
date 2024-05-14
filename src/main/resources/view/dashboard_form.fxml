@@ -53,7 +53,7 @@
       </Label>
       <Pane layoutX="500.0" layoutY="235.0" prefHeight="350.0" prefWidth="400.0">
          <children>
-            <BarChart fx:id="barChart" prefHeight="350.0" prefWidth="400.0">
+            <BarChart fx:id="barChart" prefHeight="350.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="chart-bar" stylesheets="@../values/style.css">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>

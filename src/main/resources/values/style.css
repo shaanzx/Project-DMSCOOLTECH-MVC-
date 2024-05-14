@@ -58,3 +58,7 @@
 .dashboard-button:selected{
     -fx-background-color: green;
 }
+
+.chart-bar{
+    -fx-bar-fill:green;
+}

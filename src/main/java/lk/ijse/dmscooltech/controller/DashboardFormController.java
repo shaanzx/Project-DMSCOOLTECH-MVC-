@@ -57,7 +57,7 @@ public class DashboardFormController implements Initializable {
         setPieChart();
         setDate();
         //timenow();
-      //  setBarChart();
+        setBarChart();
     }
 
 /*    private void timenow(){
@@ -123,6 +123,7 @@ public class DashboardFormController implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
     public void setBarChart() throws SQLException {
         ObservableList<XYChart.Series<String, Integer>> barChartData = ItemRepo.getDataToBarChart();
 

@@ -56,8 +56,8 @@ public class ItemRepo {
             XYChart.Series<String, Integer> series = new XYChart.Series<>();
 
             while(resultSet.next()){
-                String itemName = resultSet.getString("name");
-                int itemQty = resultSet.getInt("qty");
+                String itemName = resultSet.getString("iName");
+                int itemQty = resultSet.getInt("qtyOnHand");
                 series.getData().add(new XYChart.Data<>(itemName, itemQty));
             }
 
