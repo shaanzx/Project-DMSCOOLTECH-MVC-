@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.*;
 import lk.ijse.dmscooltech.model.tm.RepairTm;
@@ -70,6 +71,9 @@ public class RepairFormController implements Initializable {
     private DatePicker dpRepairDate;
 
     @FXML
+    private Label lblBalance;
+
+    @FXML
     private Label lblCustomerName;
 
     @FXML
@@ -110,6 +114,9 @@ public class RepairFormController implements Initializable {
 
     @FXML
     private TextField txtRepairDescription;
+
+    @FXML
+    private TextField txtPayment;
 
     private ObservableList<RepairTm> addToCartRepairList = FXCollections.observableArrayList();
 
@@ -332,7 +339,7 @@ public class RepairFormController implements Initializable {
 
     @FXML
     void btnViewRepairDetailsOnAction(ActionEvent event) {
-
+        Navigation.changeStage("/view/viewRepair_Form.fxml","View Repair Details Form");
     }
 
     @FXML
@@ -378,5 +385,13 @@ public class RepairFormController implements Initializable {
     @FXML
     void txtQtyOnAction(ActionEvent event) {
         btnAddToCartOnAction(event);
+    }
+
+    public void lblBalanceOnAction(MouseEvent mouseEvent) {
+
+    }
+
+    public void txtRepairPaymentOnAction(ActionEvent event) {
+
     }
 }

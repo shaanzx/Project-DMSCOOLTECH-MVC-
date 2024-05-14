@@ -240,6 +240,6 @@
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPayment" layoutX="165.0" layoutY="564.0" onAction="#txtReapirPaymentOnAction" promptText="Enter Customer Amount" />
+      <TextField fx:id="txtPayment" layoutX="165.0" layoutY="564.0" onAction="#txtRepairPaymentOnAction" promptText="Enter Customer Amount" />
    </children>
 </Pane>
