@@ -21,7 +21,7 @@
       <TableView fx:id="tblRepairDetailsTable" layoutX="25.0" layoutY="106.0" prefHeight="462.0" prefWidth="742.0">
         <columns>
           <TableColumn fx:id="colRepairId" minWidth="0.0" prefWidth="94.00000762939453" text="Repair Id" />
-          <TableColumn fx:id="colCustomerId" prefWidth="95.66667175292969" text="Customer Id" />
+          <TableColumn fx:id="colVehicleNo" prefWidth="95.66667175292969" text="Vehicle No" />
             <TableColumn fx:id="colRepairDate" prefWidth="112.66665649414062" text="Date" />
             <TableColumn fx:id="colItemCode" prefWidth="72.66665649414062" text="Item Code" />
             <TableColumn fx:id="colItemQty" prefWidth="66.66665649414062" text="Qty" />

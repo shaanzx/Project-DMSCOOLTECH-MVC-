@@ -10,9 +10,6 @@ import javafx.scene.layout.Pane;
 public class ViewRepairFormController {
 
     @FXML
-    private TableColumn<?, ?> colCustomerId;
-
-    @FXML
     private TableColumn<?, ?> colItemCode;
 
     @FXML
@@ -32,6 +29,9 @@ public class ViewRepairFormController {
 
     @FXML
     private TableColumn<?, ?> colTotalAmount;
+
+    @FXML
+    private TableColumn<?, ?> colVehicleNo;
 
     @FXML
     private Pane orderViewPane;
