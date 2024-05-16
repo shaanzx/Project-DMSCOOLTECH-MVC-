@@ -101,6 +101,12 @@ public class RepairFormController implements Initializable {
     private Label lblUnitPrice;
 
     @FXML
+    private Label lblMoreMoney;
+
+    @FXML
+    private Label lblNeeded;
+
+    @FXML
     private Pane pagingPane;
 
     @FXML
@@ -320,7 +326,9 @@ public class RepairFormController implements Initializable {
                 orderId,
                 lblRepairId.getText(),
                 netAmount,
-              Date.valueOf(lblDate.getText())
+              Date.valueOf(lblDate.getText()),
+              Double.parseDouble(txtPayment.getText()),
+              Double.parseDouble(lblBalance.getText())
         );
 
         RepairDetails repairDetails = new RepairDetails(order, orderList, repair,payment);
@@ -328,7 +336,8 @@ public class RepairFormController implements Initializable {
         try {
             boolean isRepairDone = RepairDetailsRepo.addNewRepair(repairDetails);
             if (isRepairDone) {
-                new Alert(Alert.AlertType.CONFIRMATION, "Repair Process Done").show();
+                //new Alert(Alert.AlertType.CONFIRMATION, "Repair Process Done").show();
+
             } else {
                 new Alert(Alert.AlertType.ERROR, "Something went wrong").show();
             }

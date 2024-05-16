@@ -16,4 +16,6 @@ public class Payment {
     private String repairId;
     private double totalAmount;
     private Date  paymentDate;
+    private double payCash;
+    private double balance;
 }

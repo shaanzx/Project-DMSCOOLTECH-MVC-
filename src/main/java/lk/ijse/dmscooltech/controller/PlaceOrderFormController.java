@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.db.DbConnection;
@@ -30,6 +31,9 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class PlaceOrderFormController implements Initializable {
+
+    @FXML
+    private JFXButton btnOrderConfirm;
 
     @FXML
     private JFXComboBox<String> cmbCustomerId;
@@ -86,6 +90,12 @@ public class PlaceOrderFormController implements Initializable {
     private Label lblBalance;
 
     @FXML
+    private Label lblNeeded;
+
+    @FXML
+    private Label lblMoreMoney;
+
+    @FXML
     private Pane pagingPane;
 
     @FXML
@@ -95,7 +105,7 @@ public class PlaceOrderFormController implements Initializable {
     private TextField txtCustomerMobile;
 
     @FXML
-    private TextField txtPayment;
+    private TextField txtCash;
 
     @FXML
     private TextField txtQty;
@@ -117,6 +127,8 @@ public class PlaceOrderFormController implements Initializable {
         setCellValueFactory();
         getCustomerId();
         getItemCodes();
+        lblNeeded.setVisible(false);
+        btnOrderConfirm.setDisable(true);
     }
 
     private void getItemCodes() {
@@ -243,9 +255,11 @@ public class PlaceOrderFormController implements Initializable {
 
             netAmount += addToCartTm.getTotalAmount();
         }
+        double printcash = Double.parseDouble(txtCash.getText());
+        double balance = Double.parseDouble(lblBalance.getText());
 
         String paymentId = PaymentRepo.generatePaymentId();
-        Payment payment = new Payment(paymentId, customerId, orderId,null, netAmount, date);
+        Payment payment = new Payment(paymentId, customerId, orderId,null, netAmount, date,printcash,balance);
 
         OrderPlace orderPlace = new OrderPlace(order, orderList , payment);
         try {
@@ -258,7 +272,9 @@ public class PlaceOrderFormController implements Initializable {
 
                 if (result.orElse(no) == yes) {
                     Map<String, Object> parameters = new HashMap<>();
-                    InputStream resource = this.getClass().getResourceAsStream("/reports/dmscooltech.jrxml");
+                    parameters.put("param1",printcash);
+                    parameters.put("param2",balance);
+                    InputStream resource = this.getClass().getResourceAsStream("/reports/order.jrxml");
                     try{
                         JasperReport jasperReport = JasperCompileManager.compileReport(resource);
                         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameters,DbConnection.getInstance().getConnection());
@@ -338,10 +354,34 @@ public class PlaceOrderFormController implements Initializable {
         }
     }
 
-    public void txtPaymentOnAction(MouseEvent mouseEvent) {
-    }
-
     public void lblBalanceOnAction(MouseEvent mouseEvent) {
 
+    }
+    @FXML
+    void keyCash(KeyEvent event) {
+        if (!txtCash.getText().isEmpty()) {
+            double balance = Double.parseDouble(txtCash.getText()) - Double.parseDouble(lblNetAmount.getText());
+            if (balance >= 0) {
+                txtCash.setStyle("-fx-text-fill: black");
+                lblBalance.setText(String.valueOf(balance));
+                lblNeeded.setVisible(false);
+                lblMoreMoney.setText("");
+                btnOrderConfirm.setDisable(false);
+                lblBalance.setVisible(true);
+            } else if (balance < 0) {
+                txtCash.setStyle("-fx-text-fill: black");
+                btnOrderConfirm.setDisable(true);
+                double positbalance = Math.abs(balance);
+                lblNeeded.setVisible(true);
+                lblMoreMoney.setText(positbalance + "/=");
+                lblBalance.setVisible(false);
+            }
+        } else {
+            btnOrderConfirm.setDisable(true);
+            txtCash.setStyle("-fx-text-fill: red");
+            lblBalance.setVisible(false);
+            lblNeeded.setVisible(false);
+            lblMoreMoney.setText("");
+        }
     }
 }
