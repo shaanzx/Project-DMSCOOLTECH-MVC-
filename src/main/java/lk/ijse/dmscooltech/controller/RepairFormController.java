@@ -13,12 +13,18 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.*;
 import lk.ijse.dmscooltech.model.tm.RepairTm;
 import lk.ijse.dmscooltech.repository.*;
 import lk.ijse.dmscooltech.util.Navigation;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -342,9 +348,30 @@ public class RepairFormController implements Initializable {
             boolean isRepairDone = RepairDetailsRepo.addNewRepair(repairDetails);
             if (isRepairDone) {
                 //new Alert(Alert.AlertType.CONFIRMATION, "Repair Process Done").show();
-                Map<String, Object> parameters = new HashMap<>();
-                parameters.put("param1",customerPayment);
-                parameters.put("param2",balance);
+                ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+                ButtonType no = new ButtonType("No", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Optional<ButtonType> type = new Alert(Alert.AlertType.CONFIRMATION, "Repair Process Done.Do You want To Bill?", yes, no).showAndWait();
+                if(type.orElse(no) == yes) {
+                    try {
+                        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/reports/Payment.jrxml");
+                        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+                        Map<String, Object> data = new HashMap<>();
+                        data.put("RepairId", lblRepairId.getText());
+
+                        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, data, DbConnection.getInstance().getConnection());
+                        JasperViewer.viewReport(jasperPrint, false);
+
+                    } catch (JRException | SQLException e) {
+                        new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+                        e.printStackTrace();
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Error");
+                        alert.setHeaderText("Error generating receipt");
+                        alert.setContentText("An error occurred while generating the receipt. Check the logs for more details.");
+                        alert.showAndWait();
+                    }
+                }
             } else {
                 new Alert(Alert.AlertType.ERROR, "Something went wrong").show();
             }

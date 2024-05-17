@@ -144,12 +144,14 @@ create table payment(
                         rId varchar(15),
                         foreign key(rId) references repair(rId) on update cascade on delete cascade,
                         totalAmount decimal(10,2)NOT NULL,
-                        date Date
+                        date Date,
+                        customerPayment decimal(10,2),
+                        customerBalance decimal(10,2)
 
 );
-INSERT INTO payment(pId,cId,oId,rId,totalAmount,date)VALUES
-                                                        ('P001','C001','OR001','R001',7000,20240321),
-                                                        ('P002','C002','OR002','R002',15000,20240321);
+INSERT INTO payment(pId,cId,oId,rId,totalAmount,date,customerPayment,customerBalance)VALUES
+                                                        ('P001','C001','OR001','R001',7000,20240321,7500,500),
+                                                        ('P002','C002','OR002','R002',15000,20240321,15500,500);
 
 /*INSERT INTO repair(repairDate,description,repairCost,eId,vNo,iCode)VALUES
                                                                 ('20240401','REPLACE Condenser',5000,'E002','KP-1111','I001'),
