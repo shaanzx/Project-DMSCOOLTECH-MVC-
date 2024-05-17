@@ -20,12 +20,12 @@ public class Mail {
         newSession = Session.getInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(
-                        "kumudufurniture275@gmail.com", "sdrw ajyr vwnu vpyp");
+                        "anuhaslakshan07@gmail.com", "zona ualj clqg sslr");
             }
         });
     }
 
-    public static void setOtpMail(String receiverMail, String otp) throws MessagingException, IOException {
+   /* public static void setOtpMail(String receiverMail, String otp) throws MessagingException, IOException {
         setUpServerProperties();
         MimeMessage mimeMessage = draftOtpMail(receiverMail, otp);
         sendOtpMail(mimeMessage);
@@ -53,13 +53,13 @@ public class Mail {
         String host = "smtp.gmail.com";
         Transport transport = newSession.getTransport("smtp");
         try {
-            transport.connect(host, System.getenv("kumudufurniture275@gmail.com"), System.getenv("sdrw ajyr vwnu vpyp"));
+            transport.connect(host, System.getenv("anuhaslakshan07@gmail.com"), System.getenv("zona ualj clqg sslr"));
             transport.sendMessage(mimeMessage, mimeMessage.getAllRecipients());
             new Alert(Alert.AlertType.INFORMATION, "OTP sent successfully!").show();
         } finally {
             transport.close();
         }
-    }
+    }*/
 
     public static void setMail(String title, String subject, String body, String receiverMail, File pdfFile) throws MessagingException, IOException {
         setUpServerProperties();
@@ -71,7 +71,7 @@ public class Mail {
         String host = "smtp.gmail.com";
         Transport transport = newSession.getTransport("smtp");
         try {
-            transport.connect(host, System.getenv("kumudufurniture275@gmail.com"), System.getenv("sdrw ajyr vwnu vpyp"));
+            transport.connect(host, System.getenv("anuhaslakshan07@gmail.com"), System.getenv("zona ualj clqg sslr"));
             transport.sendMessage(mimeMessage, mimeMessage.getAllRecipients());
             new Alert(Alert.AlertType.INFORMATION, "Email sent successfully!").show();
         } finally {
@@ -82,7 +82,7 @@ public class Mail {
     private static MimeMessage draftMail(String title, String sub, String body, String receiverMail, File pdfFile) throws MessagingException, IOException {
         MimeMessage mimeMessage = new MimeMessage(newSession);
 
-        mimeMessage.setFrom(new InternetAddress("kumudufurniture275@gmail.com"));
+        mimeMessage.setFrom(new InternetAddress("anuhaslakshan07@gmail.com"));
         mimeMessage.addRecipients(Message.RecipientType.TO, receiverMail);
         mimeMessage.setSubject(sub);
 

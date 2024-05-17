@@ -18,10 +18,15 @@ import lk.ijse.dmscooltech.db.DbConnection;
 import lk.ijse.dmscooltech.model.*;
 import lk.ijse.dmscooltech.model.tm.AddToCartTm;
 import lk.ijse.dmscooltech.repository.*;
+import lk.ijse.dmscooltech.util.Mail;
 import lk.ijse.dmscooltech.util.Navigation;
 import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
+import javax.mail.MessagingException;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -275,6 +280,11 @@ public class PlaceOrderFormController implements Initializable {
                     parameters.put("param1",printcash);
                     parameters.put("param2",balance);
                     InputStream resource = this.getClass().getResourceAsStream("/reports/order.jrxml");
+                    try {
+                        Mail.setMail("Order Completed", "Order Completed", "Thank you for your order. Your order is successfully placed. Your order id is "+orderId+".", "virajdilshan2019@gmail.com", getBill());
+                    } catch (MessagingException | IOException | JRException e) {
+                        throw new RuntimeException(e);
+                    }
                     try{
                         JasperReport jasperReport = JasperCompileManager.compileReport(resource);
                         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameters,DbConnection.getInstance().getConnection());
@@ -383,5 +393,17 @@ public class PlaceOrderFormController implements Initializable {
             lblNeeded.setVisible(false);
             lblMoreMoney.setText("");
         }
+    }
+
+    private File getBill() throws JRException, SQLException {
+        JasperDesign jasperDesign = JRXmlLoader.load("src/main/resources/reports/order.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null, DbConnection.getInstance().getConnection());
+        // Export the report to a PDF file
+        File pdfFile = new File("Order Receipt.pdf");
+        JasperExportManager.exportReportToPdfFile(jasperPrint, pdfFile.getAbsolutePath());
+
+        return pdfFile;
     }
 }
