@@ -92,7 +92,7 @@
          </font>
       </JFXButton>
       <DatePicker fx:id="dpRepairDate" layoutX="150.0" layoutY="285.0" prefHeight="35.0" prefWidth="160.0" />
-      <JFXButton buttonType="RAISED" layoutX="810.0" layoutY="545.0" onAction="#btnConfirmRepairBillOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #0e2f68;" text="Genarate Bill" textFill="WHITE">
+      <JFXButton fx:id="btnOrderPlace" buttonType="RAISED" layoutX="810.0" layoutY="545.0" onAction="#btnConfirmRepairBillOnAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #0e2f68;" text="Genarate Bill" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -235,12 +235,12 @@
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblBalance" layoutX="477.0" layoutY="550.0" onDragDetected="#lblBalanceOnAction" prefHeight="30.0" prefWidth="111.0" textFill="#117c21">
+      <Label fx:id="lblBalance" layoutX="477.0" layoutY="550.0" prefHeight="30.0" prefWidth="111.0" textFill="#117c21">
          <font>
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPayment" layoutX="165.0" layoutY="554.0" onAction="#txtRepairPaymentOnAction" promptText="Enter Customer Amount" />
+      <TextField fx:id="txtPayment" layoutX="165.0" layoutY="554.0" onKeyTyped="#keyCash" promptText="Enter Customer Amount" />
       <Label fx:id="lblNeeded" layoutX="167.0" layoutY="576.0" prefHeight="17.0" prefWidth="130.0" text="More Money Needed" textFill="#e16565" />
       <Label fx:id="lblMoreMoney" layoutX="286.0" layoutY="576.0" prefHeight="17.0" prefWidth="130.0" />
    </children>

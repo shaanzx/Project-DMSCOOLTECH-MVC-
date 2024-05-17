@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import lk.ijse.dmscooltech.model.*;
@@ -22,14 +23,14 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static lk.ijse.dmscooltech.repository.RepairRepo.generateRepairId;
 
 public class RepairFormController implements Initializable {
+
+    @FXML
+    private JFXButton btnOrderPlace;
 
     @FXML
     private JFXComboBox<String> cmbEmployeeId;
@@ -141,7 +142,8 @@ public class RepairFormController implements Initializable {
         getItemCode();
         setDate();
         setCellValueFactory();
-
+        lblNeeded.setVisible(false);
+        btnOrderPlace.setDisable(true);
     }
 
     private void setCellValueFactory() {
@@ -320,6 +322,9 @@ public class RepairFormController implements Initializable {
                 netAmount
         );
 
+        double customerPayment= Double.parseDouble(txtPayment.getText());
+        double balance =  Double.parseDouble(lblBalance.getText());
+
       Payment  payment = new Payment(
                 PaymentRepo.generatePaymentId(),
                 vehicle.getCustomerId(),
@@ -327,8 +332,8 @@ public class RepairFormController implements Initializable {
                 lblRepairId.getText(),
                 netAmount,
               Date.valueOf(lblDate.getText()),
-              Double.parseDouble(txtPayment.getText()),
-              Double.parseDouble(lblBalance.getText())
+              customerPayment,
+              balance
         );
 
         RepairDetails repairDetails = new RepairDetails(order, orderList, repair,payment);
@@ -337,7 +342,9 @@ public class RepairFormController implements Initializable {
             boolean isRepairDone = RepairDetailsRepo.addNewRepair(repairDetails);
             if (isRepairDone) {
                 //new Alert(Alert.AlertType.CONFIRMATION, "Repair Process Done").show();
-
+                Map<String, Object> parameters = new HashMap<>();
+                parameters.put("param1",customerPayment);
+                parameters.put("param2",balance);
             } else {
                 new Alert(Alert.AlertType.ERROR, "Something went wrong").show();
             }
@@ -396,11 +403,31 @@ public class RepairFormController implements Initializable {
         btnAddToCartOnAction(event);
     }
 
-    public void lblBalanceOnAction(MouseEvent mouseEvent) {
-
-    }
-
-    public void txtRepairPaymentOnAction(ActionEvent event) {
-
+    @FXML
+    void keyCash(KeyEvent event) {
+        if (!txtPayment.getText().isEmpty()) {
+            double balance = Double.parseDouble(txtPayment.getText()) - Double.parseDouble(lblNetAmount.getText());
+            if (balance >= 0) {
+                txtPayment.setStyle("-fx-text-fill: black");
+                lblBalance.setText(String.valueOf(balance));
+                lblNeeded.setVisible(false);
+                lblMoreMoney.setText("");
+                btnOrderPlace.setDisable(false);
+                lblBalance.setVisible(true);
+            } else if (balance < 0) {
+                txtPayment.setStyle("-fx-text-fill: black");
+                btnOrderPlace.setDisable(true);
+                double positbalance = Math.abs(balance);
+                lblNeeded.setVisible(true);
+                lblMoreMoney.setText(positbalance + "/=");
+                lblBalance.setVisible(false);
+            }
+        } else {
+            btnOrderPlace.setDisable(true);
+            txtPayment.setStyle("-fx-text-fill: red");
+            lblBalance.setVisible(false);
+            lblNeeded.setVisible(false);
+            lblMoreMoney.setText("");
+        }
     }
 }
