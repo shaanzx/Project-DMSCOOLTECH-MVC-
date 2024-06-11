@@ -241,6 +241,9 @@ public class PlaceOrderFormController implements Initializable {
 
         Order order = new Order(orderId, customerId, date);
 
+        Customer customer = CustomerRepo.searchCustomer(customerId);
+        String cusEmail = customer.getEmail();
+
         List<OrderDetails> orderList = new ArrayList<>();
         double netAmount = 0;
         double orderAmount = 0;
@@ -281,7 +284,7 @@ public class PlaceOrderFormController implements Initializable {
                     parameters.put("param2",balance);
                     InputStream resource = this.getClass().getResourceAsStream("/reports/order.jrxml");
                     try {
-                        Mail.setMail("Order Completed", "Order Completed", "Thank you for your order. Your order is successfully placed. Your order id is "+orderId+".", "virajdilshan2019@gmail.com", getBill());
+                        Mail.setMail("Order Completed", "Order Completed", "Thank you for your order. Your order is successfully placed. Your order id is "+orderId+".", cusEmail, getBill());
                     } catch (MessagingException | IOException | JRException e) {
                         throw new RuntimeException(e);
                     }

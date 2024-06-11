@@ -123,7 +123,7 @@ public class CustomerRepo {
         return preparedStatement.executeUpdate() > 0;
     }
 
-    public List<Customer>getCustomer() throws SQLException {
+    public List<Customer> getCustomer() throws SQLException {
         String sql = "SELECT * FROM customer";
 
         ResultSet resultSet = DbConnection.getInstance().getConnection().prepareStatement(sql).executeQuery();
