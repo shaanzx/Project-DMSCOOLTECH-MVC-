@@ -149,7 +149,6 @@ public class PlaceOrderFormController implements Initializable {
         }
     }
 
-
     private void getCustomerId() {
         ObservableList<String> customerList = FXCollections.observableArrayList();
         try{
@@ -162,7 +161,6 @@ public class PlaceOrderFormController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-
 
     private void setCellValueFactory() {
         colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
@@ -348,10 +346,11 @@ public class PlaceOrderFormController implements Initializable {
     }
 
     @FXML
-    void btnViewOrderDetailsOnAction(ActionEvent event) throws IOException {
+    void btnViewOrderDetailsOnAction(ActionEvent event)  {
         //FXMLLoader.load(this.getClass().getResource("../view/OrderDetailsForm.fxml"));
         Navigation.changeStage("/view/viewOrders_Form.fxml","Order Details Form");
     }
+
     @FXML
     void txtSearchCustomerTelephoneOnAction(ActionEvent event) {
         String tel = txtCustomerMobile.getText();
@@ -370,6 +369,7 @@ public class PlaceOrderFormController implements Initializable {
     public void lblBalanceOnAction(MouseEvent mouseEvent) {
 
     }
+
     @FXML
     void keyCash(KeyEvent event) {
         if (!txtCash.getText().isEmpty()) {

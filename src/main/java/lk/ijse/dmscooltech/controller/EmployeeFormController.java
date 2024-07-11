@@ -230,7 +230,6 @@ public class EmployeeFormController implements Initializable {
         }
     }
 
-
     @FXML
     void tblEmployeeClickOnAction(MouseEvent event) {
         TablePosition tp = tblEmployee.getSelectionModel().getSelectedCells().get(0);

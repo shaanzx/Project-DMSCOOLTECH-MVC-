@@ -43,6 +43,7 @@ public class NewLoginFormController {
     public NewLoginFormController(){
         controller = this;
     }
+
     public static NewLoginFormController getInstance(){
         return controller;
     }

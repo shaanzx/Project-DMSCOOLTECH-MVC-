@@ -250,7 +250,6 @@ public class ItemFormController implements Initializable {
         }
     }
 
-
     @FXML
     void tblItemClickOnAction(MouseEvent event) {
         TablePosition pos = tblItem.getSelectionModel().getSelectedCells().get(0);
@@ -266,6 +265,7 @@ public class ItemFormController implements Initializable {
 
         tblItem.setCursor(Cursor.HAND);
     }
+
     public void textFieldClear() {
         txtItemCode.clear();
         txtItemName.clear();

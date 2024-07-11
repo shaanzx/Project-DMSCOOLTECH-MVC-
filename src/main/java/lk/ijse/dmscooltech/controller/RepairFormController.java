@@ -133,7 +133,6 @@ public class RepairFormController implements Initializable {
 
     private ObservableList<RepairTm> addToCartRepairList = FXCollections.observableArrayList();
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
